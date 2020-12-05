@@ -4,23 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Model
 {
-    class Adres
+    public class Adres
     {
+        [Key]
         public int ID_Adresu { get; set; }
-        [Column(TypeName = "nvarchar(255)")]
+        [Column(TypeName = "nvarchar")]
+        [MaxLength(255)]
         public string Miejscowosc { get; set; }
-        [Column(TypeName = "nvarchar(255)")]
+        [Column(TypeName = "nvarchar")]
+        [MaxLength(255)]
         public string Ulica { get; set; }
-        [Column(TypeName = "varchar(15)")]
+        [Column(TypeName = "varchar")]
+        [MaxLength(15)]
         public string Nr_Domu { get; set; }
-        [Column(TypeName = "varchar(15)")]
+        [Column(TypeName = "varchar")]
+        [MaxLength(15)]
         public string Nr_Mieszkania { get; set; }
-        [Column(TypeName = "varchar(6)")]
+        [Column(TypeName = "char")]
+        [MaxLength(5)]
         public string Kod_Pocztowy { get; set; }
 
         public virtual List<Uzytkownik> Uzytkownicy { get; set; }
+
+        public Adres(string miejscowosc, string ulica, string numerDomu, string numerMieszkania, string kodPocztowy)
+        {
+            Miejscowosc = miejscowosc;
+            Ulica = ulica;
+            Nr_Domu = numerDomu;
+            Nr_Mieszkania = numerMieszkania;
+            Kod_Pocztowy = kodPocztowy;
+        }
     }
 }

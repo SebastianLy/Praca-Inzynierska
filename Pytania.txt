@@ -1,5 +1,1 @@
-Czy robić akapity?
-Czy dawać wzmiankę o wykorzystanych programach? Jeśli tak to gdzie? (Visual Paradigm)
-W jakim czasie pisać? Jakbym już stworzył aplikację, był w trakcie tworzenie czy dopiero później tworzył?
-Lepiej robić screeny kodu, czy przepisać kod do pracy? W jaki sposób pokazywać kawałki kodu?
-Podpisy pod rysunkami wyśrodkowane czy wyjustowane?
+1. Dawanie wzmianki o stronach z których użyłem ikony itp.

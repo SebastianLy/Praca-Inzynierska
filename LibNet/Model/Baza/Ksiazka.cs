@@ -4,27 +4,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Model
 {
-    class Ksiazka
+    public class Ksiazka
     {
+        [Key]
         public int ID_Ksiazki { get; set; }
-        [Column(TypeName = "nvarchar(255)")]
+        [Column(TypeName = "nvarchar")]
+        [MaxLength(255)]
         public string Tytul { get; set; }
-        [Column(TypeName = "nvarchar(255)")]
+        [Column(TypeName = "nvarchar")]
+        [MaxLength(255)]
         public string Autor { get; set; }
-        [Column(TypeName = "varchar(255)")]
+        [Column(TypeName = "varchar")]
+        [MaxLength(255)]
         public string Gatunek { get; set; }
-        [Column(TypeName = "nvarchar(255)")]
+        [Column(TypeName = "nvarchar")]
+        [MaxLength(255)]
         public string Wydawca { get; set; }
-        [Column(TypeName = "varchar(4)")]
+        [Column(TypeName = "char")]
+        [MaxLength(4)]
         public string Data_Wydania { get; set; }
-        [Column(TypeName = "nvarchar(255)")]
+        [Column(TypeName = "nvarchar")]
+        [MaxLength(255)]
         public string Miejsce_Wydania { get; set; }
         [Column(TypeName = "smallmoney")]
-        public string Wartosc { get; set; }
+        public decimal Wartosc { get; set; }
 
         public virtual List<Sygnatura> Sygnatury { get; set; }
+
+        public Ksiazka() { }
+
+        public Ksiazka(string tytul, string autor, string gatunek, string wydawca, string miejsceWydania, string dataWydania, decimal wartosc)
+        {
+            Tytul = tytul;
+            Autor = autor;
+            Gatunek = gatunek;
+            Wydawca = wydawca;
+            Data_Wydania = dataWydania;
+            Miejsce_Wydania = miejsceWydania;
+            Wartosc = wartosc;
+        }
     }
 }

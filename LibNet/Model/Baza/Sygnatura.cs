@@ -8,22 +8,22 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Model
 {
-    class Sygnatura
+    public class Sygnatura
     {
         [Key]
-        [Column(TypeName = "varchar(15)")]
+        [Column(TypeName = "varchar")]
+        [MaxLength(63)]
         public string ID_Sygnatura { get; set; }
         [Column(TypeName = "smalldatetime")]
-        public DateTime Czas_Rezerwacji { get; set; }
+        public DateTime? Czas_Rezerwacji { get; set; }
 
         [Column("Aktualny_Posiadacz")]
-        public int ID_Uzytkownika { get; set; }
+        public int? ID_Uzytkownika { get; set; }
         public virtual Uzytkownik Uzytkownik { get; set; }
 
         public int ID_Ksiazki { get; set; }
         public virtual Ksiazka Ksiazka { get; set; }
 
-        public int ID_Wypozyczenia { get; set; }
-        public virtual Wypozyczenie Wypozyczenie { get; set; }
+        public virtual List<Wypozyczenie> Wypozyczenia { get; set; }
     }
 }

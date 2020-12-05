@@ -55,6 +55,23 @@
     <Compile Include="Baza\BibliotekaKontekst.cs" />
     <Compile Include="Baza\Ksiazka.cs" />
     <Compile Include="Baza\Platnosc.cs" />
+    <Compile Include="Migrations\202012011256096_InitialCreate.cs" />
+    <Compile Include="Migrations\202012011256096_InitialCreate.designer.cs">
+      <DependentUpon>202012011256096_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012051710270_ChangeRelations.cs" />
+    <Compile Include="Migrations\202012051710270_ChangeRelations.designer.cs">
+      <DependentUpon>202012051710270_ChangeRelations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012051943579_Change.cs" />
+    <Compile Include="Migrations\202012051943579_Change.designer.cs">
+      <DependentUpon>202012051943579_Change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012051947380_Change2.cs" />
+    <Compile Include="Migrations\202012051947380_Change2.designer.cs">
+      <DependentUpon>202012051947380_Change2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Baza\Sygnatura.cs" />
     <Compile Include="Baza\Uzytkownik.cs" />
@@ -63,6 +80,20 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202012011256096_InitialCreate.resx">
+      <DependentUpon>202012011256096_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012051710270_ChangeRelations.resx">
+      <DependentUpon>202012051710270_ChangeRelations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012051943579_Change.resx">
+      <DependentUpon>202012051943579_Change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012051947380_Change2.resx">
+      <DependentUpon>202012051947380_Change2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

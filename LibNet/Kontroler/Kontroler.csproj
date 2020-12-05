@@ -5,19 +5,18 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BD27DC2E-6071-4098-A138-F27DC70C3E2B}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>Widok</RootNamespace>
-    <AssemblyName>Widok</AssemblyName>
+    <ProjectGuid>{974D77B7-CE10-44BB-8D9E-2FD79AF575FE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kontroler</RootNamespace>
+    <AssemblyName>Kontroler</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -27,7 +26,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -49,101 +47,23 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormDodajKsiazke.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormDodajKsiazke.Designer.cs">
-      <DependentUpon>FormDodajKsiazke.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormKsiazki.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormKsiazki.Designer.cs">
-      <DependentUpon>FormKsiazki.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormLogowanie.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLogowanie.Designer.cs">
-      <DependentUpon>FormLogowanie.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormMenuGlowne.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMenuGlowne.Designer.cs">
-      <DependentUpon>FormMenuGlowne.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormRejestracja.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormRejestracja.Designer.cs">
-      <DependentUpon>FormRejestracja.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormUzytkownicy.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormUzytkownicy.Designer.cs">
-      <DependentUpon>FormUzytkownicy.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="KontrolerKsiazka.cs" />
+    <Compile Include="KontrolerUzytkownik.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormDodajKsiazke.resx">
-      <DependentUpon>FormDodajKsiazke.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormKsiazki.resx">
-      <DependentUpon>FormKsiazki.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormLogowanie.resx">
-      <DependentUpon>FormLogowanie.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormMenuGlowne.resx">
-      <DependentUpon>FormMenuGlowne.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormRejestracja.resx">
-      <DependentUpon>FormRejestracja.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormUzytkownicy.resx">
-      <DependentUpon>FormUzytkownicy.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{4f1892ec-c9f0-494a-8d2a-fca7718fc3ab}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Składniki\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Kontroler\Kontroler.csproj">
-      <Project>{974d77b7-ce10-44bb-8d9e-2fd79af575fe}</Project>
-      <Name>Kontroler</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

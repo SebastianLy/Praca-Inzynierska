@@ -16,7 +16,7 @@ namespace Widok
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new interfejsAdministratora());
+            Application.Run(new FormLogowanie());
         }
     }
 }

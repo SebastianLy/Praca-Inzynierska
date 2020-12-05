@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Model
 {
-    class Wypozyczenie
+    public class Wypozyczenie
     {
+        [Key]
         public int ID_Wypozyczenia { get; set; }
         [Column(TypeName = "date")]
         public DateTime Data_Wypozyczenia { get; set; }
@@ -17,7 +19,7 @@ namespace Model
         [Column(TypeName = "bit")]
         public bool Czy_Zwrocone { get; set; }
 
-        [Column("Uzytkownik")]
+        [Column("Czytelnik")]
         public int ID_Uzytkownika { get; set; }
         public virtual Uzytkownik Uzytkownik { get; set; }
 

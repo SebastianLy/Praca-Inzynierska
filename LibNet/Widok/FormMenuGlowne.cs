@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 
 namespace Widok
 {
-    public partial class interfejsAdministratora : Form
+    public partial class formMenuGlowne : Form
     {
 
         // Pola
@@ -19,10 +19,16 @@ namespace Widok
         private Form aktywnyForm;
         
         // Konstruktor
-        public interfejsAdministratora()
+        public formMenuGlowne()
         {
             InitializeComponent();
+            timer1.Start();
+            foreach (Button button in panelMenu.Controls.OfType<Button>())
+            {
+                button.FlatAppearance.MouseDownBackColor = Color.FromArgb(59, 78, 255);
+            }
         }
+
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         public static extern bool ReleaseCapture();
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
@@ -38,16 +44,46 @@ namespace Widok
                     DezaktywujPrzyciski();
                     aktywnyPrzycisk = (Button)przycisk;
                     aktywnyPrzycisk.BackColor = Color.FromArgb(0, 89, 255);
+                    aktywnyPrzycisk.TextAlign = ContentAlignment.MiddleRight;
+                    aktywnyPrzycisk.ImageAlign = ContentAlignment.MiddleRight;
+                    aktywnyPrzycisk.TextImageRelation = TextImageRelation.TextBeforeImage;
+                    lblTytul.Text = aktywnyPrzycisk.Text.Remove(0, 5);
                 }
             }
         }
 
         private void DezaktywujPrzyciski()
         {
-            foreach (Control przycisk in panelMenu.Controls)
+            if (aktywnyPrzycisk != null)
             {
-                przycisk.BackColor = Color.FromArgb(8, 17, 220);
+                foreach (Control przycisk in panelMenu.Controls)
+                {
+                    przycisk.BackColor = Color.FromArgb(8, 17, 220);
+                    aktywnyPrzycisk.TextAlign = ContentAlignment.MiddleLeft;
+                    aktywnyPrzycisk.ImageAlign = ContentAlignment.MiddleLeft;
+                    aktywnyPrzycisk.TextImageRelation = TextImageRelation.ImageBeforeText;
+                }
             }
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x84)
+            {  // Trap WM_NCHITTEST
+                Point pos = new Point(m.LParam.ToInt32());
+                pos = PointToClient(pos);
+                if (pos.Y < 32)
+                {
+                    m.Result = (IntPtr)2;  // HTCAPTION
+                    return;
+                }
+                if (pos.X >= ClientSize.Width - 16 && pos.Y >= ClientSize.Height - 16)
+                {
+                    m.Result = (IntPtr)17; // HTBOTTOMRIGHT
+                    return;
+                }
+            }
+            base.WndProc(ref m);
         }
 
         private void OtworzForm(Form form, object btnSender)
@@ -73,12 +109,12 @@ namespace Widok
 
         private void btnUzytkownicy_Click(object sender, EventArgs e)
         {
-            AktywujPrzycisk(sender);
+            OtworzForm(new FormUzytkownicy(), sender);
         }
 
         private void btnKsiazki_Click(object sender, EventArgs e)
         {
-            AktywujPrzycisk(sender);
+            OtworzForm(new FormKsiazki(), sender);
         }
 
         private void btnWypozyczalnia_Click(object sender, EventArgs e)
@@ -122,6 +158,11 @@ namespace Widok
         private void btnMinimalizuj_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            labelZegar.Text = Convert.ToString(DateTime.Now);
         }
     }
 }
