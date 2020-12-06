@@ -20,9 +20,13 @@ namespace Model
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Uzytkownik>()
-                .HasMany(f => f.Wypozyczenia)
+                .HasMany(db => db.Wypozyczenia)
                 .WithOptional()
                 .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<Sygnatura>()
+            //    .HasRequired(k => k.Ksiazka)
+            //    .WithMany()
+            //    .WillCascadeOnDelete(true);
             modelBuilder.Entity<Uzytkownik>().ToTable("Uzytkownicy");
             modelBuilder.Entity<Adres>().ToTable("Adresy");
             modelBuilder.Entity<Platnosc>().ToTable("Platnosci");

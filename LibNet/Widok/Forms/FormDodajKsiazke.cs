@@ -35,6 +35,7 @@ namespace Widok
             miejsceWydaniaTextBox.Text = miejsceWydania;
             dataWydaniaTextBox.Text = dataWydania;
             wartoscTextBox.Text = wartosc;
+            btnDodaj.Enabled = false;
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
@@ -46,6 +47,8 @@ namespace Widok
 
         private void btnEdytuj_Click(object sender, EventArgs e)
         {
+            KontrolerKsiazka.EdytujKsiazke(sygnaturaTextBox.Text, tytulTextBox.Text, autorTextBox.Text, gatunekTextBox.Text, wydawcaTextBox.Text,
+                miejsceWydaniaTextBox.Text, dataWydaniaTextBox.Text, Convert.ToDecimal(wartoscTextBox.Text));
             Close();
         }
 

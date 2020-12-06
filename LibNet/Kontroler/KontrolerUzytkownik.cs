@@ -23,6 +23,7 @@ namespace Kontroler
                 return false;
             }
         }
+
         public static void Rejestracja(string login, string email, string haslo, string imie, string nazwisko, string miejscowosc,
             string ulica, string numerDomu, string numerMieszkania, string kodPocztowy)
         {
@@ -39,6 +40,7 @@ namespace Kontroler
                 db.SaveChanges();
             }
         }
+
         static string SzyfrowanieHasla(string haslo)
         {
             byte[] hasloTablica = Encoding.Unicode.GetBytes(haslo);
@@ -160,6 +162,7 @@ namespace Kontroler
                 }      
             }
         }
+
         public static void Blokada(int id , string powod)
         {
             using (var db = new BibliotekaKontekst())
@@ -168,7 +171,10 @@ namespace Kontroler
                                   where dbUzytkownik.ID_Uzytkownika == id
                                   select dbUzytkownik).FirstOrDefault();
                 if (uzytkownik.Blokada)
+                {
                     uzytkownik.Blokada = false;
+                    uzytkownik.Powod_Blokady = "";
+                }
                 else
                 {
                     uzytkownik.Blokada = true;
@@ -177,6 +183,7 @@ namespace Kontroler
                 db.SaveChanges();
             }
         }
+
         public static void Usun(int id)
         {
             using (var db = new BibliotekaKontekst())
@@ -185,6 +192,42 @@ namespace Kontroler
                                   where dbUzytkownik.ID_Uzytkownika == id
                                   select dbUzytkownik).FirstOrDefault();
                 db.Uzytkownicy.Remove(uzytkownik);
+                db.SaveChanges();
+            }
+        }
+
+        public static void WyswietlPlatnosci(DataTable tabela)
+        {
+            using (var db = new BibliotekaKontekst())
+            {
+                var platnosci = (from platnosc in db.Platnosci
+                               join uzytkownik in db.Uzytkownicy on platnosc.ID_Uzytkownika equals uzytkownik.ID_Uzytkownika into gj
+                               from x in gj.DefaultIfEmpty()
+                               select new
+                               {
+                                   platnosc.ID_Platnosci,
+                                   x.ID_Uzytkownika,
+                                   PlacacyImie = x.Imie,
+                                   PlacacyNazwisko = x.Nazwisko,
+                                   platnosc.Data_Zaplaty,
+                                   platnosc.Kwota,
+                                   platnosc.Opis_Zaplaty
+                               }).ToList();
+                tabela.Clear();
+                foreach (var platnosc in platnosci)
+                {
+                    tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.ID_Uzytkownika, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
+                        platnosc.Kwota, platnosc.Opis_Zaplaty);
+                }
+            }
+        }
+
+        public static void DodajPlatnosc(int idUzytkownika, string opisZaplaty, decimal kwota)
+        {
+            using (var db = new BibliotekaKontekst())
+            {
+                Platnosc platnosc = new Platnosc(kwota, DateTime.Now, opisZaplaty, idUzytkownika);
+                db.Platnosci.Add(platnosc);
                 db.SaveChanges();
             }
         }

@@ -23,5 +23,13 @@ namespace Model
         [Column("Placacy")]
         public int ID_Uzytkownika { get; set; }
         public virtual Uzytkownik Uzytkownik { get; set; }
+
+        public Platnosc(decimal kwota, DateTime dataZaplaty, string opisZaplaty, int IDUzytkownika)
+        {
+            Kwota = kwota;
+            Data_Zaplaty = dataZaplaty;
+            Opis_Zaplaty = opisZaplaty;
+            ID_Uzytkownika = IDUzytkownika;
+        }
     }
 }

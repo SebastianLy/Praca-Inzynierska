@@ -111,7 +111,6 @@ namespace Widok
             this.tabelaKsiazki.RowHeadersVisible = false;
             this.tabelaKsiazki.RowHeadersWidth = 51;
             this.tabelaKsiazki.RowTemplate.Height = 24;
-            this.tabelaKsiazki.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tabelaKsiazki.Size = new System.Drawing.Size(776, 376);
             this.tabelaKsiazki.TabIndex = 0;
             this.tabelaKsiazki.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelaKsiazki_CellDoubleClick);

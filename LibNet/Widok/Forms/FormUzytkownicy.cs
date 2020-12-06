@@ -30,6 +30,13 @@ namespace Widok
             tabela.Columns.Add("Adres", typeof(string));
             KontrolerUzytkownik.WypelnijTabeleUzytkownikow(tabela);
             tabelaUzytkownicy.DataSource = tabela;
+            tabelaUzytkownicy.Columns[0].Width = 60;
+            tabelaUzytkownicy.Columns[1].Width = 150;
+            tabelaUzytkownicy.Columns[2].Width = 150;
+            tabelaUzytkownicy.Columns[3].Width = 50;
+            tabelaUzytkownicy.Columns[4].Width = 50;
+            tabelaUzytkownicy.Columns[5].Width = 150;
+            tabelaUzytkownicy.Columns[6].Width = 150;
         }
 
         private void btnSzukaj_Click(object sender, EventArgs e)

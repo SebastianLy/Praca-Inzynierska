@@ -76,9 +76,19 @@ namespace Kontroler
         {
             using (var db = new BibliotekaKontekst())
             {
-                
+                Sygnatura sygnatura = db.Sygnatury.SingleOrDefault(s => s.ID_Sygnatura == sygnatura1);
+                Ksiazka ksiazka = db.Ksiazki.SingleOrDefault(k => k.ID_Ksiazki == sygnatura.ID_Ksiazki);
+                ksiazka.Tytul = tytul;
+                ksiazka.Autor = autor;
+                ksiazka.Gatunek = gatunek;
+                ksiazka.Wydawca = wydawca;
+                ksiazka.Miejsce_Wydania = miejsceWydania;
+                ksiazka.Data_Wydania = dataWydania;
+                ksiazka.Wartosc = wartosc;
+                db.SaveChanges();
             }
         }
+
         public static void UsunKsiazke(string sygnatura1)
         {
             using (var db = new BibliotekaKontekst())

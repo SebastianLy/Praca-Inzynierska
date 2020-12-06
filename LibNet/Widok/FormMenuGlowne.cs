@@ -124,7 +124,7 @@ namespace Widok
 
         private void btnPlatnosci_Click(object sender, EventArgs e)
         {
-            AktywujPrzycisk(sender);
+            OtworzForm(new FormPlatnosci(), sender);
         }
 
         private void panelTytul_MouseDown(object sender, MouseEventArgs e)
@@ -163,6 +163,12 @@ namespace Widok
         private void timer1_Tick(object sender, EventArgs e)
         {
             labelZegar.Text = Convert.ToString(DateTime.Now);
+        }
+
+        private void lblNazwa_Click(object sender, EventArgs e)
+        {
+            if (aktywnyForm != null)
+                aktywnyForm.Close();
         }
     }
 }

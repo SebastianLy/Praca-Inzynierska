@@ -56,16 +56,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormDodajKsiazke.cs">
+    <Compile Include="Forms\FormPlatnosci.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDodajKsiazke.Designer.cs">
+    <Compile Include="Forms\FormPlatnosci.Designer.cs">
+      <DependentUpon>FormPlatnosci.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormDodajKsiazke.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDodajKsiazke.Designer.cs">
       <DependentUpon>FormDodajKsiazke.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormKsiazki.cs">
+    <Compile Include="Forms\FormKsiazki.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormKsiazki.Designer.cs">
+    <Compile Include="Forms\FormKsiazki.Designer.cs">
       <DependentUpon>FormKsiazki.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLogowanie.cs">
@@ -86,18 +92,21 @@
     <Compile Include="FormRejestracja.Designer.cs">
       <DependentUpon>FormRejestracja.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormUzytkownicy.cs">
+    <Compile Include="Forms\FormUzytkownicy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormUzytkownicy.Designer.cs">
+    <Compile Include="Forms\FormUzytkownicy.Designer.cs">
       <DependentUpon>FormUzytkownicy.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormDodajKsiazke.resx">
+    <EmbeddedResource Include="Forms\FormPlatnosci.resx">
+      <DependentUpon>FormPlatnosci.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormDodajKsiazke.resx">
       <DependentUpon>FormDodajKsiazke.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormKsiazki.resx">
+    <EmbeddedResource Include="Forms\FormKsiazki.resx">
       <DependentUpon>FormKsiazki.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogowanie.resx">
@@ -109,7 +118,7 @@
     <EmbeddedResource Include="FormRejestracja.resx">
       <DependentUpon>FormRejestracja.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormUzytkownicy.resx">
+    <EmbeddedResource Include="Forms\FormUzytkownicy.resx">
       <DependentUpon>FormUzytkownicy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

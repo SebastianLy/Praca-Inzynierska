@@ -67,7 +67,7 @@ namespace Widok
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(4);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(260, 869);
+            this.panelMenu.Size = new System.Drawing.Size(260, 618);
             this.panelMenu.TabIndex = 0;
             // 
             // btnPlatnosci
@@ -187,12 +187,14 @@ namespace Widok
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNazwa.AutoSize = true;
+            this.lblNazwa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNazwa.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblNazwa.Location = new System.Drawing.Point(80, 25);
             this.lblNazwa.Name = "lblNazwa";
             this.lblNazwa.Size = new System.Drawing.Size(99, 31);
             this.lblNazwa.TabIndex = 0;
             this.lblNazwa.Text = "LibNet";
+            this.lblNazwa.Click += new System.EventHandler(this.lblNazwa_Click);
             // 
             // panelTytul
             // 
@@ -271,7 +273,7 @@ namespace Widok
             this.panelZakladka.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelZakladka.Location = new System.Drawing.Point(260, 80);
             this.panelZakladka.Name = "panelZakladka";
-            this.panelZakladka.Size = new System.Drawing.Size(1006, 789);
+            this.panelZakladka.Size = new System.Drawing.Size(1006, 538);
             this.panelZakladka.TabIndex = 2;
             // 
             // labelZegar
@@ -308,7 +310,7 @@ namespace Widok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1266, 869);
+            this.ClientSize = new System.Drawing.Size(1266, 618);
             this.Controls.Add(this.panelZakladka);
             this.Controls.Add(this.panelTytul);
             this.Controls.Add(this.panelMenu);
