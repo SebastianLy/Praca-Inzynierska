@@ -20,13 +20,14 @@ namespace Model
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Uzytkownik>()
-                .HasMany(db => db.Wypozyczenia)
+                .HasMany(s => s.Wypozyczenia)
                 .WithOptional()
+                .HasForeignKey(s => s.ID_Uzytkownika)
                 .WillCascadeOnDelete(false);
-            //modelBuilder.Entity<Sygnatura>()
-            //    .HasRequired(k => k.Ksiazka)
-            //    .WithMany()
-            //    .WillCascadeOnDelete(true);
+            modelBuilder.Entity<Wypozyczenie>()
+                .HasRequired(g => g.Uzytkownik)
+                .WithMany(a => a.Wypozyczenia)
+                .HasForeignKey(g => g.ID_Uzytkownika);
             modelBuilder.Entity<Uzytkownik>().ToTable("Uzytkownicy");
             modelBuilder.Entity<Adres>().ToTable("Adresy");
             modelBuilder.Entity<Platnosc>().ToTable("Platnosci");

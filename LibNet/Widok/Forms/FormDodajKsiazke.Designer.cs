@@ -36,25 +36,25 @@ namespace Widok
             this.labelTytul = new System.Windows.Forms.Label();
             this.btnZamknij = new System.Windows.Forms.Button();
             this.panelZakladka = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.btnDodaj = new System.Windows.Forms.Button();
-            this.btnEdytuj = new System.Windows.Forms.Button();
-            this.btnUsun = new System.Windows.Forms.Button();
-            this.sygnaturaTextBox = new System.Windows.Forms.TextBox();
-            this.autorTextBox = new System.Windows.Forms.TextBox();
-            this.tytulTextBox = new System.Windows.Forms.TextBox();
+            this.miejsceWydaniaTextBox = new System.Windows.Forms.TextBox();
+            this.wartoscTextBox = new System.Windows.Forms.TextBox();
             this.wydawcaTextBox = new System.Windows.Forms.TextBox();
             this.dataWydaniaTextBox = new System.Windows.Forms.TextBox();
             this.gatunekTextBox = new System.Windows.Forms.TextBox();
-            this.miejsceWydaniaTextBox = new System.Windows.Forms.TextBox();
-            this.wartoscTextBox = new System.Windows.Forms.TextBox();
+            this.tytulTextBox = new System.Windows.Forms.TextBox();
+            this.autorTextBox = new System.Windows.Forms.TextBox();
+            this.sygnaturaTextBox = new System.Windows.Forms.TextBox();
+            this.btnUsun = new System.Windows.Forms.Button();
+            this.btnEdytuj = new System.Windows.Forms.Button();
+            this.btnDodaj = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panelTytul.SuspendLayout();
             this.panelZakladka.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +84,7 @@ namespace Widok
             this.btnMinimalizuj.Size = new System.Drawing.Size(21, 20);
             this.btnMinimalizuj.TabIndex = 3;
             this.btnMinimalizuj.UseVisualStyleBackColor = true;
+            this.btnMinimalizuj.Click += new System.EventHandler(this.btnMinimalizuj_Click);
             // 
             // btnMaksymalizuj
             // 
@@ -97,6 +98,7 @@ namespace Widok
             this.btnMaksymalizuj.Size = new System.Drawing.Size(21, 20);
             this.btnMaksymalizuj.TabIndex = 2;
             this.btnMaksymalizuj.UseVisualStyleBackColor = true;
+            this.btnMaksymalizuj.Click += new System.EventHandler(this.btnMaksymalizuj_Click);
             // 
             // labelTytul
             // 
@@ -122,6 +124,7 @@ namespace Widok
             this.btnZamknij.Size = new System.Drawing.Size(21, 20);
             this.btnZamknij.TabIndex = 1;
             this.btnZamknij.UseVisualStyleBackColor = true;
+            this.btnZamknij.Click += new System.EventHandler(this.btnZamknij_Click);
             // 
             // panelZakladka
             // 
@@ -150,115 +153,69 @@ namespace Widok
             this.panelZakladka.Size = new System.Drawing.Size(580, 362);
             this.panelZakladka.TabIndex = 4;
             // 
-            // label1
+            // miejsceWydaniaTextBox
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(159, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Sygnatura:";
+            this.miejsceWydaniaTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.miejsceWydaniaTextBox.Location = new System.Drawing.Point(292, 172);
+            this.miejsceWydaniaTextBox.Name = "miejsceWydaniaTextBox";
+            this.miejsceWydaniaTextBox.Size = new System.Drawing.Size(150, 22);
+            this.miejsceWydaniaTextBox.TabIndex = 18;
             // 
-            // label2
+            // wartoscTextBox
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(159, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Tytuł:";
+            this.wartoscTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.wartoscTextBox.Location = new System.Drawing.Point(292, 228);
+            this.wartoscTextBox.Name = "wartoscTextBox";
+            this.wartoscTextBox.Size = new System.Drawing.Size(150, 22);
+            this.wartoscTextBox.TabIndex = 17;
             // 
-            // label3
+            // wydawcaTextBox
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(159, 89);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Autor:";
+            this.wydawcaTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.wydawcaTextBox.Location = new System.Drawing.Point(292, 142);
+            this.wydawcaTextBox.Name = "wydawcaTextBox";
+            this.wydawcaTextBox.Size = new System.Drawing.Size(150, 22);
+            this.wydawcaTextBox.TabIndex = 16;
             // 
-            // label4
+            // dataWydaniaTextBox
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(159, 203);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(115, 20);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Data wydania:";
+            this.dataWydaniaTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dataWydaniaTextBox.Location = new System.Drawing.Point(292, 200);
+            this.dataWydaniaTextBox.Name = "dataWydaniaTextBox";
+            this.dataWydaniaTextBox.Size = new System.Drawing.Size(150, 22);
+            this.dataWydaniaTextBox.TabIndex = 15;
             // 
-            // label5
+            // gatunekTextBox
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(159, 145);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 20);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Wydawca:";
+            this.gatunekTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.gatunekTextBox.Location = new System.Drawing.Point(292, 114);
+            this.gatunekTextBox.Name = "gatunekTextBox";
+            this.gatunekTextBox.Size = new System.Drawing.Size(150, 22);
+            this.gatunekTextBox.TabIndex = 14;
             // 
-            // label6
+            // tytulTextBox
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(159, 117);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 20);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Gatunek:";
+            this.tytulTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tytulTextBox.Location = new System.Drawing.Point(292, 58);
+            this.tytulTextBox.Name = "tytulTextBox";
+            this.tytulTextBox.Size = new System.Drawing.Size(150, 22);
+            this.tytulTextBox.TabIndex = 13;
             // 
-            // label11
+            // autorTextBox
             // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label11.Location = new System.Drawing.Point(159, 231);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(77, 20);
-            this.label11.TabIndex = 7;
-            this.label11.Text = "Wartość:";
+            this.autorTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.autorTextBox.Location = new System.Drawing.Point(292, 86);
+            this.autorTextBox.Name = "autorTextBox";
+            this.autorTextBox.Size = new System.Drawing.Size(150, 22);
+            this.autorTextBox.TabIndex = 12;
             // 
-            // label12
+            // sygnaturaTextBox
             // 
-            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label12.Location = new System.Drawing.Point(159, 175);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(137, 20);
-            this.label12.TabIndex = 6;
-            this.label12.Text = "Miejsce wydania:";
-            // 
-            // btnDodaj
-            // 
-            this.btnDodaj.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDodaj.Location = new System.Drawing.Point(392, 292);
-            this.btnDodaj.Name = "btnDodaj";
-            this.btnDodaj.Size = new System.Drawing.Size(164, 43);
-            this.btnDodaj.TabIndex = 8;
-            this.btnDodaj.Text = "Dodaj Książkę";
-            this.btnDodaj.UseVisualStyleBackColor = true;
-            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
-            // 
-            // btnEdytuj
-            // 
-            this.btnEdytuj.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEdytuj.Location = new System.Drawing.Point(204, 292);
-            this.btnEdytuj.Name = "btnEdytuj";
-            this.btnEdytuj.Size = new System.Drawing.Size(164, 43);
-            this.btnEdytuj.TabIndex = 9;
-            this.btnEdytuj.Text = "Edytuj Książkę";
-            this.btnEdytuj.UseVisualStyleBackColor = true;
-            this.btnEdytuj.Click += new System.EventHandler(this.btnEdytuj_Click);
+            this.sygnaturaTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.sygnaturaTextBox.Location = new System.Drawing.Point(292, 30);
+            this.sygnaturaTextBox.Name = "sygnaturaTextBox";
+            this.sygnaturaTextBox.Size = new System.Drawing.Size(150, 22);
+            this.sygnaturaTextBox.TabIndex = 11;
             // 
             // btnUsun
             // 
@@ -271,69 +228,115 @@ namespace Widok
             this.btnUsun.UseVisualStyleBackColor = true;
             this.btnUsun.Click += new System.EventHandler(this.btnUsun_Click);
             // 
-            // sygnaturaTextBox
+            // btnEdytuj
             // 
-            this.sygnaturaTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.sygnaturaTextBox.Location = new System.Drawing.Point(329, 31);
-            this.sygnaturaTextBox.Name = "sygnaturaTextBox";
-            this.sygnaturaTextBox.Size = new System.Drawing.Size(100, 22);
-            this.sygnaturaTextBox.TabIndex = 11;
+            this.btnEdytuj.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEdytuj.Location = new System.Drawing.Point(204, 292);
+            this.btnEdytuj.Name = "btnEdytuj";
+            this.btnEdytuj.Size = new System.Drawing.Size(164, 43);
+            this.btnEdytuj.TabIndex = 9;
+            this.btnEdytuj.Text = "Edytuj Książkę";
+            this.btnEdytuj.UseVisualStyleBackColor = true;
+            this.btnEdytuj.Click += new System.EventHandler(this.btnEdytuj_Click);
             // 
-            // autorTextBox
+            // btnDodaj
             // 
-            this.autorTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.autorTextBox.Location = new System.Drawing.Point(329, 87);
-            this.autorTextBox.Name = "autorTextBox";
-            this.autorTextBox.Size = new System.Drawing.Size(100, 22);
-            this.autorTextBox.TabIndex = 12;
+            this.btnDodaj.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDodaj.Location = new System.Drawing.Point(392, 292);
+            this.btnDodaj.Name = "btnDodaj";
+            this.btnDodaj.Size = new System.Drawing.Size(164, 43);
+            this.btnDodaj.TabIndex = 8;
+            this.btnDodaj.Text = "Dodaj Książkę";
+            this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
-            // tytulTextBox
+            // label11
             // 
-            this.tytulTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tytulTextBox.Location = new System.Drawing.Point(329, 59);
-            this.tytulTextBox.Name = "tytulTextBox";
-            this.tytulTextBox.Size = new System.Drawing.Size(100, 22);
-            this.tytulTextBox.TabIndex = 13;
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label11.Location = new System.Drawing.Point(122, 230);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(77, 20);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Wartość:";
             // 
-            // wydawcaTextBox
+            // label12
             // 
-            this.wydawcaTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.wydawcaTextBox.Location = new System.Drawing.Point(329, 143);
-            this.wydawcaTextBox.Name = "wydawcaTextBox";
-            this.wydawcaTextBox.Size = new System.Drawing.Size(100, 22);
-            this.wydawcaTextBox.TabIndex = 16;
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label12.Location = new System.Drawing.Point(122, 174);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(137, 20);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "Miejsce wydania:";
             // 
-            // dataWydaniaTextBox
+            // label4
             // 
-            this.dataWydaniaTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dataWydaniaTextBox.Location = new System.Drawing.Point(329, 201);
-            this.dataWydaniaTextBox.Name = "dataWydaniaTextBox";
-            this.dataWydaniaTextBox.Size = new System.Drawing.Size(100, 22);
-            this.dataWydaniaTextBox.TabIndex = 15;
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.Location = new System.Drawing.Point(122, 202);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(115, 20);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Data wydania:";
             // 
-            // gatunekTextBox
+            // label5
             // 
-            this.gatunekTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.gatunekTextBox.Location = new System.Drawing.Point(329, 115);
-            this.gatunekTextBox.Name = "gatunekTextBox";
-            this.gatunekTextBox.Size = new System.Drawing.Size(100, 22);
-            this.gatunekTextBox.TabIndex = 14;
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(122, 144);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(86, 20);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Wydawca:";
             // 
-            // miejsceWydaniaTextBox
+            // label6
             // 
-            this.miejsceWydaniaTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.miejsceWydaniaTextBox.Location = new System.Drawing.Point(329, 173);
-            this.miejsceWydaniaTextBox.Name = "miejsceWydaniaTextBox";
-            this.miejsceWydaniaTextBox.Size = new System.Drawing.Size(100, 22);
-            this.miejsceWydaniaTextBox.TabIndex = 18;
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label6.Location = new System.Drawing.Point(122, 116);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 20);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Gatunek:";
             // 
-            // wartoscTextBox
+            // label3
             // 
-            this.wartoscTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.wartoscTextBox.Location = new System.Drawing.Point(329, 229);
-            this.wartoscTextBox.Name = "wartoscTextBox";
-            this.wartoscTextBox.Size = new System.Drawing.Size(100, 22);
-            this.wartoscTextBox.TabIndex = 17;
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(122, 88);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 20);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Autor:";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(122, 60);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Tytuł:";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(122, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Sygnatura:";
             // 
             // FormDodajKsiazke
             // 
@@ -342,6 +345,7 @@ namespace Widok
             this.ClientSize = new System.Drawing.Size(580, 442);
             this.Controls.Add(this.panelZakladka);
             this.Controls.Add(this.panelTytul);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormDodajKsiazke";
             this.Text = "FormDodajKsiazke";
             this.panelTytul.ResumeLayout(false);

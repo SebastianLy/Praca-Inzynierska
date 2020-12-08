@@ -119,7 +119,7 @@ namespace Widok
 
         private void btnWypozyczalnia_Click(object sender, EventArgs e)
         {
-            AktywujPrzycisk(sender);
+            OtworzForm(new FormWypozyczenia(), sender);
         }
 
         private void btnPlatnosci_Click(object sender, EventArgs e)

@@ -35,11 +35,21 @@ namespace Widok
             tabela.Columns.Add("Opis zapłaty", typeof(string));
             KontrolerUzytkownik.WyswietlPlatnosci(tabela);
             tabelaPlatnosci.DataSource = tabela;
+            tabelaPlatnosci.Columns[0].Width = 70;
+            tabelaPlatnosci.Columns[1].Width = 70;
+            tabelaPlatnosci.Columns[2].Width = 140;
+            tabelaPlatnosci.Columns[4].Width = 80;
+            tabelaPlatnosci.Columns[5].Width = 292;
         }
 
         private void btnSzukaj_Click(object sender, EventArgs e)
         {
+            KontrolerUzytkownik.WyszukajPlatnosc(tabela, szukajComboBox.Text, szukajTextBox.Text);
+        }
 
+        private void tabelaPlatnosci_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            tabelaPlatnosci.ClearSelection();
         }
     }
 }

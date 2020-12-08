@@ -34,7 +34,7 @@ namespace Kontroler
                 foreach (var ksiazka in ksiazki)
                 {
                     tabela.Rows.Add(ksiazka.ID_Sygnatura, ksiazka.Tytuł, ksiazka.Autor, ksiazka.Gatunek, ksiazka.Wydawca + ", " + ksiazka.Miejsce_Wydania + ", " + 
-                        ksiazka.Data_Wydania, ksiazka.Wartosc, ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
+                        ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######,##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
                 }
             }
         }
@@ -96,6 +96,96 @@ namespace Kontroler
                 Sygnatura sygnatura = (from dbSygnatura in db.Sygnatury select dbSygnatura).FirstOrDefault(dbSygnatura => dbSygnatura.ID_Sygnatura == sygnatura1);
                 db.Sygnatury.Remove(sygnatura);
                 db.SaveChanges();
+            }
+        }
+
+        public static void WyszukajKsiazke(DataTable tabela, string kolumna, string ciag)
+        {
+            using (var db = new BibliotekaKontekst())
+            {
+                var ksiazki = (from sygnatura in db.Sygnatury
+                               join ksiazka in db.Ksiazki on sygnatura.ID_Ksiazki equals ksiazka.ID_Ksiazki into gj
+                               from x in gj.DefaultIfEmpty()
+                               select new
+                               {
+                                   sygnatura.ID_Sygnatura,
+                                   Tytuł = x.Tytul,
+                                   Autor = x.Autor,
+                                   Gatunek = x.Gatunek,
+                                   Wydawca = x.Wydawca,
+                                   Data_Wydania = x.Data_Wydania,
+                                   Miejsce_Wydania = x.Miejsce_Wydania,
+                                   Wartosc = x.Wartosc,
+                                   Rezerwacja = sygnatura.Czas_Rezerwacji,
+                                   Przetrzymujacy = sygnatura.ID_Uzytkownika
+                               }).ToList();
+                tabela.Clear();
+                switch (kolumna)
+                {
+                    case "Sygnatura":
+                        foreach (var ksiazka in ksiazki)
+                        {
+                            if (ksiazka.ID_Sygnatura.Contains(ciag))
+                            {
+                                tabela.Rows.Add(ksiazka.ID_Sygnatura, ksiazka.Tytuł, ksiazka.Autor, ksiazka.Gatunek, ksiazka.Wydawca + ", " + ksiazka.Miejsce_Wydania + " " +
+                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######,##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
+                            }
+                        }
+                        break;
+                    case "Tytuł":
+                        foreach (var ksiazka in ksiazki)
+                        {
+                            if (ksiazka.Tytuł.Contains(ciag))
+                            {
+                                tabela.Rows.Add(ksiazka.ID_Sygnatura, ksiazka.Tytuł, ksiazka.Autor, ksiazka.Gatunek, ksiazka.Wydawca + ", " + ksiazka.Miejsce_Wydania + " " +
+                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######,##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
+                            }
+                        }
+                        break;
+                    case "Autor":
+                        foreach (var ksiazka in ksiazki)
+                        {
+                            if (ksiazka.Autor.Contains(ciag))
+                            {
+                                tabela.Rows.Add(ksiazka.ID_Sygnatura, ksiazka.Tytuł, ksiazka.Autor, ksiazka.Gatunek, ksiazka.Wydawca + ", " + ksiazka.Miejsce_Wydania + " " +
+                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######,##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
+                            }
+                        }
+                        break;
+                    case "Gatunek":
+                        foreach (var ksiazka in ksiazki)
+                        {
+                            if (ksiazka.Gatunek.Contains(ciag))
+                            {
+                                tabela.Rows.Add(ksiazka.ID_Sygnatura, ksiazka.Tytuł, ksiazka.Autor, ksiazka.Gatunek, ksiazka.Wydawca + ", " + ksiazka.Miejsce_Wydania + " " +
+                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######,##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
+                            }
+                        }
+                        break;
+                    case "Wydanie":
+                        foreach (var ksiazka in ksiazki)
+                        {
+                            if (ksiazka.Wydawca.Contains(ciag) || ksiazka.Miejsce_Wydania.Contains(ciag) || ksiazka.Data_Wydania.Contains(ciag))
+                            {
+                                tabela.Rows.Add(ksiazka.ID_Sygnatura, ksiazka.Tytuł, ksiazka.Autor, ksiazka.Gatunek, ksiazka.Wydawca + ", " + ksiazka.Miejsce_Wydania + " " +
+                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######,##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
+                            }
+                        }
+                        break;
+                    case "Przetrzymujący":
+                        foreach (var ksiazka in ksiazki)
+                        {
+                            if (ksiazka.Przetrzymujacy.ToString().Contains(ciag))
+                            {
+                                tabela.Rows.Add(ksiazka.ID_Sygnatura, ksiazka.Tytuł, ksiazka.Autor, ksiazka.Gatunek, ksiazka.Wydawca + ", " + ksiazka.Miejsce_Wydania + " " +
+                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######,##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
+                            }
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
             }
         }
     }

@@ -41,7 +41,7 @@ namespace Widok
 
         private void btnSzukaj_Click(object sender, EventArgs e)
         {
-            KontrolerUzytkownik.Wyszukaj(tabela, szukajTextBox.Text, szukajComboBox.Text);
+            KontrolerUzytkownik.Wyszukaj(tabela, szukajComboBox.Text, szukajTextBox.Text);
         }
 
         private void btnBlokada_Click(object sender, EventArgs e)
@@ -60,16 +60,23 @@ namespace Widok
 
         private void tabelaUzytkownicy_SelectionChanged(object sender, EventArgs e)
         {
-            if (tabelaUzytkownicy.SelectedRows != null)
-            {
-                btnBlokada.Enabled = true;
-                btnUsun.Enabled = true;
-            }
-            else
+            if (tabelaUzytkownicy.SelectedCells.Count == 0)
             {
                 btnBlokada.Enabled = false;
                 btnUsun.Enabled = false;
             }
+            else
+            {
+                btnBlokada.Enabled = true;
+                btnUsun.Enabled = true;
+            }
+        }
+
+        private void tabelaUzytkownicy_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            tabelaUzytkownicy.ClearSelection();
+            btnBlokada.Enabled = false;
+            btnUsun.Enabled = false;
         }
     }
 }

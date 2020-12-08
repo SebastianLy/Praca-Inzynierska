@@ -46,12 +46,10 @@ namespace Widok
             this.lblTytul = new System.Windows.Forms.Label();
             this.panelZakladka = new System.Windows.Forms.Panel();
             this.labelZegar = new System.Windows.Forms.Label();
-            this.labelZakladkaLogo = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTytul.SuspendLayout();
-            this.panelZakladka.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -199,6 +197,7 @@ namespace Widok
             // panelTytul
             // 
             this.panelTytul.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.panelTytul.Controls.Add(this.labelZegar);
             this.panelTytul.Controls.Add(this.btnMinimalizuj);
             this.panelTytul.Controls.Add(this.btnZamknij);
             this.panelTytul.Controls.Add(this.btnMaksymalizuj);
@@ -268,8 +267,6 @@ namespace Widok
             // 
             // panelZakladka
             // 
-            this.panelZakladka.Controls.Add(this.labelZegar);
-            this.panelZakladka.Controls.Add(this.labelZakladkaLogo);
             this.panelZakladka.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelZakladka.Location = new System.Drawing.Point(260, 80);
             this.panelZakladka.Name = "panelZakladka";
@@ -282,25 +279,12 @@ namespace Widok
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelZegar.AutoSize = true;
-            this.labelZegar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelZegar.Location = new System.Drawing.Point(425, 316);
+            this.labelZegar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelZegar.Location = new System.Drawing.Point(700, 10);
             this.labelZegar.Name = "labelZegar";
-            this.labelZegar.Size = new System.Drawing.Size(90, 31);
+            this.labelZegar.Size = new System.Drawing.Size(65, 24);
             this.labelZegar.TabIndex = 2;
             this.labelZegar.Text = "Zegar";
-            // 
-            // labelZakladkaLogo
-            // 
-            this.labelZakladkaLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelZakladkaLogo.AutoSize = true;
-            this.labelZakladkaLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelZakladkaLogo.Location = new System.Drawing.Point(460, 256);
-            this.labelZakladkaLogo.Name = "labelZakladkaLogo";
-            this.labelZakladkaLogo.Size = new System.Drawing.Size(99, 31);
-            this.labelZakladkaLogo.TabIndex = 1;
-            this.labelZakladkaLogo.Text = "LibNet";
             // 
             // timer1
             // 
@@ -325,8 +309,6 @@ namespace Widok
             this.panelLogo.PerformLayout();
             this.panelTytul.ResumeLayout(false);
             this.panelTytul.PerformLayout();
-            this.panelZakladka.ResumeLayout(false);
-            this.panelZakladka.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -348,7 +330,6 @@ namespace Widok
         private System.Windows.Forms.Button btnMaksymalizuj;
         private System.Windows.Forms.Button btnZamknij;
         private System.Windows.Forms.Label labelZegar;
-        private System.Windows.Forms.Label labelZakladkaLogo;
         private System.Windows.Forms.Timer timer1;
     }
 }

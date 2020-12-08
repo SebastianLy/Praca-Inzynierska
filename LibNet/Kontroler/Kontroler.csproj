@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="KontrolerKsiazka.cs" />
     <Compile Include="KontrolerUzytkownik.cs" />
+    <Compile Include="KontrolerWypozyczenie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

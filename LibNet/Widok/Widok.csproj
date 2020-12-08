@@ -98,6 +98,12 @@
     <Compile Include="Forms\FormUzytkownicy.Designer.cs">
       <DependentUpon>FormUzytkownicy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormWypozyczenia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormWypozyczenia.Designer.cs">
+      <DependentUpon>FormWypozyczenia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\FormPlatnosci.resx">
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormUzytkownicy.resx">
       <DependentUpon>FormUzytkownicy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormWypozyczenia.resx">
+      <DependentUpon>FormWypozyczenia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

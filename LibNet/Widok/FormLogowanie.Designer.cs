@@ -176,6 +176,7 @@ namespace Widok
             this.hasloTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.hasloTextBox.Location = new System.Drawing.Point(170, 150);
             this.hasloTextBox.Name = "hasloTextBox";
+            this.hasloTextBox.PasswordChar = '*';
             this.hasloTextBox.Size = new System.Drawing.Size(150, 30);
             this.hasloTextBox.TabIndex = 3;
             // 

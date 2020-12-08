@@ -24,8 +24,8 @@ namespace Widok
         {
             InitializeComponent();
             string dataWydania = wydanie.Substring(wydanie.Length - 4);
-            string miejsceWydania = wydanie.Substring(wydanie.IndexOf(",") + 1, wydanie.LastIndexOf(",") - wydanie.IndexOf(",") - 1);
-            string wydawca = wydanie.Substring(0, wydanie.IndexOf(",") - 1);
+            string miejsceWydania = wydanie.Substring(wydanie.IndexOf(",") + 3, wydanie.LastIndexOf(",") - wydanie.IndexOf(",") - 3);
+            string wydawca = wydanie.Substring(0, wydanie.IndexOf(","));
             sygnaturaTextBox.Text = sygnatura;
             sygnaturaTextBox.Enabled = false;
             tytulTextBox.Text = tytul;
@@ -56,6 +56,32 @@ namespace Widok
         {
             KontrolerKsiazka.UsunKsiazke(sygnaturaTextBox.Text);
             Close();
+        }
+
+        private void btnZamknij_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnMaksymalizuj_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+            {
+                FormBorderStyle = FormBorderStyle.Sizable;
+                WindowState = FormWindowState.Maximized;
+                FormBorderStyle = FormBorderStyle.None;
+            }
+            else
+            {
+                FormBorderStyle = FormBorderStyle.Sizable;
+                WindowState = FormWindowState.Normal;
+                FormBorderStyle = FormBorderStyle.None;
+            }
+        }
+
+        private void btnMinimalizuj_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }

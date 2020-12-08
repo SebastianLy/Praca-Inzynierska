@@ -31,12 +31,21 @@ namespace Widok
             tabela.Columns.Add("Przetrzymujący", typeof(int));
             KontrolerKsiazka.WypelnijTabeleKsiazek(tabela);
             tabelaKsiazki.DataSource = tabela;
+            tabelaKsiazki.Columns[0].Width = 70;
+            tabelaKsiazki.Columns[1].Width = 110;
+            tabelaKsiazki.Columns[2].Width = 103;
+            tabelaKsiazki.Columns[3].Width = 110;
+            tabelaKsiazki.Columns[4].Width = 150;
+            tabelaKsiazki.Columns[5].Width = 60;
+            tabelaKsiazki.Columns[6].Width = 70;
+            tabelaKsiazki.Columns[7].Width = 80;
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
         {
             FormDodajKsiazke form = new FormDodajKsiazke();
             form.ShowDialog();
+            KontrolerKsiazka.WypelnijTabeleKsiazek(tabela);
         }
 
         private void tabelaKsiazki_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -54,6 +63,16 @@ namespace Widok
             }
             catch (NullReferenceException) { }
             catch (InvalidCastException) { }
+        }
+
+        private void tabelaKsiazki_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            tabelaKsiazki.ClearSelection();
+        }
+
+        private void btnSzukaj_Click(object sender, EventArgs e)
+        {
+            KontrolerKsiazka.WyszukajKsiazke(tabela, szukajComboBox.Text, szukajTextBox.Text);
         }
     }
 }

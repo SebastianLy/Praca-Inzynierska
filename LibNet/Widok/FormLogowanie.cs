@@ -84,7 +84,6 @@ namespace Widok
                 form.ShowDialog();
                 Close();
             }
-            MessageBox.Show("Błędny login lub hasło");
         }
 
         private void btnRejestracja_Click(object sender, EventArgs e)
