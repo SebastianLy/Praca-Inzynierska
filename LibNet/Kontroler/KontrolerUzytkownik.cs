@@ -24,6 +24,32 @@ namespace Kontroler
             }
         }
 
+        public static bool LoginUnikatowy(string login)
+        {
+            using (var db = new BibliotekaKontekst())
+            {
+                Uzytkownik uzytkownik = (from dbUzytkownik in db.Uzytkownicy
+                                         where dbUzytkownik.Login == login
+                                         select dbUzytkownik).FirstOrDefault();
+                if (uzytkownik != null)
+                    return false;
+                return true;
+            }
+        }
+
+        public static bool EmailUnikatowy(string email)
+        {
+            using (var db = new BibliotekaKontekst())
+            {
+                Uzytkownik uzytkownik = (from dbUzytkownik in db.Uzytkownicy
+                                         where dbUzytkownik.Email == email
+                                         select dbUzytkownik).FirstOrDefault();
+                if (uzytkownik != null)
+                    return false;
+                return true;
+            }
+        }
+
         public static void Rejestracja(string login, string email, string haslo, string imie, string nazwisko, string miejscowosc,
             string ulica, string numerDomu, string numerMieszkania, string kodPocztowy)
         {
@@ -34,6 +60,7 @@ namespace Kontroler
                 int count = (from user in db.Uzytkownicy select user).Count();
                 if (count == 0)
                     uzytkownik.Rola = "Admin";
+                uzytkownik.Powod_Blokady = "";
                 db.Adresy.Add(adres);
                 uzytkownik.ID_Adresu = adres.ID_Adresu;
                 db.Uzytkownicy.Add(uzytkownik);
@@ -82,7 +109,7 @@ namespace Kontroler
             }
         }
 
-        public static void Wyszukaj(DataTable tabela, string kolumna, string ciag)
+        public static void WyszukajUzytkownikow(DataTable tabela, string kolumna, string ciag)
         {          
             using (var db = new BibliotekaKontekst())
             {
@@ -132,6 +159,17 @@ namespace Kontroler
                         foreach (var uzytkownik in uzytkownicy)
                         {
                             if (uzytkownik.Imie.ToString().Contains(ciag) || uzytkownik.Nazwisko.ToString().Contains(ciag))
+                            {
+                                tabela.Rows.Add(uzytkownik.ID_Uzytkownika, uzytkownik.Email, uzytkownik.Imie + " " + uzytkownik.Nazwisko, uzytkownik.Rola,
+                                    uzytkownik.Blokada, uzytkownik.Powod_Blokady, uzytkownik.Miejscowosc + " " + uzytkownik.Ulica + " " + uzytkownik.NRDomu + " " +
+                                    uzytkownik.NRMieszkania + " " + uzytkownik.KodPocztowy);
+                            }
+                        }
+                        break;
+                    case "Powód Blokady":
+                        foreach (var uzytkownik in uzytkownicy)
+                        {
+                            if (uzytkownik.Powod_Blokady.Contains(ciag))
                             {
                                 tabela.Rows.Add(uzytkownik.ID_Uzytkownika, uzytkownik.Email, uzytkownik.Imie + " " + uzytkownik.Nazwisko, uzytkownik.Rola,
                                     uzytkownik.Blokada, uzytkownik.Powod_Blokady, uzytkownik.Miejscowosc + " " + uzytkownik.Ulica + " " + uzytkownik.NRDomu + " " +
@@ -192,28 +230,69 @@ namespace Kontroler
             }
         }
 
-        public static void WyswietlPlatnosci(DataTable tabela)
+        public static void Awans (int id)
         {
             using (var db = new BibliotekaKontekst())
             {
-                var platnosci = (from platnosc in db.Platnosci
-                               join uzytkownik in db.Uzytkownicy on platnosc.ID_Uzytkownika equals uzytkownik.ID_Uzytkownika into gj
-                               from x in gj.DefaultIfEmpty()
-                               select new
-                               {
-                                   platnosc.ID_Platnosci,
-                                   x.ID_Uzytkownika,
-                                   PlacacyImie = x.Imie,
-                                   PlacacyNazwisko = x.Nazwisko,
-                                   platnosc.Data_Zaplaty,
-                                   platnosc.Kwota,
-                                   platnosc.Opis_Zaplaty
-                               }).ToList();
-                tabela.Clear();
-                foreach (var platnosc in platnosci)
+                var uzytkownik = (from dbUzytkownik in db.Uzytkownicy
+                                  where dbUzytkownik.ID_Uzytkownika == id
+                                  select dbUzytkownik).FirstOrDefault();
+                if (uzytkownik.Rola == "Admin")
+                    uzytkownik.Rola = "User";
+                else
+                    uzytkownik.Rola = "Admin";
+                db.SaveChanges();
+            }
+        }
+
+        public static void WyswietlPlatnosci(DataTable tabela, int id)
+        {
+            using (var db = new BibliotekaKontekst())
+            {
+                if (id == 0)
                 {
-                    tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.ID_Uzytkownika, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
-                        platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                    var platnosci = (from platnosc in db.Platnosci
+                                     join uzytkownik in db.Uzytkownicy on platnosc.ID_Uzytkownika equals uzytkownik.ID_Uzytkownika into gj
+                                     from x in gj.DefaultIfEmpty()
+                                     select new
+                                     {
+                                         platnosc.ID_Platnosci,
+                                         x.ID_Uzytkownika,
+                                         PlacacyImie = x.Imie,
+                                         PlacacyNazwisko = x.Nazwisko,
+                                         platnosc.Data_Zaplaty,
+                                         platnosc.Kwota,
+                                         platnosc.Opis_Zaplaty
+                                     }).ToList();
+                    tabela.Clear();
+                    foreach (var platnosc in platnosci)
+                    {
+                        tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.ID_Uzytkownika, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
+                            platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                    }
+                }
+                else
+                {
+                    var platnosci = (from platnosc in db.Platnosci
+                                     where platnosc.ID_Uzytkownika == id
+                                     join uzytkownik in db.Uzytkownicy on platnosc.ID_Uzytkownika equals uzytkownik.ID_Uzytkownika into gj
+                                     from x in gj.DefaultIfEmpty()
+                                     select new
+                                     {
+                                         platnosc.ID_Platnosci,
+                                         x.ID_Uzytkownika,
+                                         PlacacyImie = x.Imie,
+                                         PlacacyNazwisko = x.Nazwisko,
+                                         platnosc.Data_Zaplaty,
+                                         platnosc.Kwota,
+                                         platnosc.Opis_Zaplaty
+                                     }).ToList();
+                    tabela.Clear();
+                    foreach (var platnosc in platnosci)
+                    {
+                        tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
+                            platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                    }
                 }
             }
         }
@@ -228,80 +307,157 @@ namespace Kontroler
             }
         }
 
-        public static void WyszukajPlatnosc(DataTable tabela, string kolumna, string ciag)
+        public static void WyszukajPlatnosci(DataTable tabela, string kolumna, string ciag, int id)
         {
             using (var db = new BibliotekaKontekst())
             {
-                var platnosci = (from platnosc in db.Platnosci
-                                 join uzytkownik in db.Uzytkownicy on platnosc.ID_Uzytkownika equals uzytkownik.ID_Uzytkownika into gj
-                                 from x in gj.DefaultIfEmpty()
-                                 select new
-                                 {
-                                     platnosc.ID_Platnosci,
-                                     x.ID_Uzytkownika,
-                                     PlacacyImie = x.Imie,
-                                     PlacacyNazwisko = x.Nazwisko,
-                                     platnosc.Data_Zaplaty,
-                                     platnosc.Kwota,
-                                     platnosc.Opis_Zaplaty
-                                 }).ToList();
-                tabela.Clear();
-                switch (kolumna)
+                if (id == 0)
                 {
-                    case "ID Płatności":
-                        foreach (var platnosc in platnosci)
-                        {
-                            if (platnosc.ID_Platnosci.ToString().Contains(ciag))
+                    var platnosci = (from platnosc in db.Platnosci
+                                     join uzytkownik in db.Uzytkownicy on platnosc.ID_Uzytkownika equals uzytkownik.ID_Uzytkownika into gj
+                                     from x in gj.DefaultIfEmpty()
+                                     select new
+                                     {
+                                         platnosc.ID_Platnosci,
+                                         x.ID_Uzytkownika,
+                                         PlacacyImie = x.Imie,
+                                         PlacacyNazwisko = x.Nazwisko,
+                                         platnosc.Data_Zaplaty,
+                                         platnosc.Kwota,
+                                         platnosc.Opis_Zaplaty
+                                     }).ToList();
+                    tabela.Clear();
+                    switch (kolumna)
+                    {
+                        case "ID Płatności":
+                            foreach (var platnosc in platnosci)
                             {
-                                tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.ID_Uzytkownika, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
-                                    platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                                if (platnosc.ID_Platnosci.ToString().Contains(ciag))
+                                {
+                                    tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.ID_Uzytkownika, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
+                                        platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                                }
                             }
-                        }
-                        break;
-                    case "ID Płacącego":
-                        foreach (var platnosc in platnosci)
-                        {
-                            if (platnosc.ID_Uzytkownika.ToString().Contains(ciag))
+                            break;
+                        case "ID Płacącego":
+                            foreach (var platnosc in platnosci)
                             {
-                                tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.ID_Uzytkownika, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
-                                    platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                                if (platnosc.ID_Uzytkownika.ToString().Contains(ciag))
+                                {
+                                    tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.ID_Uzytkownika, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
+                                        platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                                }
                             }
-                        }
-                        break;
-                    case "Imię/Nazwisko":
-                        foreach (var platnosc in platnosci)
-                        {
-                            if (platnosc.PlacacyImie.Contains(ciag) || platnosc.PlacacyNazwisko.Contains(ciag))
+                            break;
+                        case "Imię/Nazwisko":
+                            foreach (var platnosc in platnosci)
                             {
-                                tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.ID_Uzytkownika, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
-                                    platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                                if (platnosc.PlacacyImie.Contains(ciag) || platnosc.PlacacyNazwisko.Contains(ciag))
+                                {
+                                    tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.ID_Uzytkownika, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
+                                        platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                                }
                             }
-                        }
-                        break;
-                    case "Data Zapłaty":
-                        foreach (var platnosc in platnosci)
-                        {
-                            if (platnosc.Data_Zaplaty.ToString().Contains(ciag))
+                            break;
+                        case "Data Zapłaty":
+                            foreach (var platnosc in platnosci)
                             {
-                                tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.ID_Uzytkownika, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
-                                    platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                                if (platnosc.Data_Zaplaty.ToString().Contains(ciag))
+                                {
+                                    tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.ID_Uzytkownika, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
+                                        platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                                }
                             }
-                        }
-                        break;
-                    case "Opis Zapłaty":
-                        foreach (var platnosc in platnosci)
-                        {
-                            if (platnosc.Opis_Zaplaty.Contains(ciag))
+                            break;
+                        case "Opis Zapłaty":
+                            foreach (var platnosc in platnosci)
                             {
-                                tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.ID_Uzytkownika, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
-                                    platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                                if (platnosc.Opis_Zaplaty.Contains(ciag))
+                                {
+                                    tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.ID_Uzytkownika, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
+                                        platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                                }
                             }
-                        }
-                        break;
-                    default:
-                        break;
+                            break;
+                        default:
+                            break;
+                    }
                 }
-
+                else
+                {
+                    var platnosci = (from platnosc in db.Platnosci
+                                     where platnosc.ID_Uzytkownika == id
+                                     join uzytkownik in db.Uzytkownicy on platnosc.ID_Uzytkownika equals uzytkownik.ID_Uzytkownika into gj
+                                     from x in gj.DefaultIfEmpty()
+                                     select new
+                                     {
+                                         platnosc.ID_Platnosci,
+                                         x.ID_Uzytkownika,
+                                         PlacacyImie = x.Imie,
+                                         PlacacyNazwisko = x.Nazwisko,
+                                         platnosc.Data_Zaplaty,
+                                         platnosc.Kwota,
+                                         platnosc.Opis_Zaplaty
+                                     }).ToList();
+                    tabela.Clear();
+                    switch (kolumna)
+                    {
+                        case "ID Płatności":
+                            foreach (var platnosc in platnosci)
+                            {
+                                if (platnosc.ID_Platnosci.ToString().Contains(ciag))
+                                {
+                                    tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
+                                        platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                                }
+                            }
+                            break;
+                        case "Imię/Nazwisko":
+                            foreach (var platnosc in platnosci)
+                            {
+                                if (platnosc.PlacacyImie.Contains(ciag) || platnosc.PlacacyNazwisko.Contains(ciag))
+                                {
+                                    tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
+                                        platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                                }
+                            }
+                            break;
+                        case "Data Zapłaty":
+                            foreach (var platnosc in platnosci)
+                            {
+                                if (platnosc.Data_Zaplaty.ToString().Contains(ciag))
+                                {
+                                    tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
+                                        platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                                }
+                            }
+                            break;
+                        case "Opis Zapłaty":
+                            foreach (var platnosc in platnosci)
+                            {
+                                if (platnosc.Opis_Zaplaty.Contains(ciag))
+                                {
+                                    tabela.Rows.Add(platnosc.ID_Platnosci, platnosc.PlacacyImie + " " + platnosc.PlacacyNazwisko, platnosc.Data_Zaplaty,
+                                        platnosc.Kwota.ToString("#######.##"), platnosc.Opis_Zaplaty);
+                                }
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+        public static int IDRola(string login)
+        {
+            using (var db = new BibliotekaKontekst())
+            {
+                Uzytkownik uzytkownik = db.Uzytkownicy.Where(u => u.Login == login).FirstOrDefault();
+                if (uzytkownik.Rola == "Admin")
+                {
+                    return 0;
+                }
+                return uzytkownik.ID_Uzytkownika;
             }
         }
     }

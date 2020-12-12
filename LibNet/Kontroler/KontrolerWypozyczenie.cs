@@ -10,51 +10,56 @@ namespace Kontroler
 {
     public class KontrolerWypozyczenie
     {
-        public static void WyswietlWypozyczenia(DataTable tabela)
+        public static void WyswietlWypozyczenia(DataTable tabela, int id)
         {
+            tabela.Clear();
             using (var db = new BibliotekaKontekst())
             {
-                var query = db.Wypozyczenia
-                    .Select(wypozyczenie => new
-                    {
-                        ID = wypozyczenie.ID_Wypozyczenia,
-                        DataWypozyczenia = wypozyczenie.Data_Wypozyczenia,
-                        DataZwrotu = wypozyczenie.Data_Zwrotu,
-                        Wypozyczajacy = wypozyczenie.ID_Uzytkownika,
-                        Ksiazki = wypozyczenie.Sygnatury
-                        .Select(sygnatura => new
-                        {
-                            ID = sygnatura.ID_Sygnatura,
-                            Ksiazka = sygnatura.ID_Ksiazki
-                        })
-                        .ToList()
-                    }).ToList();
-                foreach (var item in query)
+                if (id == 0)
                 {
-                    foreach (var item1 in item.Ksiazki)
+                    var wypozyczenia = (from wypozyczenie in db.Wypozyczenia
+                                        join sygnatura in db.Sygnatury on wypozyczenie.ID_Sygnatura equals sygnatura.ID_Sygnatura into gj
+                                        from x in gj.DefaultIfEmpty()
+                                        join ksiazka in db.Ksiazki on x.ID_Ksiazki equals ksiazka.ID_Ksiazki into an
+                                        from a in an.DefaultIfEmpty()
+                                        select new
+                                        {
+                                            ID = wypozyczenie.ID_Wypozyczenia,
+                                            DataWypozyczenia = wypozyczenie.Data_Wypozyczenia,
+                                            DataZwrotu = wypozyczenie.Data_Zwrotu,
+                                            Wypozyczajacy = wypozyczenie.ID_Uzytkownika,
+                                            IDSygnatura = x.ID_Sygnatura,
+                                            Ksiazka = a.Tytul
+                                        }).ToList();
+                    foreach (var wypozyczenie in wypozyczenia)
                     {
-                        tabela.Rows.Add(item.ID, item.DataWypozyczenia, item.DataZwrotu, item.Wypozyczajacy, item1.ID);
-                    }                   
+                        tabela.Rows.Add(wypozyczenie.ID, wypozyczenie.DataWypozyczenia, wypozyczenie.DataZwrotu, wypozyczenie.Wypozyczajacy,
+                            wypozyczenie.IDSygnatura, wypozyczenie.Ksiazka);
+                    }
                 }
-    //            var experiments = myDbContext.Experiments
-    //.Where(experiment => ...)              // only if you don't want all experiments
-    //.Select(experiment => new
-    //{   // Select only the properties you actually plan to use
-    //    Id = experiment.Id,
-    //    Name = experiment.Name,
-    //    ...
-
-    //    // get all or some of its ExperimentTypes
-    //    ExperimentTypes = experiment.ExperimentTypes
-    //         .Where(experimentType => ...)  // only if you don't want all experiment types
-    //         .Select(experimentType => new
-    //         {
-    //             // again: select only the properties you plan to use
-    //             Id = experimentType.Id,
-    //             ...
-    //         })
-    //         .ToList(),
-    //});
+                else
+                {
+                    var wypozyczenia = (from wypozyczenie in db.Wypozyczenia
+                                        where wypozyczenie.ID_Uzytkownika == id
+                                        join sygnatura in db.Sygnatury on wypozyczenie.ID_Sygnatura equals sygnatura.ID_Sygnatura into gj
+                                        from x in gj.DefaultIfEmpty()
+                                        join ksiazka in db.Ksiazki on x.ID_Ksiazki equals ksiazka.ID_Ksiazki into an
+                                        from a in an.DefaultIfEmpty()
+                                        select new
+                                        {
+                                            ID = wypozyczenie.ID_Wypozyczenia,
+                                            DataWypozyczenia = wypozyczenie.Data_Wypozyczenia,
+                                            DataZwrotu = wypozyczenie.Data_Zwrotu,
+                                            Wypozyczajacy = wypozyczenie.ID_Uzytkownika,
+                                            IDSygnatura = x.ID_Sygnatura,
+                                            Ksiazka = a.Tytul
+                                        }).ToList();
+                    foreach (var wypozyczenie in wypozyczenia)
+                    {
+                        tabela.Rows.Add(wypozyczenie.ID, wypozyczenie.DataWypozyczenia, wypozyczenie.DataZwrotu,
+                            wypozyczenie.IDSygnatura, wypozyczenie.Ksiazka);
+                    }
+                }
             }
         }
 
@@ -63,29 +68,192 @@ namespace Kontroler
             using (var db = new BibliotekaKontekst())
             {
                 List<Sygnatura> sygnatura = db.Sygnatury.Where(syg => sygnatury.Any(s1 => s1 == syg.ID_Sygnatura)).ToList();
-                Wypozyczenie w1 = new Wypozyczenie(DateTime.Now, sygnatura, uzytkownik);
+                
                 Uzytkownik u = db.Uzytkownicy.Where(user => user.ID_Uzytkownika == uzytkownik).FirstOrDefault();
-                db.Wypozyczenia.Add(w1);
+                
                 foreach (var item in sygnatura)
                 {
                     item.ID_Uzytkownika = u.ID_Uzytkownika;
+                    Wypozyczenie w1 = new Wypozyczenie(DateTime.Now, item.ID_Sygnatura, u.ID_Uzytkownika);
+                    db.Wypozyczenia.Add(w1);
                 }
                 db.SaveChanges();
             }
         }
 
-        public static void Zwroc(int id)
+        public static void Zwroc(string idSygnatury, int idWypozyczenia)
         {
             using (var db = new BibliotekaKontekst())
             {
-                Wypozyczenie wypozyczenie = db.Wypozyczenia.Where(w => w.ID_Wypozyczenia == id).FirstOrDefault();
+                Sygnatura sygnatura = db.Sygnatury.Where(s => s.ID_Sygnatura == idSygnatury).FirstOrDefault();
+                sygnatura.ID_Uzytkownika = null;
+                Wypozyczenie wypozyczenie = db.Wypozyczenia.Where(w => w.ID_Wypozyczenia == idWypozyczenia).FirstOrDefault();
                 wypozyczenie.Data_Zwrotu = DateTime.Now;
-                List<Sygnatura> sygnatury = wypozyczenie.Sygnatury;
-                foreach (Sygnatura sygnatura in sygnatury)
-                {
-                    sygnatura.ID_Uzytkownika = null;
-                }
                 db.SaveChanges();
+            }
+        }
+
+        public static void WyszukajWypozyczenia(DataTable tabela, string kolumna, string ciag, int id)
+        {
+            using (var db = new BibliotekaKontekst())
+            {
+                if (id == 0)
+                {
+                    var wypozyczenia = (from wypozyczenie in db.Wypozyczenia
+                                        join sygnatura in db.Sygnatury on wypozyczenie.ID_Sygnatura equals sygnatura.ID_Sygnatura into gj
+                                        from x in gj.DefaultIfEmpty()
+                                        join ksiazka in db.Ksiazki on x.ID_Ksiazki equals ksiazka.ID_Ksiazki into an
+                                        from a in an.DefaultIfEmpty()
+                                        select new
+                                        {
+                                            ID = wypozyczenie.ID_Wypozyczenia,
+                                            DataWypozyczenia = wypozyczenie.Data_Wypozyczenia,
+                                            DataZwrotu = wypozyczenie.Data_Zwrotu,
+                                            Wypozyczajacy = wypozyczenie.ID_Uzytkownika,
+                                            IDSygnatura = x.ID_Sygnatura,
+                                            Ksiazka = a.Tytul
+                                        }).ToList();
+                    tabela.Clear();
+                    switch (kolumna)
+                    {
+                        case "ID Wypożyczenia":
+                            foreach (var wypozyczenie in wypozyczenia)
+                            {
+                                if (wypozyczenie.ID.ToString().Contains(ciag))
+                                {
+                                    tabela.Rows.Add(wypozyczenie.ID, wypozyczenie.DataWypozyczenia, wypozyczenie.DataZwrotu, wypozyczenie.Wypozyczajacy,
+                                        wypozyczenie.IDSygnatura, wypozyczenie.Ksiazka);
+                                }
+                            }
+                            break;
+                        case "Data Wypożyczenia":
+                            foreach (var wypozyczenie in wypozyczenia)
+                            {
+                                if (wypozyczenie.DataWypozyczenia.ToString().Contains(ciag))
+                                {
+                                    tabela.Rows.Add(wypozyczenie.ID, wypozyczenie.DataWypozyczenia, wypozyczenie.DataZwrotu, wypozyczenie.Wypozyczajacy,
+                                        wypozyczenie.IDSygnatura, wypozyczenie.Ksiazka);
+                                }
+                            }
+                            break;
+                        case "Data Zwrotu":
+                            foreach (var wypozyczenie in wypozyczenia)
+                            {
+                                if (wypozyczenie.DataZwrotu.ToString().Contains(ciag))
+                                {
+                                    tabela.Rows.Add(wypozyczenie.ID, wypozyczenie.DataWypozyczenia, wypozyczenie.DataZwrotu, wypozyczenie.Wypozyczajacy,
+                                        wypozyczenie.IDSygnatura, wypozyczenie.Ksiazka);
+                                }
+                            }
+                            break;
+                        case "Wypożyczający":
+                            foreach (var wypozyczenie in wypozyczenia)
+                            {
+                                if (wypozyczenie.Wypozyczajacy.ToString().Contains(ciag))
+                                {
+                                    tabela.Rows.Add(wypozyczenie.ID, wypozyczenie.DataWypozyczenia, wypozyczenie.DataZwrotu, wypozyczenie.Wypozyczajacy,
+                                        wypozyczenie.IDSygnatura, wypozyczenie.Ksiazka);
+                                }
+                            }
+                            break;
+                        case "Sygnatura":
+                            foreach (var wypozyczenie in wypozyczenia)
+                            {
+                                if (wypozyczenie.IDSygnatura.Contains(ciag))
+                                {
+                                    tabela.Rows.Add(wypozyczenie.ID, wypozyczenie.DataWypozyczenia, wypozyczenie.DataZwrotu, wypozyczenie.Wypozyczajacy,
+                                        wypozyczenie.IDSygnatura, wypozyczenie.Ksiazka);
+                                }
+                            }
+                            break;
+                        case "Tytuł":
+                            foreach (var wypozyczenie in wypozyczenia)
+                            {
+                                if (wypozyczenie.Ksiazka.Contains(ciag))
+                                {
+                                    tabela.Rows.Add(wypozyczenie.ID, wypozyczenie.DataWypozyczenia, wypozyczenie.DataZwrotu, wypozyczenie.Wypozyczajacy,
+                                        wypozyczenie.IDSygnatura, wypozyczenie.Ksiazka);
+                                }
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    var wypozyczenia = (from wypozyczenie in db.Wypozyczenia
+                                        where wypozyczenie.ID_Uzytkownika == id
+                                        join sygnatura in db.Sygnatury on wypozyczenie.ID_Sygnatura equals sygnatura.ID_Sygnatura into gj
+                                        from x in gj.DefaultIfEmpty()
+                                        join ksiazka in db.Ksiazki on x.ID_Ksiazki equals ksiazka.ID_Ksiazki into an
+                                        from a in an.DefaultIfEmpty()
+                                        select new
+                                        {
+                                            ID = wypozyczenie.ID_Wypozyczenia,
+                                            DataWypozyczenia = wypozyczenie.Data_Wypozyczenia,
+                                            DataZwrotu = wypozyczenie.Data_Zwrotu,
+                                            Wypozyczajacy = wypozyczenie.ID_Uzytkownika,
+                                            IDSygnatura = x.ID_Sygnatura,
+                                            Ksiazka = a.Tytul
+                                        }).ToList();
+                    tabela.Clear();
+                    switch (kolumna)
+                    {
+                        case "ID Wypożyczenia":
+                            foreach (var wypozyczenie in wypozyczenia)
+                            {
+                                if (wypozyczenie.ID.ToString().Contains(ciag))
+                                {
+                                    tabela.Rows.Add(wypozyczenie.ID, wypozyczenie.DataWypozyczenia, wypozyczenie.DataZwrotu,
+                                        wypozyczenie.IDSygnatura, wypozyczenie.Ksiazka);
+                                }
+                            }
+                            break;
+                        case "Data Wypożyczenia":
+                            foreach (var wypozyczenie in wypozyczenia)
+                            {
+                                if (wypozyczenie.DataWypozyczenia.ToString().Contains(ciag))
+                                {
+                                    tabela.Rows.Add(wypozyczenie.ID, wypozyczenie.DataWypozyczenia, wypozyczenie.DataZwrotu,
+                                        wypozyczenie.IDSygnatura, wypozyczenie.Ksiazka);
+                                }
+                            }
+                            break;
+                        case "Data Zwrotu":
+                            foreach (var wypozyczenie in wypozyczenia)
+                            {
+                                if (wypozyczenie.DataZwrotu.ToString().Contains(ciag))
+                                {
+                                    tabela.Rows.Add(wypozyczenie.ID, wypozyczenie.DataWypozyczenia, wypozyczenie.DataZwrotu,
+                                        wypozyczenie.IDSygnatura, wypozyczenie.Ksiazka);
+                                }
+                            }
+                            break;
+                        case "Sygnatura":
+                            foreach (var wypozyczenie in wypozyczenia)
+                            {
+                                if (wypozyczenie.IDSygnatura.Contains(ciag))
+                                {
+                                    tabela.Rows.Add(wypozyczenie.ID, wypozyczenie.DataWypozyczenia, wypozyczenie.DataZwrotu,
+                                        wypozyczenie.IDSygnatura, wypozyczenie.Ksiazka);
+                                }
+                            }
+                            break;
+                        case "Tytuł":
+                            foreach (var wypozyczenie in wypozyczenia)
+                            {
+                                if (wypozyczenie.Ksiazka.Contains(ciag))
+                                {
+                                    tabela.Rows.Add(wypozyczenie.ID, wypozyczenie.DataWypozyczenia, wypozyczenie.DataZwrotu,
+                                        wypozyczenie.IDSygnatura, wypozyczenie.Ksiazka);
+                                }
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
         }
     }

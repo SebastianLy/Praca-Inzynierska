@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using Kontroler;
+using System.Globalization;
 
 namespace Widok
 {
@@ -17,16 +19,23 @@ namespace Widok
         // Pola
         private Button aktywnyPrzycisk;
         private Form aktywnyForm;
-        
+        private readonly int IDUzytkownik;
+
         // Konstruktor
         public formMenuGlowne()
         {
             InitializeComponent();
             timer1.Start();
-            foreach (Button button in panelMenu.Controls.OfType<Button>())
-            {
-                button.FlatAppearance.MouseDownBackColor = Color.FromArgb(59, 78, 255);
-            }
+        }
+
+        public formMenuGlowne(string login)
+        {
+            InitializeComponent();
+            timer1.Start();
+            labelUzytkownik.Text = login;
+            IDUzytkownik = KontrolerUzytkownik.IDRola(login);
+            if (IDUzytkownik != 0)
+                btnUzytkownicy.Visible = false;
         }
 
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -41,13 +50,17 @@ namespace Widok
             {
                 if (aktywnyPrzycisk != (Button)przycisk)
                 {
+
                     DezaktywujPrzyciski();
                     aktywnyPrzycisk = (Button)przycisk;
-                    aktywnyPrzycisk.BackColor = Color.FromArgb(0, 89, 255);
+                    aktywnyPrzycisk.Text.Trim();
+                    lblTytul.Text = aktywnyPrzycisk.Text;
+                    aktywnyPrzycisk.Text += "    ";
+                    aktywnyPrzycisk.BackColor = Color.FromArgb(70, 70, 90);
                     aktywnyPrzycisk.TextAlign = ContentAlignment.MiddleRight;
                     aktywnyPrzycisk.ImageAlign = ContentAlignment.MiddleRight;
                     aktywnyPrzycisk.TextImageRelation = TextImageRelation.TextBeforeImage;
-                    lblTytul.Text = aktywnyPrzycisk.Text.Remove(0, 5);
+                    
                 }
             }
         }
@@ -58,10 +71,14 @@ namespace Widok
             {
                 foreach (Control przycisk in panelMenu.Controls)
                 {
-                    przycisk.BackColor = Color.FromArgb(8, 17, 220);
-                    aktywnyPrzycisk.TextAlign = ContentAlignment.MiddleLeft;
-                    aktywnyPrzycisk.ImageAlign = ContentAlignment.MiddleLeft;
-                    aktywnyPrzycisk.TextImageRelation = TextImageRelation.ImageBeforeText;
+                    if (przycisk != panelLogo)
+                    {
+                        przycisk.BackColor = Color.FromArgb(51, 51, 76);
+                        aktywnyPrzycisk.Text = "    " + aktywnyPrzycisk.Text.Trim();
+                        aktywnyPrzycisk.TextAlign = ContentAlignment.MiddleLeft;
+                        aktywnyPrzycisk.ImageAlign = ContentAlignment.MiddleLeft;
+                        aktywnyPrzycisk.TextImageRelation = TextImageRelation.ImageBeforeText;
+                    }
                 }
             }
         }
@@ -86,7 +103,7 @@ namespace Widok
             base.WndProc(ref m);
         }
 
-        private void OtworzForm(Form form, object btnSender)
+        private void OtworzForm(Form form, object btnSender, string tytul)
         {
             if (aktywnyForm != null)
                 aktywnyForm.Close();
@@ -94,37 +111,38 @@ namespace Widok
             aktywnyForm = form;
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
+            //form.BackColor = Color.FromArgb(123, 122, 145);
             form.Dock = DockStyle.Fill;
             panelZakladka.Controls.Add(form);
             panelZakladka.Tag = form;
             form.BringToFront();
             form.Show();
-            lblTytul.Text = form.Text;
+            lblTytul.Text = tytul;
         }
 
         private void btnBiblioteka_Click(object sender, EventArgs e)
         {
-            AktywujPrzycisk(sender);
+            OtworzForm(new FormBiblioteka(IDUzytkownik), sender, "Biblioteka");
         }
 
         private void btnUzytkownicy_Click(object sender, EventArgs e)
         {
-            OtworzForm(new FormUzytkownicy(), sender);
+            OtworzForm(new FormUzytkownicy(), sender, "Użytkownicy");
         }
 
         private void btnKsiazki_Click(object sender, EventArgs e)
         {
-            OtworzForm(new FormKsiazki(), sender);
+            OtworzForm(new FormKsiazki(IDUzytkownik), sender, "Książki");
         }
 
-        private void btnWypozyczalnia_Click(object sender, EventArgs e)
+        private void btnWypozyczenia_Click(object sender, EventArgs e)
         {
-            OtworzForm(new FormWypozyczenia(), sender);
+            OtworzForm(new FormWypozyczenia(IDUzytkownik), sender, "Wypożyczenia");
         }
 
         private void btnPlatnosci_Click(object sender, EventArgs e)
         {
-            OtworzForm(new FormPlatnosci(), sender);
+            OtworzForm(new FormPlatnosci(IDUzytkownik), sender, "Płatności");
         }
 
         private void panelTytul_MouseDown(object sender, MouseEventArgs e)
@@ -162,13 +180,25 @@ namespace Widok
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            labelZegar.Text = Convert.ToString(DateTime.Now);
+            labelZegar.Text = Convert.ToString(DateTime.Now.ToString("dddd", new CultureInfo("pl-PL")) + ", " + DateTime.Now.ToString("dd") + "." +
+                DateTime.Now.ToString("MM") + "." + DateTime.Now.ToString("yyyy") + " " + Environment.NewLine + DateTime.Now.ToString("HH") + ":" +
+                DateTime.Now.ToString("mm") + ":" + DateTime.Now.ToString("ss"));
         }
 
         private void lblNazwa_Click(object sender, EventArgs e)
         {
             if (aktywnyForm != null)
+            {
+                DezaktywujPrzyciski();
                 aktywnyForm.Close();
+            }
+        }
+
+        private void btnWyloguj_Click(object sender, EventArgs e)
+        {
+            FormLogowanie formLogowanie = new FormLogowanie();
+            formLogowanie.ShowDialog();
+            Close();
         }
     }
 }

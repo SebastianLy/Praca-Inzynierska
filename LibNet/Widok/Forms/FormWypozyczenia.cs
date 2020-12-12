@@ -14,9 +14,20 @@ namespace Widok
     public partial class FormWypozyczenia : Form
     {
         DataTable tabela = new DataTable("Wypożyczenia");
+        private readonly int IDUzytkownik;
         public FormWypozyczenia()
         {
             InitializeComponent();
+        }
+
+        public FormWypozyczenia(int idUzytkownika)
+        {
+            InitializeComponent();
+            IDUzytkownik = idUzytkownika;
+            if (IDUzytkownik != 0)
+            {
+                panelPrzyciski.Visible = false;
+            }
         }
 
         private void tabelaWypozyczenia_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -26,52 +37,68 @@ namespace Widok
 
         private void FormWypozyczenia_Load(object sender, EventArgs e)
         {
-            tabela.Columns.Add("ID Wypożyczenia", typeof(int));
-            tabela.Columns.Add("Data Wypożyczenia", typeof(DateTime));
-            tabela.Columns.Add("Data Zwrotu", typeof(DateTime));
-            tabela.Columns.Add("Osoba Wypożyczająca", typeof(int));
-            tabela.Columns.Add("Sygnatura", typeof(string));
-            // Część wspólna sygnatura-wypozyczenia, i czesc wspólna wypozyczenia-uzytkownicy
-            KontrolerWypozyczenie.WyswietlWypozyczenia(tabela);
-            tabelaWypozyczenia.DataSource = tabela;
+            if (IDUzytkownik == 0)
+            {
+                tabela.Columns.Add("ID Wypożyczenia", typeof(int));
+                tabela.Columns.Add("Data Wypożyczenia", typeof(DateTime));
+                tabela.Columns.Add("Data Zwrotu", typeof(DateTime));
+                tabela.Columns.Add("Wypożyczający", typeof(int));
+                tabela.Columns.Add("Sygnatura", typeof(string));
+                tabela.Columns.Add("Tytuł", typeof(string));
+                KontrolerWypozyczenie.WyswietlWypozyczenia(tabela, IDUzytkownik);
+                tabelaWypozyczenia.DataSource = tabela;
+                tabelaWypozyczenia.Columns[4].Width = 120;
+                tabelaWypozyczenia.Columns[5].Width = 232;
+            }
+            else
+            {
+                tabela.Columns.Add("ID Wypożyczenia", typeof(int));
+                tabela.Columns.Add("Data Wypożyczenia", typeof(DateTime));
+                tabela.Columns.Add("Data Zwrotu", typeof(DateTime));
+                tabela.Columns.Add("Sygnatura", typeof(string));
+                tabela.Columns.Add("Tytuł", typeof(string));
+                KontrolerWypozyczenie.WyswietlWypozyczenia(tabela, IDUzytkownik);
+                tabelaWypozyczenia.DataSource = tabela;
+                tabelaWypozyczenia.Columns[3].Width = 140;
+                tabelaWypozyczenia.Columns[4].Width = 312;
+            }
         }
 
         private void btnSzukaj_Click(object sender, EventArgs e)
         {
-
+            KontrolerWypozyczenie.WyszukajWypozyczenia(tabela, szukajComboBox.Text, szukajTextBox.Text, IDUzytkownik);
         }
 
         private void btnWypozycz_Click(object sender, EventArgs e)
         {
-            List<string> sygnatury = new List<string>();
+            List<string> sygnatury;
             string s = sygnaturyTextBox.Text;
-            for (int i = 0; i < sygnaturyTextBox.Text.Count(f => f ==',') + 1; i++)
-            {
-                if (s.Count(f => f == ',') == 0)
-                    sygnatury.Add(s);
-                else
-                {
-                    sygnatury.Add(s.Substring(0, s.IndexOf(',')));
-                    s.Remove(0, s.IndexOf(','));
-                }
-            }
+            string[] s1 = s.Split(',');
+            sygnatury = s1.ToList();
             KontrolerWypozyczenie.Wypozycz(sygnatury, Convert.ToInt32(wypozyczajacyTextBox.Text));
-            KontrolerWypozyczenie.WyswietlWypozyczenia(tabela);
+            KontrolerWypozyczenie.WyswietlWypozyczenia(tabela, IDUzytkownik);
         }
 
         private void btnZwroc_Click(object sender, EventArgs e)
         {
-            int id = (int)tabelaWypozyczenia.SelectedRows[0].Cells[0].Value;
-            KontrolerWypozyczenie.Zwroc(id);
-            KontrolerWypozyczenie.WyswietlWypozyczenia(tabela);
+            int wiersz = tabelaWypozyczenia.SelectedCells[0].RowIndex;
+            string ids = tabelaWypozyczenia.Rows[wiersz].Cells[4].Value.ToString();
+            int idw = (int)tabelaWypozyczenia.Rows[wiersz].Cells[0].Value;
+            KontrolerWypozyczenie.Zwroc(ids, idw);
+            KontrolerWypozyczenie.WyswietlWypozyczenia(tabela, IDUzytkownik);
         }
 
         private void tabelaWypozyczenia_SelectionChanged(object sender, EventArgs e)
         {
-            if (tabelaWypozyczenia.SelectedCells.Count == 0)
-                btnZwroc.Enabled = false;
+            if (tabelaWypozyczenia.SelectedCells.Count != 0)
+            {
+                if (tabelaWypozyczenia.Rows[tabelaWypozyczenia.SelectedCells[0].RowIndex].Cells[2].Value.ToString() == "")
+                    btnZwroc.Enabled = true;
+                else
+                    btnZwroc.Enabled = false;
+            }
             else
-                btnZwroc.Enabled = true;
+                btnZwroc.Enabled = false;
         }
     }
 }

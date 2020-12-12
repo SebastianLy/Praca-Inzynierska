@@ -59,6 +59,7 @@
     <Compile Include="Baza\Sygnatura.cs" />
     <Compile Include="Baza\Uzytkownik.cs" />
     <Compile Include="Baza\Wypozyczenie.cs" />
+    <Compile Include="UstawieniaBiblioteki.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -14,9 +14,20 @@ namespace Widok
     public partial class FormKsiazki : Form
     {
         DataTable tabela = new DataTable("Książki");
+        private readonly int IDUzytkownik;
         public FormKsiazki()
         {
             InitializeComponent();
+        }
+
+        public FormKsiazki(int idUzytkownika)
+        {
+            InitializeComponent();
+            IDUzytkownik = idUzytkownika;
+            if (IDUzytkownik != 0)
+            {
+                btnDodaj.Visible = false;
+            }
         }
 
         private void FormKsiazki_Load(object sender, EventArgs e)
@@ -63,6 +74,7 @@ namespace Widok
             }
             catch (NullReferenceException) { }
             catch (InvalidCastException) { }
+            KontrolerKsiazka.WypelnijTabeleKsiazek(tabela);
         }
 
         private void tabelaKsiazki_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -73,6 +85,13 @@ namespace Widok
         private void btnSzukaj_Click(object sender, EventArgs e)
         {
             KontrolerKsiazka.WyszukajKsiazke(tabela, szukajComboBox.Text, szukajTextBox.Text);
+        }
+
+        private void btnRezerwacja_Click(object sender, EventArgs e)
+        {
+            int wiersz = tabelaKsiazki.SelectedCells[0].RowIndex;
+            string sygnatura = tabelaKsiazki.Rows[wiersz].Cells[0].Value.ToString();
+            KontrolerKsiazka.RezerwacjaKsiazki(sygnatura, IDUzytkownik);
         }
     }
 }

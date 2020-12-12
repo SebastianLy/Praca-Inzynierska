@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 
 namespace Widok
 {
@@ -45,8 +46,6 @@ namespace Widok
 
         private void btnZamknij_Click(object sender, EventArgs e)
         {
-            FormLogowanie form = new FormLogowanie();
-            form.ShowDialog();
             Close();
         }
 
@@ -71,16 +70,121 @@ namespace Widok
             WindowState = FormWindowState.Minimized;
         }
 
-        private void btnLogowanie_Click(object sender, EventArgs e)
+        private void btnRejestracja_Click(object sender, EventArgs e)
         {
-            if (hasloTextBox.Text == haslo2TextBox.Text)
+            bool rejestracja = true;
+            if (imieTextBox.Text.Length < 1)
+            {
+                rejestracja = false;
+                label1.ForeColor = Color.Red;
+            }
+            else
+            {
+                label1.ForeColor = Color.Gainsboro;
+                rejestracja = true;
+            }
+            if (nazwiskoTextBox.Text.Length < 1)
+            {
+                rejestracja = false;
+                label2.ForeColor = Color.Red;
+            }
+            else
+            {
+                label2.ForeColor = Color.Gainsboro;
+                rejestracja = true;
+            }
+            if (loginTextBox.Text.Length < 1 || loginTextBox.Text.Any(c => c > 255) || !Kontroler.KontrolerUzytkownik.LoginUnikatowy(loginTextBox.Text))
+            {
+                rejestracja = false;
+                label3.ForeColor = Color.Red;
+            }
+            else
+            {
+                label3.ForeColor = Color.Gainsboro;
+                rejestracja = true;
+            }
+            if (emailTextBox.Text.Length < 1 || emailTextBox.Text.Any(c => c > 255) || !Kontroler.KontrolerUzytkownik.EmailUnikatowy(emailTextBox.Text))
+            {
+                rejestracja = false;
+                label4.ForeColor = Color.Red;
+            }
+            else
+            {
+                label4.ForeColor = Color.Gainsboro;
+                rejestracja = true;
+            }
+            if (hasloTextBox.Text.Length < 8)
+            {
+                rejestracja = false;
+                label5.ForeColor = Color.Red;
+            }
+            else
+            {
+                label5.ForeColor = Color.Gainsboro;
+                rejestracja = true;
+            }
+            if (hasloTextBox.Text != haslo2TextBox.Text)
+            {
+                rejestracja = false;
+                label6.ForeColor = Color.Red;
+            }
+            else
+            {
+                label6.ForeColor = Color.Gainsboro;
+                rejestracja = true;
+            }
+            if (miejscowoscTextBox.Text.Length < 1)
+            {
+                rejestracja = false;
+                label7.ForeColor = Color.Red;
+            }
+            else
+            {
+                label7.ForeColor = Color.Gainsboro;
+                rejestracja = true;
+            }
+            if (nrDomuTextBox.Text.Length < 1)
+            {
+                rejestracja = false;
+                label9.ForeColor = Color.Red;
+            }
+            else
+            {
+                label9.ForeColor = Color.Gainsboro;
+                rejestracja = true;
+            }
+            if (!nrMieszkaniaTextBox.Text.All(char.IsDigit))
+            {
+                rejestracja = false;
+                label10.ForeColor = Color.Red;
+            }
+            else
+            {
+                label10.ForeColor = Color.Gainsboro;
+                rejestracja = true;
+            }
+            if (!new Regex("[0-9]{2}-[0-9]{3}").IsMatch(kodPocztowyTextBox.Text))
+            {
+                rejestracja = false;
+                label11.ForeColor = Color.Red;
+            }
+            else
+            {
+                label11.ForeColor = Color.Gainsboro;
+                rejestracja = true;
+            }
+            if (rejestracja)
             {
                 Kontroler.KontrolerUzytkownik.Rejestracja(loginTextBox.Text, emailTextBox.Text, hasloTextBox.Text, imieTextBox.Text, nazwiskoTextBox.Text,
-                    miejscowoscTextBox.Text, ulicaTextBox.Text, nrDomuTextBox.Text, nrMieszkaniaTextBox.Text, kodPocztowyTextBox.Text);
-                FormLogowanie form = new FormLogowanie();
-                form.ShowDialog();
+                    miejscowoscTextBox.Text, ulicaTextBox.Text, nrDomuTextBox.Text, nrMieszkaniaTextBox.Text, kodPocztowyTextBox.Text.Replace("-",""));
                 Close();
             }
+        }
+
+        private void panelTytul_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(Handle, 0x112, 0xf012, 0);
         }
     }
 }

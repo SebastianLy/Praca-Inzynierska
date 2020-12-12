@@ -36,6 +36,7 @@ namespace Widok
             this.btnMinimalizuj = new System.Windows.Forms.Button();
             this.btnMaksymalizuj = new System.Windows.Forms.Button();
             this.panelLogowanie = new System.Windows.Forms.Panel();
+            this.labelBladLogowania = new System.Windows.Forms.Label();
             this.btnRejestracja = new System.Windows.Forms.Button();
             this.labelRejestracja = new System.Windows.Forms.Label();
             this.btnLogowanie = new System.Windows.Forms.Button();
@@ -70,12 +71,13 @@ namespace Widok
             this.btnZamknij.Name = "btnZamknij";
             this.btnZamknij.Size = new System.Drawing.Size(21, 20);
             this.btnZamknij.TabIndex = 1;
+            this.btnZamknij.TabStop = false;
             this.btnZamknij.UseVisualStyleBackColor = true;
             this.btnZamknij.Click += new System.EventHandler(this.btnZamknij_Click);
             // 
             // panelTytul
             // 
-            this.panelTytul.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(196)))));
+            this.panelTytul.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.panelTytul.Controls.Add(this.btnMinimalizuj);
             this.panelTytul.Controls.Add(this.btnMaksymalizuj);
             this.panelTytul.Controls.Add(this.labelTytul);
@@ -98,6 +100,7 @@ namespace Widok
             this.btnMinimalizuj.Name = "btnMinimalizuj";
             this.btnMinimalizuj.Size = new System.Drawing.Size(21, 20);
             this.btnMinimalizuj.TabIndex = 3;
+            this.btnMinimalizuj.TabStop = false;
             this.btnMinimalizuj.UseVisualStyleBackColor = true;
             this.btnMinimalizuj.Click += new System.EventHandler(this.btnMinimalizuj_Click);
             // 
@@ -112,12 +115,14 @@ namespace Widok
             this.btnMaksymalizuj.Name = "btnMaksymalizuj";
             this.btnMaksymalizuj.Size = new System.Drawing.Size(21, 20);
             this.btnMaksymalizuj.TabIndex = 2;
+            this.btnMaksymalizuj.TabStop = false;
             this.btnMaksymalizuj.UseVisualStyleBackColor = true;
             this.btnMaksymalizuj.Click += new System.EventHandler(this.btnMaksymalizuj_Click);
             // 
             // panelLogowanie
             // 
-            this.panelLogowanie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(240)))));
+            this.panelLogowanie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panelLogowanie.Controls.Add(this.labelBladLogowania);
             this.panelLogowanie.Controls.Add(this.btnRejestracja);
             this.panelLogowanie.Controls.Add(this.labelRejestracja);
             this.panelLogowanie.Controls.Add(this.btnLogowanie);
@@ -131,25 +136,42 @@ namespace Widok
             this.panelLogowanie.Size = new System.Drawing.Size(480, 360);
             this.panelLogowanie.TabIndex = 3;
             // 
+            // labelBladLogowania
+            // 
+            this.labelBladLogowania.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelBladLogowania.AutoSize = true;
+            this.labelBladLogowania.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelBladLogowania.ForeColor = System.Drawing.Color.Red;
+            this.labelBladLogowania.Location = new System.Drawing.Point(172, 180);
+            this.labelBladLogowania.Name = "labelBladLogowania";
+            this.labelBladLogowania.Size = new System.Drawing.Size(146, 17);
+            this.labelBladLogowania.TabIndex = 7;
+            this.labelBladLogowania.Text = "Błędny login lub hasło";
+            this.labelBladLogowania.Visible = false;
+            // 
             // btnRejestracja
             // 
             this.btnRejestracja.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnRejestracja.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnRejestracja.FlatAppearance.BorderColor = System.Drawing.Color.SlateGray;
             this.btnRejestracja.FlatAppearance.BorderSize = 2;
             this.btnRejestracja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRejestracja.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnRejestracja.Location = new System.Drawing.Point(348, 304);
+            this.btnRejestracja.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnRejestracja.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnRejestracja.Location = new System.Drawing.Point(328, 303);
             this.btnRejestracja.Name = "btnRejestracja";
-            this.btnRejestracja.Size = new System.Drawing.Size(120, 40);
-            this.btnRejestracja.TabIndex = 6;
+            this.btnRejestracja.Size = new System.Drawing.Size(140, 45);
+            this.btnRejestracja.TabIndex = 3;
             this.btnRejestracja.Text = "Rejestracja";
             this.btnRejestracja.UseVisualStyleBackColor = true;
             this.btnRejestracja.Click += new System.EventHandler(this.btnRejestracja_Click);
             // 
             // labelRejestracja
             // 
+            this.labelRejestracja.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelRejestracja.AutoSize = true;
-            this.labelRejestracja.Location = new System.Drawing.Point(179, 317);
+            this.labelRejestracja.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelRejestracja.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelRejestracja.Location = new System.Drawing.Point(175, 318);
             this.labelRejestracja.Name = "labelRejestracja";
             this.labelRejestracja.Size = new System.Drawing.Size(144, 17);
             this.labelRejestracja.TabIndex = 5;
@@ -158,14 +180,15 @@ namespace Widok
             // btnLogowanie
             // 
             this.btnLogowanie.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnLogowanie.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnLogowanie.FlatAppearance.BorderColor = System.Drawing.Color.SlateGray;
             this.btnLogowanie.FlatAppearance.BorderSize = 2;
             this.btnLogowanie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogowanie.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnLogowanie.Location = new System.Drawing.Point(180, 210);
+            this.btnLogowanie.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnLogowanie.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnLogowanie.Location = new System.Drawing.Point(176, 210);
             this.btnLogowanie.Name = "btnLogowanie";
-            this.btnLogowanie.Size = new System.Drawing.Size(120, 40);
-            this.btnLogowanie.TabIndex = 4;
+            this.btnLogowanie.Size = new System.Drawing.Size(140, 45);
+            this.btnLogowanie.TabIndex = 2;
             this.btnLogowanie.Text = "Zaloguj się";
             this.btnLogowanie.UseVisualStyleBackColor = true;
             this.btnLogowanie.Click += new System.EventHandler(this.btnLogowanie_Click);
@@ -174,20 +197,20 @@ namespace Widok
             // 
             this.hasloTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.hasloTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.hasloTextBox.Location = new System.Drawing.Point(170, 150);
+            this.hasloTextBox.Location = new System.Drawing.Point(170, 135);
             this.hasloTextBox.Name = "hasloTextBox";
             this.hasloTextBox.PasswordChar = '*';
             this.hasloTextBox.Size = new System.Drawing.Size(150, 30);
-            this.hasloTextBox.TabIndex = 3;
+            this.hasloTextBox.TabIndex = 1;
             // 
             // loginTextBox
             // 
             this.loginTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.loginTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.loginTextBox.Location = new System.Drawing.Point(170, 50);
+            this.loginTextBox.Location = new System.Drawing.Point(170, 45);
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(150, 30);
-            this.loginTextBox.TabIndex = 2;
+            this.loginTextBox.TabIndex = 0;
             // 
             // labelHaslo
             // 
@@ -195,11 +218,13 @@ namespace Widok
             this.labelHaslo.AutoSize = true;
             this.labelHaslo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelHaslo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelHaslo.Location = new System.Drawing.Point(209, 110);
+            this.labelHaslo.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelHaslo.Location = new System.Drawing.Point(209, 100);
             this.labelHaslo.Name = "labelHaslo";
             this.labelHaslo.Size = new System.Drawing.Size(62, 25);
             this.labelHaslo.TabIndex = 1;
             this.labelHaslo.Text = "Hasło";
+            this.labelHaslo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelLogin
             // 
@@ -207,11 +232,13 @@ namespace Widok
             this.labelLogin.AutoSize = true;
             this.labelLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.labelLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelLogin.ForeColor = System.Drawing.Color.Gainsboro;
             this.labelLogin.Location = new System.Drawing.Point(210, 10);
             this.labelLogin.Name = "labelLogin";
             this.labelLogin.Size = new System.Drawing.Size(60, 25);
             this.labelLogin.TabIndex = 0;
             this.labelLogin.Text = "Login";
+            this.labelLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FormLogowanie
             // 
@@ -248,5 +275,6 @@ namespace Widok
         private System.Windows.Forms.TextBox hasloTextBox;
         private System.Windows.Forms.Button btnRejestracja;
         private System.Windows.Forms.Label labelRejestracja;
+        private System.Windows.Forms.Label labelBladLogowania;
     }
 }

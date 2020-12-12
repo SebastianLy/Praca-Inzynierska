@@ -22,12 +22,15 @@ namespace Model
         public int ID_Uzytkownika { get; set; }
         public virtual Uzytkownik Uzytkownik { get; set; }
 
-        public virtual List<Sygnatura> Sygnatury { get; set; }
+        public string ID_Sygnatura { get; set; }
+        public virtual Sygnatura Sygnatura { get; set; }
 
-        public Wypozyczenie(DateTime data, List<Sygnatura> sygnatury, int uzytkownik)
+        public Wypozyczenie() { }
+
+        public Wypozyczenie(DateTime dataWypozyczenia, string sygnatura, int uzytkownik)
         {
-            Data_Wypozyczenia = data;
-            Sygnatury = sygnatury;
+            Data_Wypozyczenia = dataWypozyczenia;
+            ID_Sygnatura = sygnatura;
             ID_Uzytkownika = uzytkownik;
         }
     }

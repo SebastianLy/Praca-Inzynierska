@@ -41,19 +41,21 @@ namespace Widok
 
         private void btnSzukaj_Click(object sender, EventArgs e)
         {
-            KontrolerUzytkownik.Wyszukaj(tabela, szukajComboBox.Text, szukajTextBox.Text);
+            KontrolerUzytkownik.WyszukajUzytkownikow(tabela, szukajComboBox.Text, szukajTextBox.Text);
         }
 
         private void btnBlokada_Click(object sender, EventArgs e)
         {
-            int id = (int)tabelaUzytkownicy.SelectedRows[0].Cells[0].Value;
+            int wiersz = tabelaUzytkownicy.SelectedCells[0].RowIndex;
+            int id = (int)tabelaUzytkownicy.Rows[wiersz].Cells[0].Value;
             KontrolerUzytkownik.Blokada(id, powodTextBox.Text);
             KontrolerUzytkownik.WypelnijTabeleUzytkownikow(tabela);
         }
 
         private void btnUsun_Click(object sender, EventArgs e)
         {
-            int id = (int)tabelaUzytkownicy.SelectedRows[0].Cells[0].Value;
+            int wiersz = tabelaUzytkownicy.SelectedCells[0].RowIndex;
+            int id = (int)tabelaUzytkownicy.Rows[wiersz].Cells[0].Value;
             KontrolerUzytkownik.Usun(id);
             KontrolerUzytkownik.WypelnijTabeleUzytkownikow(tabela);
         }
@@ -64,11 +66,13 @@ namespace Widok
             {
                 btnBlokada.Enabled = false;
                 btnUsun.Enabled = false;
+                btnAwans.Enabled = true;
             }
             else
             {
                 btnBlokada.Enabled = true;
                 btnUsun.Enabled = true;
+                btnAwans.Enabled = true;
             }
         }
 
@@ -77,6 +81,15 @@ namespace Widok
             tabelaUzytkownicy.ClearSelection();
             btnBlokada.Enabled = false;
             btnUsun.Enabled = false;
+            btnAwans.Enabled = false;
+        }
+
+        private void btnAwans_Click(object sender, EventArgs e)
+        {
+            int wiersz = tabelaUzytkownicy.SelectedCells[0].RowIndex;
+            int id = (int)tabelaUzytkownicy.Rows[wiersz].Cells[0].Value;
+            KontrolerUzytkownik.Awans(id);
+            KontrolerUzytkownik.WypelnijTabeleUzytkownikow(tabela);
         }
     }
 }

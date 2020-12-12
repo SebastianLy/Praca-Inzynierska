@@ -25,5 +25,7 @@ namespace Model
         public virtual Ksiazka Ksiazka { get; set; }
 
         public virtual List<Wypozyczenie> Wypozyczenia { get; set; }
+
+        public Sygnatura() { }
     }
 }

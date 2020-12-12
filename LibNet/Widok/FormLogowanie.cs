@@ -80,17 +80,32 @@ namespace Widok
             bool logowanie = KontrolerUzytkownik.Logowanie(loginTextBox.Text, hasloTextBox.Text);
             if (logowanie)
             {
-                formMenuGlowne form = new formMenuGlowne();
-                form.ShowDialog();
-                Close();
+                labelBladLogowania.Visible = false;
+                formMenuGlowne formMenu = new formMenuGlowne(loginTextBox.Text);
+                formMenu.FormClosed += new FormClosedEventHandler(FormMenu_FormClosed);
+                formMenu.Show();
+                Hide();
             }
+            else
+                labelBladLogowania.Visible = true;
+        }
+
+        private void FormMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Close();
+        }
+
+        private void FormRejestracja_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Show();
         }
 
         private void btnRejestracja_Click(object sender, EventArgs e)
         {
-            FormRejestracja form = new FormRejestracja();
-            form.ShowDialog();
-            Close();
+            FormRejestracja formRejestracja = new FormRejestracja();
+            formRejestracja.FormClosed += new FormClosedEventHandler(FormRejestracja_FormClosed);
+            formRejestracja.Show();
+            Hide();
         }
     }
 }
