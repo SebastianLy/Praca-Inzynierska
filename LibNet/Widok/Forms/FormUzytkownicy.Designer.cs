@@ -43,6 +43,7 @@ namespace Widok
             this.powodTextBox = new System.Windows.Forms.TextBox();
             this.btnUsun = new System.Windows.Forms.Button();
             this.btnBlokada = new System.Windows.Forms.Button();
+            this.btnOdswiez = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaUzytkownicy)).BeginInit();
             this.panelFiltry.SuspendLayout();
             this.panelTabela.SuspendLayout();
@@ -80,6 +81,7 @@ namespace Widok
             // panelFiltry
             // 
             this.panelFiltry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.panelFiltry.Controls.Add(this.btnOdswiez);
             this.panelFiltry.Controls.Add(this.szukajTextBox);
             this.panelFiltry.Controls.Add(this.szukajComboBox);
             this.panelFiltry.Controls.Add(this.label1);
@@ -175,7 +177,7 @@ namespace Widok
             this.btnAwans.Location = new System.Drawing.Point(433, 14);
             this.btnAwans.Name = "btnAwans";
             this.btnAwans.Size = new System.Drawing.Size(200, 43);
-            this.btnAwans.TabIndex = 5;
+            this.btnAwans.TabIndex = 6;
             this.btnAwans.Text = "Awansuj/Degraduj";
             this.btnAwans.UseVisualStyleBackColor = true;
             this.btnAwans.Click += new System.EventHandler(this.btnAwans_Click);
@@ -187,7 +189,7 @@ namespace Widok
             this.powodTextBox.Multiline = true;
             this.powodTextBox.Name = "powodTextBox";
             this.powodTextBox.Size = new System.Drawing.Size(208, 43);
-            this.powodTextBox.TabIndex = 3;
+            this.powodTextBox.TabIndex = 4;
             // 
             // btnUsun
             // 
@@ -201,7 +203,7 @@ namespace Widok
             this.btnUsun.Location = new System.Drawing.Point(664, 14);
             this.btnUsun.Name = "btnUsun";
             this.btnUsun.Size = new System.Drawing.Size(100, 43);
-            this.btnUsun.TabIndex = 6;
+            this.btnUsun.TabIndex = 7;
             this.btnUsun.Text = "Usuń";
             this.btnUsun.UseVisualStyleBackColor = true;
             this.btnUsun.Click += new System.EventHandler(this.btnUsun_Click);
@@ -217,10 +219,27 @@ namespace Widok
             this.btnBlokada.Location = new System.Drawing.Point(227, 14);
             this.btnBlokada.Name = "btnBlokada";
             this.btnBlokada.Size = new System.Drawing.Size(200, 43);
-            this.btnBlokada.TabIndex = 4;
+            this.btnBlokada.TabIndex = 5;
             this.btnBlokada.Text = "Zablokuj/Odblokuj";
             this.btnBlokada.UseVisualStyleBackColor = true;
             this.btnBlokada.Click += new System.EventHandler(this.btnBlokada_Click);
+            // 
+            // btnOdswiez
+            // 
+            this.btnOdswiez.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOdswiez.Enabled = false;
+            this.btnOdswiez.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnOdswiez.FlatAppearance.BorderSize = 2;
+            this.btnOdswiez.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOdswiez.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnOdswiez.ForeColor = System.Drawing.Color.Black;
+            this.btnOdswiez.Location = new System.Drawing.Point(664, 12);
+            this.btnOdswiez.Name = "btnOdswiez";
+            this.btnOdswiez.Size = new System.Drawing.Size(100, 43);
+            this.btnOdswiez.TabIndex = 3;
+            this.btnOdswiez.Text = "Odśwież";
+            this.btnOdswiez.UseVisualStyleBackColor = true;
+            this.btnOdswiez.Click += new System.EventHandler(this.btnOdswiez_Click);
             // 
             // FormUzytkownicy
             // 
@@ -257,5 +276,6 @@ namespace Widok
         private System.Windows.Forms.Button btnBlokada;
         private System.Windows.Forms.TextBox powodTextBox;
         private System.Windows.Forms.Button btnAwans;
+        private System.Windows.Forms.Button btnOdswiez;
     }
 }

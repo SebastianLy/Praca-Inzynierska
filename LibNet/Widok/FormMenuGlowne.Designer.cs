@@ -40,7 +40,6 @@ namespace Widok
             this.panelLogo = new System.Windows.Forms.Panel();
             this.lblNazwa = new System.Windows.Forms.Label();
             this.panelTytul = new System.Windows.Forms.Panel();
-            this.btnWyloguj = new System.Windows.Forms.Button();
             this.labelZegar = new System.Windows.Forms.Label();
             this.btnMinimalizuj = new System.Windows.Forms.Button();
             this.btnZamknij = new System.Windows.Forms.Button();
@@ -209,7 +208,6 @@ namespace Widok
             // panelTytul
             // 
             this.panelTytul.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.panelTytul.Controls.Add(this.btnWyloguj);
             this.panelTytul.Controls.Add(this.labelZegar);
             this.panelTytul.Controls.Add(this.btnMinimalizuj);
             this.panelTytul.Controls.Add(this.btnZamknij);
@@ -221,20 +219,6 @@ namespace Widok
             this.panelTytul.Size = new System.Drawing.Size(1006, 80);
             this.panelTytul.TabIndex = 1;
             this.panelTytul.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTytul_MouseDown);
-            // 
-            // btnWyloguj
-            // 
-            this.btnWyloguj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnWyloguj.FlatAppearance.BorderColor = System.Drawing.Color.LightSeaGreen;
-            this.btnWyloguj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWyloguj.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnWyloguj.Location = new System.Drawing.Point(884, 36);
-            this.btnWyloguj.Name = "btnWyloguj";
-            this.btnWyloguj.Size = new System.Drawing.Size(110, 38);
-            this.btnWyloguj.TabIndex = 0;
-            this.btnWyloguj.Text = "Wyloguj";
-            this.btnWyloguj.UseVisualStyleBackColor = true;
-            this.btnWyloguj.Click += new System.EventHandler(this.btnWyloguj_Click);
             // 
             // labelZegar
             // 
@@ -393,7 +377,6 @@ namespace Widok
         private System.Windows.Forms.Label labelUzytkownik;
         private System.Windows.Forms.Panel panelZakladka;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnWyloguj;
     }
 }
 

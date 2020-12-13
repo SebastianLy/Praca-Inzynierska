@@ -93,6 +93,41 @@ namespace Kontroler
             }
         }
 
+        public static void AutomatycznaBlokada(int dni)
+        {
+            using (var db = new BibliotekaKontekst())
+            {
+                var wypozyczenia = (from wypozyczenie in db.Wypozyczenia
+                                    join sygnatura in db.Sygnatury on wypozyczenie.ID_Sygnatura equals sygnatura.ID_Sygnatura into gj
+                                    from x in gj.DefaultIfEmpty()
+                                    join ksiazka in db.Ksiazki on x.ID_Ksiazki equals ksiazka.ID_Ksiazki into an
+                                    from a in an.DefaultIfEmpty()
+                                    select new
+                                    {
+                                        ID = wypozyczenie.ID_Wypozyczenia,
+                                        DataWypozyczenia = wypozyczenie.Data_Wypozyczenia,
+                                        DataZwrotu = wypozyczenie.Data_Zwrotu,
+                                        Wypozyczajacy = wypozyczenie.ID_Uzytkownika,
+                                        IDSygnatura = x.ID_Sygnatura,
+                                        Ksiazka = a.Tytul
+                                    }).ToList();
+                foreach (var wypozyczenie in wypozyczenia)
+                {
+                    if (DateTime.Now - wypozyczenie.DataWypozyczenia > TimeSpan.FromDays(dni))
+                    {
+                        var uzytkownik = (from uzytkownicy in db.Uzytkownicy
+                                          where uzytkownicy.ID_Uzytkownika == wypozyczenie.Wypozyczajacy
+                                          select uzytkownicy).FirstOrDefault();
+                        uzytkownik.Blokada = true;
+                        if (uzytkownik.Powod_Blokady == "")
+                            uzytkownik.Powod_Blokady = "Nie oddanie książki w terminie: " + wypozyczenie.IDSygnatura;
+                        else
+                            uzytkownik.Powod_Blokady += ", " + wypozyczenie.IDSygnatura;
+                    }
+                }
+            }
+        }
+
         public static void WyszukajWypozyczenia(DataTable tabela, string kolumna, string ciag, int id)
         {
             using (var db = new BibliotekaKontekst())

@@ -25,9 +25,9 @@ namespace Widok
             InitializeComponent();
             IDUzytkownik = idUzytkownika;
             if (IDUzytkownik != 0)
-            {
                 btnDodaj.Visible = false;
-            }
+            if (idUzytkownika == 0)
+                btnRezerwacja.Visible = false;
         }
 
         private void FormKsiazki_Load(object sender, EventArgs e)
@@ -42,14 +42,14 @@ namespace Widok
             tabela.Columns.Add("Przetrzymujący", typeof(int));
             KontrolerKsiazka.WypelnijTabeleKsiazek(tabela);
             tabelaKsiazki.DataSource = tabela;
-            tabelaKsiazki.Columns[0].Width = 70;
-            tabelaKsiazki.Columns[1].Width = 110;
-            tabelaKsiazki.Columns[2].Width = 103;
-            tabelaKsiazki.Columns[3].Width = 110;
-            tabelaKsiazki.Columns[4].Width = 150;
-            tabelaKsiazki.Columns[5].Width = 60;
-            tabelaKsiazki.Columns[6].Width = 70;
-            tabelaKsiazki.Columns[7].Width = 80;
+            tabelaKsiazki.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tabelaKsiazki.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            tabelaKsiazki.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tabelaKsiazki.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tabelaKsiazki.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tabelaKsiazki.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tabelaKsiazki.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tabelaKsiazki.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
         private void btnDodaj_Click(object sender, EventArgs e)
@@ -80,6 +80,7 @@ namespace Widok
         private void tabelaKsiazki_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             tabelaKsiazki.ClearSelection();
+            btnRezerwacja.Enabled = false;
         }
 
         private void btnSzukaj_Click(object sender, EventArgs e)
@@ -92,6 +93,25 @@ namespace Widok
             int wiersz = tabelaKsiazki.SelectedCells[0].RowIndex;
             string sygnatura = tabelaKsiazki.Rows[wiersz].Cells[0].Value.ToString();
             KontrolerKsiazka.RezerwacjaKsiazki(sygnatura, IDUzytkownik);
+            KontrolerKsiazka.WypelnijTabeleKsiazek(tabela);
+        }
+
+        private void tabelaKsiazki_SelectionChanged(object sender, EventArgs e)
+        {
+            if (tabelaKsiazki.SelectedCells.Count == 0)
+            {
+                btnRezerwacja.Enabled = false;
+            }
+            else
+            {
+                int wiersz = tabelaKsiazki.SelectedCells[0].RowIndex;
+                if (tabelaKsiazki.Rows[wiersz].Cells[6].Value == null && tabelaKsiazki.Rows[wiersz].Cells[7].Value == null)
+                {
+                    btnRezerwacja.Enabled = true;
+                }
+                else
+                    btnRezerwacja.Enabled = false;
+            }
         }
     }
 }

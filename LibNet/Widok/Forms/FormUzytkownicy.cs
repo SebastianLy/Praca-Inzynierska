@@ -30,13 +30,13 @@ namespace Widok
             tabela.Columns.Add("Adres", typeof(string));
             KontrolerUzytkownik.WypelnijTabeleUzytkownikow(tabela);
             tabelaUzytkownicy.DataSource = tabela;
-            tabelaUzytkownicy.Columns[0].Width = 60;
-            tabelaUzytkownicy.Columns[1].Width = 150;
-            tabelaUzytkownicy.Columns[2].Width = 150;
-            tabelaUzytkownicy.Columns[3].Width = 50;
-            tabelaUzytkownicy.Columns[4].Width = 50;
-            tabelaUzytkownicy.Columns[5].Width = 150;
-            tabelaUzytkownicy.Columns[6].Width = 150;
+            tabelaUzytkownicy.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tabelaUzytkownicy.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tabelaUzytkownicy.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tabelaUzytkownicy.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tabelaUzytkownicy.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tabelaUzytkownicy.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            tabelaUzytkownicy.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void btnSzukaj_Click(object sender, EventArgs e)
@@ -66,7 +66,7 @@ namespace Widok
             {
                 btnBlokada.Enabled = false;
                 btnUsun.Enabled = false;
-                btnAwans.Enabled = true;
+                btnAwans.Enabled = false;
             }
             else
             {
@@ -89,6 +89,13 @@ namespace Widok
             int wiersz = tabelaUzytkownicy.SelectedCells[0].RowIndex;
             int id = (int)tabelaUzytkownicy.Rows[wiersz].Cells[0].Value;
             KontrolerUzytkownik.Awans(id);
+            KontrolerUzytkownik.WypelnijTabeleUzytkownikow(tabela);
+        }
+
+        private void btnOdswiez_Click(object sender, EventArgs e)
+        {
+            string[] ustawienia = KontrolerKsiazka.WyswietlUstawienia();
+            KontrolerWypozyczenie.AutomatycznaBlokada(Convert.ToInt32(ustawienia[11]));
             KontrolerUzytkownik.WypelnijTabeleUzytkownikow(tabela);
         }
     }

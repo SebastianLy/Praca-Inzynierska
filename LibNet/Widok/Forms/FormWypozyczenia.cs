@@ -47,8 +47,12 @@ namespace Widok
                 tabela.Columns.Add("Tytuł", typeof(string));
                 KontrolerWypozyczenie.WyswietlWypozyczenia(tabela, IDUzytkownik);
                 tabelaWypozyczenia.DataSource = tabela;
-                tabelaWypozyczenia.Columns[4].Width = 120;
-                tabelaWypozyczenia.Columns[5].Width = 232;
+                tabelaWypozyczenia.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaWypozyczenia.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaWypozyczenia.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaWypozyczenia.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaWypozyczenia.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaWypozyczenia.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             else
             {
@@ -59,8 +63,11 @@ namespace Widok
                 tabela.Columns.Add("Tytuł", typeof(string));
                 KontrolerWypozyczenie.WyswietlWypozyczenia(tabela, IDUzytkownik);
                 tabelaWypozyczenia.DataSource = tabela;
-                tabelaWypozyczenia.Columns[3].Width = 140;
-                tabelaWypozyczenia.Columns[4].Width = 312;
+                tabelaWypozyczenia.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaWypozyczenia.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaWypozyczenia.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaWypozyczenia.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaWypozyczenia.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
 
@@ -71,12 +78,34 @@ namespace Widok
 
         private void btnWypozycz_Click(object sender, EventArgs e)
         {
-            List<string> sygnatury;
-            string s = sygnaturyTextBox.Text;
-            string[] s1 = s.Split(',');
-            sygnatury = s1.ToList();
-            KontrolerWypozyczenie.Wypozycz(sygnatury, Convert.ToInt32(wypozyczajacyTextBox.Text));
-            KontrolerWypozyczenie.WyswietlWypozyczenia(tabela, IDUzytkownik);
+            try
+            {
+                bool wypozycz = true;
+                List<string> sygnatury;
+                string s = sygnaturyTextBox.Text;
+                string[] s1 = s.Split(',');
+                sygnatury = s1.ToList();
+                if (KontrolerUzytkownik.CzyIstnieje(Convert.ToInt32(wypozyczajacyTextBox.Text)))
+                    labelBladUzytkownik.Visible = false;
+                else
+                {
+                    wypozycz = false;
+                    labelBladUzytkownik.Visible = true;
+                }
+                if (KontrolerKsiazka.CzyIstnieje(sygnatury))
+                    labelBladKsiazka.Visible = false;
+                else
+                {
+                    wypozycz = false;
+                    labelBladKsiazka.Visible = true;
+                }
+                if (wypozycz)
+                {
+                    KontrolerWypozyczenie.Wypozycz(sygnatury, Convert.ToInt32(wypozyczajacyTextBox.Text));
+                    KontrolerWypozyczenie.WyswietlWypozyczenia(tabela, IDUzytkownik);
+                }
+            }
+            catch (FormatException) { }
         }
 
         private void btnZwroc_Click(object sender, EventArgs e)

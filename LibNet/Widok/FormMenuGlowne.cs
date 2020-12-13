@@ -193,12 +193,5 @@ namespace Widok
                 aktywnyForm.Close();
             }
         }
-
-        private void btnWyloguj_Click(object sender, EventArgs e)
-        {
-            FormLogowanie formLogowanie = new FormLogowanie();
-            formLogowanie.ShowDialog();
-            Close();
-        }
     }
 }

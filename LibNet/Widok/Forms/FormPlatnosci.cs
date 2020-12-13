@@ -32,8 +32,18 @@ namespace Widok
 
         private void btnDodajPlatnosc_Click(object sender, EventArgs e)
         {
-            KontrolerUzytkownik.DodajPlatnosc(Convert.ToInt32(uzytkownikTextBox.Text), opisTextBox.Text, Convert.ToDecimal(kwotaTextBox.Text));
-            KontrolerUzytkownik.WyswietlPlatnosci(tabela, IDUzytkownik);
+            try
+            {
+                if (KontrolerUzytkownik.CzyIstnieje(Convert.ToInt32(uzytkownikTextBox.Text)))
+                {
+                    KontrolerUzytkownik.DodajPlatnosc(Convert.ToInt32(uzytkownikTextBox.Text), opisTextBox.Text, Convert.ToDecimal(kwotaTextBox.Text));
+                    KontrolerUzytkownik.WyswietlPlatnosci(tabela, IDUzytkownik);
+                    labelBlad.Visible = false;
+                }
+                else
+                    labelBlad.Visible = true;
+            }
+            catch (FormatException) { }
         }
 
         private void FormPlatnosci_Load(object sender, EventArgs e)
@@ -48,11 +58,12 @@ namespace Widok
                 tabela.Columns.Add("Opis zapłaty", typeof(string));
                 KontrolerUzytkownik.WyswietlPlatnosci(tabela, IDUzytkownik);
                 tabelaPlatnosci.DataSource = tabela;
-                tabelaPlatnosci.Columns[0].Width = 70;
-                tabelaPlatnosci.Columns[1].Width = 70;
-                tabelaPlatnosci.Columns[2].Width = 140;
-                tabelaPlatnosci.Columns[4].Width = 80;
-                tabelaPlatnosci.Columns[5].Width = 292;
+                tabelaPlatnosci.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaPlatnosci.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaPlatnosci.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaPlatnosci.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaPlatnosci.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaPlatnosci.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             else
             {
@@ -63,10 +74,11 @@ namespace Widok
                 tabela.Columns.Add("Opis zapłaty", typeof(string));
                 KontrolerUzytkownik.WyswietlPlatnosci(tabela, IDUzytkownik);
                 tabelaPlatnosci.DataSource = tabela;
-                tabelaPlatnosci.Columns[0].Width = 90;
-                tabelaPlatnosci.Columns[1].Width = 160;
-                tabelaPlatnosci.Columns[3].Width = 80;
-                tabelaPlatnosci.Columns[4].Width = 322;
+                tabelaPlatnosci.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaPlatnosci.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaPlatnosci.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaPlatnosci.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                tabelaPlatnosci.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }
 

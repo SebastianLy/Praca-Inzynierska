@@ -24,6 +24,19 @@ namespace Kontroler
             }
         }
 
+        public static bool CzyIstnieje(int id)
+        {
+            using (var db = new BibliotekaKontekst())
+            {
+                Uzytkownik uzytkownik = (from dbUzytkownik in db.Uzytkownicy
+                                         where dbUzytkownik.ID_Uzytkownika == id
+                                         select dbUzytkownik).FirstOrDefault();
+                if (uzytkownik == null)
+                    return false;
+                return true;
+            }
+        }
+
         public static bool LoginUnikatowy(string login)
         {
             using (var db = new BibliotekaKontekst())
@@ -217,6 +230,7 @@ namespace Kontroler
                 db.SaveChanges();
             }
         }
+
 
         public static void Usun(int id)
         {

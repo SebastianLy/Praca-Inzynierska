@@ -26,6 +26,22 @@ namespace Kontroler
             }
         }
 
+        public static bool CzyIstnieje(List<string> sygnatury)
+        {
+            using (var db = new BibliotekaKontekst())
+            {
+                foreach (var item in sygnatury)
+                {
+                    var sygnatura = (from dbSygnatura in db.Sygnatury
+                                     where dbSygnatura.ID_Sygnatura == item
+                                     select dbSygnatura).FirstOrDefault();
+                    if (sygnatura == null)
+                        return false;
+                }
+            }
+            return true;
+        }
+
         public static void WypelnijTabeleKsiazek(DataTable tabela)
         {
             using (var db = new BibliotekaKontekst())
@@ -49,6 +65,12 @@ namespace Kontroler
                 tabela.Clear();
                 foreach (var ksiazka in ksiazki)
                 {
+                    if (ksiazka.Rezerwacja - DateTime.Now <= TimeSpan.FromMinutes(0))
+                    {
+                        var ksiazka1 = db.Sygnatury.Where(s => s.ID_Sygnatura == ksiazka.ID_Sygnatura).FirstOrDefault();
+                        ksiazka1.Czas_Rezerwacji = null;
+                        ksiazka1.ID_Uzytkownika = null;
+                    }
                     tabela.Rows.Add(ksiazka.ID_Sygnatura, ksiazka.Tytuł, ksiazka.Autor, ksiazka.Gatunek, ksiazka.Wydawca + ", " + ksiazka.Miejsce_Wydania + ", " + 
                         ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######,##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
                 }

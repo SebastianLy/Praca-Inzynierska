@@ -149,6 +149,7 @@ namespace Widok
             this.tabelaKsiazki.TabIndex = 5;
             this.tabelaKsiazki.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelaKsiazki_CellDoubleClick);
             this.tabelaKsiazki.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.tabelaKsiazki_DataBindingComplete);
+            this.tabelaKsiazki.SelectionChanged += new System.EventHandler(this.tabelaKsiazki_SelectionChanged);
             // 
             // panelPrzyciski
             // 

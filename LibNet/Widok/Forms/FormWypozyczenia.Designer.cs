@@ -45,6 +45,8 @@ namespace Widok
             this.btnWypozycz = new System.Windows.Forms.Button();
             this.panelTabela = new System.Windows.Forms.Panel();
             this.tabelaWypozyczenia = new System.Windows.Forms.DataGridView();
+            this.labelBladUzytkownik = new System.Windows.Forms.Label();
+            this.labelBladKsiazka = new System.Windows.Forms.Label();
             this.panelFiltry.SuspendLayout();
             this.panelPrzyciski.SuspendLayout();
             this.panelTabela.SuspendLayout();
@@ -119,6 +121,8 @@ namespace Widok
             // panelPrzyciski
             // 
             this.panelPrzyciski.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.panelPrzyciski.Controls.Add(this.labelBladKsiazka);
+            this.panelPrzyciski.Controls.Add(this.labelBladUzytkownik);
             this.panelPrzyciski.Controls.Add(this.btnZwroc);
             this.panelPrzyciski.Controls.Add(this.sygnaturyTextBox);
             this.panelPrzyciski.Controls.Add(this.label3);
@@ -139,7 +143,7 @@ namespace Widok
             this.btnZwroc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnZwroc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnZwroc.ForeColor = System.Drawing.Color.Black;
-            this.btnZwroc.Location = new System.Drawing.Point(549, 41);
+            this.btnZwroc.Location = new System.Drawing.Point(550, 50);
             this.btnZwroc.Name = "btnZwroc";
             this.btnZwroc.Size = new System.Drawing.Size(200, 43);
             this.btnZwroc.TabIndex = 6;
@@ -150,7 +154,7 @@ namespace Widok
             // sygnaturyTextBox
             // 
             this.sygnaturyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.sygnaturyTextBox.Location = new System.Drawing.Point(162, 71);
+            this.sygnaturyTextBox.Location = new System.Drawing.Point(163, 84);
             this.sygnaturyTextBox.MaxLength = 63;
             this.sygnaturyTextBox.Name = "sygnaturyTextBox";
             this.sygnaturyTextBox.Size = new System.Drawing.Size(140, 24);
@@ -161,7 +165,7 @@ namespace Widok
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(12, 71);
+            this.label3.Location = new System.Drawing.Point(13, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 24);
             this.label3.TabIndex = 5;
@@ -170,7 +174,7 @@ namespace Widok
             // wypozyczajacyTextBox
             // 
             this.wypozyczajacyTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.wypozyczajacyTextBox.Location = new System.Drawing.Point(162, 27);
+            this.wypozyczajacyTextBox.Location = new System.Drawing.Point(163, 30);
             this.wypozyczajacyTextBox.MaxLength = 63;
             this.wypozyczajacyTextBox.Name = "wypozyczajacyTextBox";
             this.wypozyczajacyTextBox.Size = new System.Drawing.Size(140, 24);
@@ -181,7 +185,7 @@ namespace Widok
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(12, 27);
+            this.label2.Location = new System.Drawing.Point(13, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(144, 24);
             this.label2.TabIndex = 2;
@@ -194,7 +198,7 @@ namespace Widok
             this.btnWypozycz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnWypozycz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnWypozycz.ForeColor = System.Drawing.Color.Black;
-            this.btnWypozycz.Location = new System.Drawing.Point(327, 41);
+            this.btnWypozycz.Location = new System.Drawing.Point(328, 50);
             this.btnWypozycz.Name = "btnWypozycz";
             this.btnWypozycz.Size = new System.Drawing.Size(200, 43);
             this.btnWypozycz.TabIndex = 5;
@@ -239,6 +243,30 @@ namespace Widok
             this.tabelaWypozyczenia.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.tabelaWypozyczenia_DataBindingComplete);
             this.tabelaWypozyczenia.SelectionChanged += new System.EventHandler(this.tabelaWypozyczenia_SelectionChanged);
             // 
+            // labelBladUzytkownik
+            // 
+            this.labelBladUzytkownik.AutoSize = true;
+            this.labelBladUzytkownik.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelBladUzytkownik.ForeColor = System.Drawing.Color.Red;
+            this.labelBladUzytkownik.Location = new System.Drawing.Point(143, 7);
+            this.labelBladUzytkownik.Name = "labelBladUzytkownik";
+            this.labelBladUzytkownik.Size = new System.Drawing.Size(182, 17);
+            this.labelBladUzytkownik.TabIndex = 9;
+            this.labelBladUzytkownik.Text = "Nie ma takiego użytkownika";
+            this.labelBladUzytkownik.Visible = false;
+            // 
+            // labelBladKsiazka
+            // 
+            this.labelBladKsiazka.AutoSize = true;
+            this.labelBladKsiazka.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelBladKsiazka.ForeColor = System.Drawing.Color.Red;
+            this.labelBladKsiazka.Location = new System.Drawing.Point(165, 64);
+            this.labelBladKsiazka.Name = "labelBladKsiazka";
+            this.labelBladKsiazka.Size = new System.Drawing.Size(135, 17);
+            this.labelBladKsiazka.TabIndex = 10;
+            this.labelBladKsiazka.Text = "Nie ma takiej książki";
+            this.labelBladKsiazka.Visible = false;
+            // 
             // FormWypozyczenia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -276,5 +304,7 @@ namespace Widok
         private System.Windows.Forms.TextBox wypozyczajacyTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnZwroc;
+        private System.Windows.Forms.Label labelBladKsiazka;
+        private System.Windows.Forms.Label labelBladUzytkownik;
     }
 }

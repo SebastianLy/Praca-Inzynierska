@@ -371,7 +371,8 @@ namespace Widok
             // btnEdytuj
             // 
             this.btnEdytuj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdytuj.FlatAppearance.BorderSize = 0;
+            this.btnEdytuj.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.btnEdytuj.FlatAppearance.BorderSize = 2;
             this.btnEdytuj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdytuj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnEdytuj.Location = new System.Drawing.Point(600, 12);
@@ -386,7 +387,7 @@ namespace Widok
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(190)))), ((int)(((byte)(150)))));
             this.ClientSize = new System.Drawing.Size(776, 536);
             this.Controls.Add(this.btnEdytuj);
             this.Controls.Add(this.labelOplata);

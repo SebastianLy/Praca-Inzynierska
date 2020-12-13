@@ -29,8 +29,8 @@ namespace Widok
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelFiltry = new System.Windows.Forms.Panel();
             this.szukajTextBox = new System.Windows.Forms.TextBox();
             this.szukajComboBox = new System.Windows.Forms.ComboBox();
@@ -46,6 +46,7 @@ namespace Widok
             this.label3 = new System.Windows.Forms.Label();
             this.uzytkownikTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.labelBlad = new System.Windows.Forms.Label();
             this.panelFiltry.SuspendLayout();
             this.panelTabela.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaPlatnosci)).BeginInit();
@@ -128,14 +129,14 @@ namespace Widok
             // 
             this.tabelaPlatnosci.AllowUserToAddRows = false;
             this.tabelaPlatnosci.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tabelaPlatnosci.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tabelaPlatnosci.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.tabelaPlatnosci.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelaPlatnosci.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabelaPlatnosci.Location = new System.Drawing.Point(0, 0);
@@ -143,8 +144,8 @@ namespace Widok
             this.tabelaPlatnosci.ReadOnly = true;
             this.tabelaPlatnosci.RowHeadersVisible = false;
             this.tabelaPlatnosci.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Gainsboro;
-            this.tabelaPlatnosci.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Gainsboro;
+            this.tabelaPlatnosci.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.tabelaPlatnosci.RowTemplate.Height = 24;
             this.tabelaPlatnosci.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.tabelaPlatnosci.Size = new System.Drawing.Size(776, 471);
@@ -154,6 +155,7 @@ namespace Widok
             // panelPrzyciski
             // 
             this.panelPrzyciski.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.panelPrzyciski.Controls.Add(this.labelBlad);
             this.panelPrzyciski.Controls.Add(this.btnDodajPlatnosc);
             this.panelPrzyciski.Controls.Add(this.kwotaTextBox);
             this.panelPrzyciski.Controls.Add(this.label4);
@@ -243,6 +245,18 @@ namespace Widok
             this.label2.TabIndex = 0;
             this.label2.Text = "Płacący:";
             // 
+            // labelBlad
+            // 
+            this.labelBlad.AutoSize = true;
+            this.labelBlad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelBlad.ForeColor = System.Drawing.Color.Red;
+            this.labelBlad.Location = new System.Drawing.Point(558, 52);
+            this.labelBlad.Name = "labelBlad";
+            this.labelBlad.Size = new System.Drawing.Size(182, 17);
+            this.labelBlad.TabIndex = 8;
+            this.labelBlad.Text = "Nie ma takiego użytkownika";
+            this.labelBlad.Visible = false;
+            // 
             // FormPlatnosci
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -281,5 +295,6 @@ namespace Widok
         private System.Windows.Forms.TextBox uzytkownikTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnDodajPlatnosc;
+        private System.Windows.Forms.Label labelBlad;
     }
 }
