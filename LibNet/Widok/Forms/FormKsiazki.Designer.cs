@@ -41,6 +41,7 @@ namespace Widok
             this.panelPrzyciski = new System.Windows.Forms.Panel();
             this.btnRezerwacja = new System.Windows.Forms.Button();
             this.btnDodaj = new System.Windows.Forms.Button();
+            this.labelBlokada = new System.Windows.Forms.Label();
             this.panelFiltry.SuspendLayout();
             this.panelTabela.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaKsiazki)).BeginInit();
@@ -154,6 +155,7 @@ namespace Widok
             // panelPrzyciski
             // 
             this.panelPrzyciski.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.panelPrzyciski.Controls.Add(this.labelBlokada);
             this.panelPrzyciski.Controls.Add(this.btnRezerwacja);
             this.panelPrzyciski.Controls.Add(this.btnDodaj);
             this.panelPrzyciski.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -193,6 +195,17 @@ namespace Widok
             this.btnDodaj.UseVisualStyleBackColor = true;
             this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
+            // labelBlokada
+            // 
+            this.labelBlokada.AutoSize = true;
+            this.labelBlokada.ForeColor = System.Drawing.Color.Red;
+            this.labelBlokada.Location = new System.Drawing.Point(233, 26);
+            this.labelBlokada.Name = "labelBlokada";
+            this.labelBlokada.Size = new System.Drawing.Size(131, 17);
+            this.labelBlokada.TabIndex = 5;
+            this.labelBlokada.Text = "Konto zablokowane";
+            this.labelBlokada.Visible = false;
+            // 
             // FormKsiazki
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -209,6 +222,7 @@ namespace Widok
             this.panelTabela.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabelaKsiazki)).EndInit();
             this.panelPrzyciski.ResumeLayout(false);
+            this.panelPrzyciski.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -225,5 +239,6 @@ namespace Widok
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSzukaj;
         private System.Windows.Forms.Button btnRezerwacja;
+        private System.Windows.Forms.Label labelBlokada;
     }
 }

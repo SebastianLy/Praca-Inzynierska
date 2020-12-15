@@ -182,6 +182,7 @@ namespace Widok
             // 
             // oplataTextBox
             // 
+            this.oplataTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.oplataTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.oplataTextBox.Location = new System.Drawing.Point(591, 449);
             this.oplataTextBox.Name = "oplataTextBox";
@@ -190,6 +191,7 @@ namespace Widok
             // 
             // limitTextBox
             // 
+            this.limitTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.limitTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.limitTextBox.Location = new System.Drawing.Point(591, 414);
             this.limitTextBox.Name = "limitTextBox";
@@ -198,6 +200,7 @@ namespace Widok
             // 
             // wypozyczeniaTextBox
             // 
+            this.wypozyczeniaTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.wypozyczeniaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.wypozyczeniaTextBox.Location = new System.Drawing.Point(591, 379);
             this.wypozyczeniaTextBox.Name = "wypozyczeniaTextBox";
@@ -206,6 +209,7 @@ namespace Widok
             // 
             // niedzielaTextBox
             // 
+            this.niedzielaTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.niedzielaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.niedzielaTextBox.Location = new System.Drawing.Point(555, 295);
             this.niedzielaTextBox.Name = "niedzielaTextBox";
@@ -214,6 +218,7 @@ namespace Widok
             // 
             // sobotaTextBox
             // 
+            this.sobotaTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.sobotaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.sobotaTextBox.Location = new System.Drawing.Point(555, 260);
             this.sobotaTextBox.Name = "sobotaTextBox";
@@ -222,6 +227,7 @@ namespace Widok
             // 
             // piatekTextBox
             // 
+            this.piatekTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.piatekTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.piatekTextBox.Location = new System.Drawing.Point(555, 225);
             this.piatekTextBox.Name = "piatekTextBox";
@@ -230,6 +236,7 @@ namespace Widok
             // 
             // czwartekTextBox
             // 
+            this.czwartekTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.czwartekTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.czwartekTextBox.Location = new System.Drawing.Point(329, 330);
             this.czwartekTextBox.Name = "czwartekTextBox";
@@ -238,6 +245,7 @@ namespace Widok
             // 
             // srodaTextBox
             // 
+            this.srodaTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.srodaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.srodaTextBox.Location = new System.Drawing.Point(329, 295);
             this.srodaTextBox.Name = "srodaTextBox";
@@ -246,6 +254,7 @@ namespace Widok
             // 
             // wtorekTextBox
             // 
+            this.wtorekTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.wtorekTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.wtorekTextBox.Location = new System.Drawing.Point(329, 260);
             this.wtorekTextBox.Name = "wtorekTextBox";
@@ -254,6 +263,7 @@ namespace Widok
             // 
             // poniedzialekTextBox
             // 
+            this.poniedzialekTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.poniedzialekTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.poniedzialekTextBox.Location = new System.Drawing.Point(329, 225);
             this.poniedzialekTextBox.Name = "poniedzialekTextBox";
@@ -262,6 +272,7 @@ namespace Widok
             // 
             // emailTextBox
             // 
+            this.emailTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.emailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.emailTextBox.Location = new System.Drawing.Point(347, 140);
             this.emailTextBox.Name = "emailTextBox";
@@ -270,6 +281,7 @@ namespace Widok
             // 
             // telefonTextBox
             // 
+            this.telefonTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.telefonTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.telefonTextBox.Location = new System.Drawing.Point(347, 100);
             this.telefonTextBox.Name = "telefonTextBox";
@@ -278,6 +290,7 @@ namespace Widok
             // 
             // nazwaTextBox
             // 
+            this.nazwaTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.nazwaTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.nazwaTextBox.Location = new System.Drawing.Point(347, 17);
             this.nazwaTextBox.Name = "nazwaTextBox";
@@ -286,6 +299,7 @@ namespace Widok
             // 
             // adresTextBox
             // 
+            this.adresTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.adresTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.adresTextBox.Location = new System.Drawing.Point(347, 60);
             this.adresTextBox.Name = "adresTextBox";
@@ -294,6 +308,7 @@ namespace Widok
             // 
             // btnEdytuj
             // 
+            this.btnEdytuj.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnEdytuj.FlatAppearance.BorderColor = System.Drawing.Color.SlateGray;
             this.btnEdytuj.FlatAppearance.BorderSize = 2;
             this.btnEdytuj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -305,9 +320,11 @@ namespace Widok
             this.btnEdytuj.TabIndex = 97;
             this.btnEdytuj.Text = "Zapisz";
             this.btnEdytuj.UseVisualStyleBackColor = true;
+            this.btnEdytuj.Click += new System.EventHandler(this.btnEdytuj_Click);
             // 
             // label15
             // 
+            this.label15.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label15.ForeColor = System.Drawing.Color.Gainsboro;
@@ -319,6 +336,7 @@ namespace Widok
             // 
             // label14
             // 
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label14.ForeColor = System.Drawing.Color.Gainsboro;
@@ -330,6 +348,7 @@ namespace Widok
             // 
             // label13
             // 
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label13.ForeColor = System.Drawing.Color.Gainsboro;
@@ -341,6 +360,7 @@ namespace Widok
             // 
             // label11
             // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label11.ForeColor = System.Drawing.Color.Gainsboro;
@@ -352,6 +372,7 @@ namespace Widok
             // 
             // label10
             // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label10.ForeColor = System.Drawing.Color.Gainsboro;
@@ -363,6 +384,7 @@ namespace Widok
             // 
             // label9
             // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label9.ForeColor = System.Drawing.Color.Gainsboro;
@@ -374,6 +396,7 @@ namespace Widok
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label8.ForeColor = System.Drawing.Color.Gainsboro;
@@ -385,6 +408,7 @@ namespace Widok
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label7.ForeColor = System.Drawing.Color.Gainsboro;
@@ -396,6 +420,7 @@ namespace Widok
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label6.ForeColor = System.Drawing.Color.Gainsboro;
@@ -407,6 +432,7 @@ namespace Widok
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.ForeColor = System.Drawing.Color.Gainsboro;
@@ -418,6 +444,7 @@ namespace Widok
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label4.ForeColor = System.Drawing.Color.Gainsboro;
@@ -429,6 +456,7 @@ namespace Widok
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.ForeColor = System.Drawing.Color.Gainsboro;
@@ -440,6 +468,7 @@ namespace Widok
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label2.ForeColor = System.Drawing.Color.Gainsboro;
@@ -451,6 +480,7 @@ namespace Widok
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.ForeColor = System.Drawing.Color.Gainsboro;
@@ -462,6 +492,7 @@ namespace Widok
             // 
             // labelNazwa
             // 
+            this.labelNazwa.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelNazwa.AutoSize = true;
             this.labelNazwa.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.labelNazwa.ForeColor = System.Drawing.Color.Gainsboro;
@@ -479,6 +510,7 @@ namespace Widok
             this.Controls.Add(this.panelEdytuj);
             this.Controls.Add(this.panelTytul);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormEdytujBiblioteka";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEdytujBiblioteka";

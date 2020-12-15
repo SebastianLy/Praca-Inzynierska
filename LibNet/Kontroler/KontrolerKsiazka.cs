@@ -41,6 +41,22 @@ namespace Kontroler
             }
             return true;
         }
+        
+        public static bool CzyZajete(List<string> sygnatury)
+        {
+            using (var db = new BibliotekaKontekst())
+            {
+                foreach (var item in sygnatury)
+                {
+                    var sygnatura = (from dbSygnatura in db.Sygnatury
+                                     where dbSygnatura.ID_Sygnatura == item
+                                     select dbSygnatura).FirstOrDefault();
+                    if (sygnatura.Czas_Rezerwacji != null || sygnatura.ID_Uzytkownika != null)
+                        return false;
+                }
+            }
+            return true;
+        }
 
         public static void WypelnijTabeleKsiazek(DataTable tabela)
         {
@@ -72,7 +88,7 @@ namespace Kontroler
                         ksiazka1.ID_Uzytkownika = null;
                     }
                     tabela.Rows.Add(ksiazka.ID_Sygnatura, ksiazka.Tytuł, ksiazka.Autor, ksiazka.Gatunek, ksiazka.Wydawca + ", " + ksiazka.Miejsce_Wydania + ", " + 
-                        ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######,##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
+                        ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######.##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
                 }
             }
         }
@@ -177,7 +193,7 @@ namespace Kontroler
                             if (ksiazka.ID_Sygnatura.Contains(ciag))
                             {
                                 tabela.Rows.Add(ksiazka.ID_Sygnatura, ksiazka.Tytuł, ksiazka.Autor, ksiazka.Gatunek, ksiazka.Wydawca + ", " + ksiazka.Miejsce_Wydania + " " +
-                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######,##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
+                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######.##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
                             }
                         }
                         break;
@@ -187,7 +203,7 @@ namespace Kontroler
                             if (ksiazka.Tytuł.Contains(ciag))
                             {
                                 tabela.Rows.Add(ksiazka.ID_Sygnatura, ksiazka.Tytuł, ksiazka.Autor, ksiazka.Gatunek, ksiazka.Wydawca + ", " + ksiazka.Miejsce_Wydania + " " +
-                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######,##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
+                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######.##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
                             }
                         }
                         break;
@@ -197,7 +213,7 @@ namespace Kontroler
                             if (ksiazka.Autor.Contains(ciag))
                             {
                                 tabela.Rows.Add(ksiazka.ID_Sygnatura, ksiazka.Tytuł, ksiazka.Autor, ksiazka.Gatunek, ksiazka.Wydawca + ", " + ksiazka.Miejsce_Wydania + " " +
-                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######,##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
+                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######.##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
                             }
                         }
                         break;
@@ -207,7 +223,7 @@ namespace Kontroler
                             if (ksiazka.Gatunek.Contains(ciag))
                             {
                                 tabela.Rows.Add(ksiazka.ID_Sygnatura, ksiazka.Tytuł, ksiazka.Autor, ksiazka.Gatunek, ksiazka.Wydawca + ", " + ksiazka.Miejsce_Wydania + " " +
-                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######,##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
+                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######.##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
                             }
                         }
                         break;
@@ -217,7 +233,7 @@ namespace Kontroler
                             if (ksiazka.Wydawca.Contains(ciag) || ksiazka.Miejsce_Wydania.Contains(ciag) || ksiazka.Data_Wydania.Contains(ciag))
                             {
                                 tabela.Rows.Add(ksiazka.ID_Sygnatura, ksiazka.Tytuł, ksiazka.Autor, ksiazka.Gatunek, ksiazka.Wydawca + ", " + ksiazka.Miejsce_Wydania + " " +
-                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######,##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
+                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######.##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
                             }
                         }
                         break;
@@ -227,14 +243,13 @@ namespace Kontroler
                             if (ksiazka.Przetrzymujacy.ToString().Contains(ciag))
                             {
                                 tabela.Rows.Add(ksiazka.ID_Sygnatura, ksiazka.Tytuł, ksiazka.Autor, ksiazka.Gatunek, ksiazka.Wydawca + ", " + ksiazka.Miejsce_Wydania + " " +
-                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######,##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
+                                    ksiazka.Data_Wydania, ksiazka.Wartosc.ToString("#######.##"), ksiazka.Rezerwacja, ksiazka.Przetrzymujacy);
                             }
                         }
                         break;
                     default:
                         break;
                 }
-
             }
         }
 
@@ -243,7 +258,10 @@ namespace Kontroler
         {
             string[] tekst = {nazwa, adres, telefon, email, poniedzialek, wtorek, sroda, czwartek, piatek, sobota, niedziela, rezerwacje.ToString(),
                 limit.ToString(), oplata.ToString()};
-            File.WriteAllLines("Ustawienia.txt", tekst);
+            //File.WriteAllLines("Ustawienia.txt", tekst);
+            File.WriteAllLines("Ustawienia1.txt", tekst);
+            File.Replace("Ustawienia1.txt", "Ustawienia.txt", "Backup.txt");
+            File.Delete("Backup.txt");
         }
 
         public static string[] WyswietlUstawienia()

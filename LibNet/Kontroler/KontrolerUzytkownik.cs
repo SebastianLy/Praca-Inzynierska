@@ -24,6 +24,45 @@ namespace Kontroler
             }
         }
 
+        public static string ZnajdzImie(string login)
+        {
+            using (var db = new BibliotekaKontekst())
+            {
+                Uzytkownik uzytkownik = (from dbUzytkownik in db.Uzytkownicy
+                                         where dbUzytkownik.Login == login
+                                         select dbUzytkownik).FirstOrDefault();
+                if (uzytkownik != null)
+                    return uzytkownik.Imie;
+            }
+            return "";
+        }
+
+        public static bool CzyZablokowane(int id)
+        {
+            using (var db = new BibliotekaKontekst())
+            {
+                Uzytkownik uzytkownik = (from dbUzytkownik in db.Uzytkownicy
+                                         where dbUzytkownik.ID_Uzytkownika == id
+                                         select dbUzytkownik).FirstOrDefault();
+                if (uzytkownik.Blokada)
+                    return true;
+                return false;
+            }
+        }
+
+        public static string PowodBlokady(int id)
+        {
+            using (var db = new BibliotekaKontekst())
+            {
+                Uzytkownik uzytkownik = (from dbUzytkownik in db.Uzytkownicy
+                                         where dbUzytkownik.ID_Uzytkownika == id
+                                         select dbUzytkownik).FirstOrDefault();
+                if (uzytkownik.Blokada)
+                    return uzytkownik.Powod_Blokady;
+                return "";
+            }
+        }
+
         public static bool CzyIstnieje(int id)
         {
             using (var db = new BibliotekaKontekst())
@@ -239,6 +278,14 @@ namespace Kontroler
                 var uzytkownik = (from dbUzytkownik in db.Uzytkownicy
                                   where dbUzytkownik.ID_Uzytkownika == id
                                   select dbUzytkownik).FirstOrDefault();
+                var ksiazka = (from dbKsiazka in db.Sygnatury
+                               where dbKsiazka.ID_Uzytkownika == id
+                               select dbKsiazka).FirstOrDefault();
+                if (ksiazka != null)
+                {
+                    ksiazka.Czas_Rezerwacji = null;
+                    ksiazka.ID_Uzytkownika = null;
+                }
                 db.Uzytkownicy.Remove(uzytkownik);
                 db.SaveChanges();
             }

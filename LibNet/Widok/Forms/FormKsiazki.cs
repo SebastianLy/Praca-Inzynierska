@@ -63,18 +63,22 @@ namespace Widok
         {
             try
             {
-                FormDodajKsiazke form = new FormDodajKsiazke(
-                    tabelaKsiazki.Rows[e.RowIndex].Cells[0].Value.ToString(),
-                    tabelaKsiazki.Rows[e.RowIndex].Cells[1].Value.ToString(),
-                    tabelaKsiazki.Rows[e.RowIndex].Cells[2].Value.ToString(),
-                    tabelaKsiazki.Rows[e.RowIndex].Cells[3].Value.ToString(),
-                    tabelaKsiazki.Rows[e.RowIndex].Cells[4].Value.ToString(),
-                    tabelaKsiazki.Rows[e.RowIndex].Cells[5].Value.ToString());
-                form.ShowDialog();
+                if (IDUzytkownik == 0)
+                {
+                    FormDodajKsiazke form = new FormDodajKsiazke(
+                        tabelaKsiazki.Rows[e.RowIndex].Cells[0].Value.ToString(),
+                        tabelaKsiazki.Rows[e.RowIndex].Cells[1].Value.ToString(),
+                        tabelaKsiazki.Rows[e.RowIndex].Cells[2].Value.ToString(),
+                        tabelaKsiazki.Rows[e.RowIndex].Cells[3].Value.ToString(),
+                        tabelaKsiazki.Rows[e.RowIndex].Cells[4].Value.ToString(),
+                        tabelaKsiazki.Rows[e.RowIndex].Cells[5].Value.ToString());
+                    form.ShowDialog();
+                    KontrolerKsiazka.WypelnijTabeleKsiazek(tabela);
+                }
             }
             catch (NullReferenceException) { }
             catch (InvalidCastException) { }
-            KontrolerKsiazka.WypelnijTabeleKsiazek(tabela);
+
         }
 
         private void tabelaKsiazki_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -92,8 +96,17 @@ namespace Widok
         {
             int wiersz = tabelaKsiazki.SelectedCells[0].RowIndex;
             string sygnatura = tabelaKsiazki.Rows[wiersz].Cells[0].Value.ToString();
-            KontrolerKsiazka.RezerwacjaKsiazki(sygnatura, IDUzytkownik);
-            KontrolerKsiazka.WypelnijTabeleKsiazek(tabela);
+            if (IDUzytkownik != 0)
+            {
+                if (!KontrolerUzytkownik.CzyZablokowane(IDUzytkownik))
+                {
+                    labelBlokada.Visible = false;
+                    KontrolerKsiazka.RezerwacjaKsiazki(sygnatura, IDUzytkownik);
+                    KontrolerKsiazka.WypelnijTabeleKsiazek(tabela);
+                }
+                else
+                    labelBlokada.Visible = true;
+            }
         }
 
         private void tabelaKsiazki_SelectionChanged(object sender, EventArgs e)
@@ -105,7 +118,7 @@ namespace Widok
             else
             {
                 int wiersz = tabelaKsiazki.SelectedCells[0].RowIndex;
-                if (tabelaKsiazki.Rows[wiersz].Cells[6].Value == null && tabelaKsiazki.Rows[wiersz].Cells[7].Value == null)
+                if (tabelaKsiazki.Rows[wiersz].Cells[6].Value.ToString() == "" && tabelaKsiazki.Rows[wiersz].Cells[7].Value.ToString() == "")
                 {
                     btnRezerwacja.Enabled = true;
                 }

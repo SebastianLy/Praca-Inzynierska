@@ -15,13 +15,10 @@ namespace Widok
 {
     public partial class formMenuGlowne : Form
     {
-
-        // Pola
         private Button aktywnyPrzycisk;
         private Form aktywnyForm;
         private readonly int IDUzytkownik;
 
-        // Konstruktor
         public formMenuGlowne()
         {
             InitializeComponent();
@@ -32,7 +29,16 @@ namespace Widok
         {
             InitializeComponent();
             timer1.Start();
-            labelUzytkownik.Text = login;
+            labelUzytkownik.Text = KontrolerUzytkownik.ZnajdzImie(login);
+            if (IDUzytkownik != 0)
+            {
+                if (KontrolerUzytkownik.CzyZablokowane(IDUzytkownik))
+                {
+                    labelBlokada.Visible = true;
+                    labelBlokadaPowod.Visible = true;
+                    labelBlokadaPowod.Text = KontrolerUzytkownik.PowodBlokady(IDUzytkownik);
+                }
+            }
             IDUzytkownik = KontrolerUzytkownik.IDRola(login);
             if (IDUzytkownik != 0)
                 btnUzytkownicy.Visible = false;
@@ -43,7 +49,6 @@ namespace Widok
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
-        // Metody
         private void AktywujPrzycisk(object przycisk)
         {
             if (przycisk != null)

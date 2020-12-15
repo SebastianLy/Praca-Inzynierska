@@ -65,18 +65,19 @@ namespace Widok
             this.labelNazwa.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.labelNazwa.AutoSize = true;
             this.labelNazwa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelNazwa.Location = new System.Drawing.Point(333, 15);
+            this.labelNazwa.Location = new System.Drawing.Point(180, 20);
             this.labelNazwa.Name = "labelNazwa";
             this.labelNazwa.Size = new System.Drawing.Size(65, 20);
             this.labelNazwa.TabIndex = 6;
             this.labelNazwa.Text = "Nazwa";
+            this.labelNazwa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(230, 58);
+            this.label1.Location = new System.Drawing.Point(180, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 20);
             this.label1.TabIndex = 7;
@@ -87,7 +88,7 @@ namespace Widok
             this.labelAdres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelAdres.AutoSize = true;
             this.labelAdres.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelAdres.Location = new System.Drawing.Point(333, 58);
+            this.labelAdres.Location = new System.Drawing.Point(290, 60);
             this.labelAdres.Name = "labelAdres";
             this.labelAdres.Size = new System.Drawing.Size(60, 24);
             this.labelAdres.TabIndex = 8;
@@ -98,7 +99,7 @@ namespace Widok
             this.labelTelefon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelTelefon.AutoSize = true;
             this.labelTelefon.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelTelefon.Location = new System.Drawing.Point(333, 93);
+            this.labelTelefon.Location = new System.Drawing.Point(290, 95);
             this.labelTelefon.Name = "labelTelefon";
             this.labelTelefon.Size = new System.Drawing.Size(74, 24);
             this.labelTelefon.TabIndex = 10;
@@ -109,7 +110,7 @@ namespace Widok
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(230, 93);
+            this.label2.Location = new System.Drawing.Point(180, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(77, 20);
             this.label2.TabIndex = 9;
@@ -120,7 +121,7 @@ namespace Widok
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label5.Location = new System.Drawing.Point(201, 214);
+            this.label5.Location = new System.Drawing.Point(180, 215);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(121, 20);
             this.label5.TabIndex = 14;
@@ -131,7 +132,7 @@ namespace Widok
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(298, 180);
+            this.label4.Location = new System.Drawing.Point(280, 180);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(160, 20);
             this.label4.TabIndex = 13;
@@ -142,7 +143,7 @@ namespace Widok
             this.labelEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelEmail.AutoSize = true;
             this.labelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelEmail.Location = new System.Drawing.Point(333, 128);
+            this.labelEmail.Location = new System.Drawing.Point(290, 130);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(57, 24);
             this.labelEmail.TabIndex = 12;
@@ -153,7 +154,7 @@ namespace Widok
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(230, 128);
+            this.label3.Location = new System.Drawing.Point(180, 130);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 20);
             this.label3.TabIndex = 11;
@@ -164,7 +165,7 @@ namespace Widok
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(201, 249);
+            this.label6.Location = new System.Drawing.Point(180, 250);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(74, 20);
             this.label6.TabIndex = 15;
@@ -175,7 +176,7 @@ namespace Widok
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(201, 284);
+            this.label7.Location = new System.Drawing.Point(180, 285);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(64, 20);
             this.label7.TabIndex = 16;
@@ -186,7 +187,7 @@ namespace Widok
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label8.Location = new System.Drawing.Point(201, 319);
+            this.label8.Location = new System.Drawing.Point(180, 320);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 20);
             this.label8.TabIndex = 17;
@@ -197,7 +198,7 @@ namespace Widok
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label9.Location = new System.Drawing.Point(416, 214);
+            this.label9.Location = new System.Drawing.Point(390, 215);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 20);
             this.label9.TabIndex = 18;
@@ -208,7 +209,7 @@ namespace Widok
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label10.Location = new System.Drawing.Point(416, 249);
+            this.label10.Location = new System.Drawing.Point(390, 250);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(73, 20);
             this.label10.TabIndex = 19;
@@ -219,7 +220,7 @@ namespace Widok
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label11.Location = new System.Drawing.Point(416, 284);
+            this.label11.Location = new System.Drawing.Point(390, 285);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(93, 20);
             this.label11.TabIndex = 20;
@@ -230,7 +231,7 @@ namespace Widok
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label13.Location = new System.Drawing.Point(201, 377);
+            this.label13.Location = new System.Drawing.Point(180, 370);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(352, 20);
             this.label13.TabIndex = 22;
@@ -241,7 +242,7 @@ namespace Widok
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label14.Location = new System.Drawing.Point(201, 412);
+            this.label14.Location = new System.Drawing.Point(180, 405);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(262, 20);
             this.label14.TabIndex = 23;
@@ -252,7 +253,7 @@ namespace Widok
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label15.Location = new System.Drawing.Point(201, 447);
+            this.label15.Location = new System.Drawing.Point(180, 440);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(272, 20);
             this.label15.TabIndex = 24;
@@ -263,7 +264,7 @@ namespace Widok
             this.labelPoniedzialek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelPoniedzialek.AutoSize = true;
             this.labelPoniedzialek.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelPoniedzialek.Location = new System.Drawing.Point(342, 214);
+            this.labelPoniedzialek.Location = new System.Drawing.Point(320, 215);
             this.labelPoniedzialek.Name = "labelPoniedzialek";
             this.labelPoniedzialek.Size = new System.Drawing.Size(22, 24);
             this.labelPoniedzialek.TabIndex = 25;
@@ -274,7 +275,7 @@ namespace Widok
             this.labelWtorek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelWtorek.AutoSize = true;
             this.labelWtorek.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelWtorek.Location = new System.Drawing.Point(342, 249);
+            this.labelWtorek.Location = new System.Drawing.Point(320, 250);
             this.labelWtorek.Name = "labelWtorek";
             this.labelWtorek.Size = new System.Drawing.Size(28, 24);
             this.labelWtorek.TabIndex = 26;
@@ -285,7 +286,7 @@ namespace Widok
             this.labelSroda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelSroda.AutoSize = true;
             this.labelSroda.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelSroda.Location = new System.Drawing.Point(342, 284);
+            this.labelSroda.Location = new System.Drawing.Point(320, 285);
             this.labelSroda.Name = "labelSroda";
             this.labelSroda.Size = new System.Drawing.Size(22, 24);
             this.labelSroda.TabIndex = 27;
@@ -296,7 +297,7 @@ namespace Widok
             this.labelCzwartek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelCzwartek.AutoSize = true;
             this.labelCzwartek.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelCzwartek.Location = new System.Drawing.Point(342, 319);
+            this.labelCzwartek.Location = new System.Drawing.Point(320, 320);
             this.labelCzwartek.Name = "labelCzwartek";
             this.labelCzwartek.Size = new System.Drawing.Size(23, 24);
             this.labelCzwartek.TabIndex = 28;
@@ -307,7 +308,7 @@ namespace Widok
             this.labelPiatek.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelPiatek.AutoSize = true;
             this.labelPiatek.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelPiatek.Location = new System.Drawing.Point(534, 214);
+            this.labelPiatek.Location = new System.Drawing.Point(510, 215);
             this.labelPiatek.Name = "labelPiatek";
             this.labelPiatek.Size = new System.Drawing.Size(32, 24);
             this.labelPiatek.TabIndex = 29;
@@ -318,7 +319,7 @@ namespace Widok
             this.labelSobota.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelSobota.AutoSize = true;
             this.labelSobota.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelSobota.Location = new System.Drawing.Point(534, 249);
+            this.labelSobota.Location = new System.Drawing.Point(510, 250);
             this.labelSobota.Name = "labelSobota";
             this.labelSobota.Size = new System.Drawing.Size(32, 24);
             this.labelSobota.TabIndex = 30;
@@ -329,7 +330,7 @@ namespace Widok
             this.labelNiedziela.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelNiedziela.AutoSize = true;
             this.labelNiedziela.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelNiedziela.Location = new System.Drawing.Point(534, 284);
+            this.labelNiedziela.Location = new System.Drawing.Point(510, 285);
             this.labelNiedziela.Name = "labelNiedziela";
             this.labelNiedziela.Size = new System.Drawing.Size(24, 24);
             this.labelNiedziela.TabIndex = 31;
@@ -340,7 +341,7 @@ namespace Widok
             this.labelWypozyczenie.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelWypozyczenie.AutoSize = true;
             this.labelWypozyczenie.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelWypozyczenie.Location = new System.Drawing.Point(596, 377);
+            this.labelWypozyczenie.Location = new System.Drawing.Point(590, 370);
             this.labelWypozyczenie.Name = "labelWypozyczenie";
             this.labelWypozyczenie.Size = new System.Drawing.Size(133, 24);
             this.labelWypozyczenie.TabIndex = 33;
@@ -351,7 +352,7 @@ namespace Widok
             this.labelLimit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelLimit.AutoSize = true;
             this.labelLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelLimit.Location = new System.Drawing.Point(596, 412);
+            this.labelLimit.Location = new System.Drawing.Point(590, 405);
             this.labelLimit.Name = "labelLimit";
             this.labelLimit.Size = new System.Drawing.Size(48, 24);
             this.labelLimit.TabIndex = 34;
@@ -362,7 +363,7 @@ namespace Widok
             this.labelOplata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.labelOplata.AutoSize = true;
             this.labelOplata.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelOplata.Location = new System.Drawing.Point(596, 447);
+            this.labelOplata.Location = new System.Drawing.Point(590, 440);
             this.labelOplata.Name = "labelOplata";
             this.labelOplata.Size = new System.Drawing.Size(64, 24);
             this.labelOplata.TabIndex = 35;
@@ -371,7 +372,7 @@ namespace Widok
             // btnEdytuj
             // 
             this.btnEdytuj.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdytuj.FlatAppearance.BorderColor = System.Drawing.Color.ForestGreen;
+            this.btnEdytuj.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
             this.btnEdytuj.FlatAppearance.BorderSize = 2;
             this.btnEdytuj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdytuj.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));

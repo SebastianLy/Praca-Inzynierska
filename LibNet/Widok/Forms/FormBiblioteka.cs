@@ -30,7 +30,9 @@ namespace Widok
 
         private void btnEdytuj_Click(object sender, EventArgs e)
         {
-            FormEdytujBiblioteka formEdytuj = new FormEdytujBiblioteka();
+            FormEdytujBiblioteka formEdytuj = new FormEdytujBiblioteka(labelNazwa.Text, labelAdres.Text, labelTelefon.Text, labelEmail.Text, labelPoniedzialek.Text, 
+                labelWtorek.Text, labelSroda.Text, labelCzwartek.Text, labelPiatek.Text, labelSobota.Text, labelNiedziela.Text, labelWypozyczenie.Text, 
+                labelLimit.Text, labelOplata.Text);
             formEdytuj.ShowDialog();
             string[] ustawienia = Kontroler.KontrolerKsiazka.WyswietlUstawienia();
             labelNazwa.Text = ustawienia[0];

@@ -99,6 +99,23 @@ namespace Widok
                     wypozycz = false;
                     labelBladKsiazka.Visible = true;
                 }
+                if (IDUzytkownik != 0)
+                {
+                    if (!KontrolerUzytkownik.CzyZablokowane(IDUzytkownik))
+                        labelBlokada.Visible = false;
+                    else
+                    {
+                        wypozycz = false;
+                        labelBlokada.Visible = true;
+                    }
+                }
+                if (KontrolerKsiazka.CzyZajete(sygnatury))
+                    labelZajete.Visible = false;
+                else
+                {
+                    wypozycz = false;
+                    labelZajete.Visible = true;
+                }
                 if (wypozycz)
                 {
                     KontrolerWypozyczenie.Wypozycz(sygnatury, Convert.ToInt32(wypozyczajacyTextBox.Text));

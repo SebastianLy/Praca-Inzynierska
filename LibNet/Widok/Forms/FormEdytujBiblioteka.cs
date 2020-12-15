@@ -19,6 +19,26 @@ namespace Widok
             InitializeComponent();
         }
 
+        public FormEdytujBiblioteka(string nazwa, string adres, string telefon, string email, string p, string w, string s, string c, string p2, string s2, string n, 
+            string wypozyczenia, string limit, string oplata)
+        {
+            InitializeComponent();
+            nazwaTextBox.Text = nazwa;
+            adresTextBox.Text = adres;
+            telefonTextBox.Text = telefon;
+            emailTextBox.Text = email;
+            poniedzialekTextBox.Text = p;
+            wtorekTextBox.Text = w;
+            srodaTextBox.Text = s;
+            czwartekTextBox.Text = c;
+            piatekTextBox.Text = p2;
+            sobotaTextBox.Text = s2;
+            niedzielaTextBox.Text = n;
+            wypozyczeniaTextBox.Text = wypozyczenia;
+            limitTextBox.Text = limit;
+            oplataTextBox.Text = oplata;
+        }
+
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         public static extern bool ReleaseCapture();
         [DllImport("user32.dll", EntryPoint = "SendMessage")]

@@ -49,6 +49,8 @@ namespace Widok
             this.labelUzytkownik = new System.Windows.Forms.Label();
             this.panelZakladka = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.labelBlokada = new System.Windows.Forms.Label();
+            this.labelBlokadaPowod = new System.Windows.Forms.Label();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTytul.SuspendLayout();
@@ -303,7 +305,7 @@ namespace Widok
             this.labelUzytkownik.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelUzytkownik.AutoSize = true;
             this.labelUzytkownik.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelUzytkownik.Location = new System.Drawing.Point(430, 80);
+            this.labelUzytkownik.Location = new System.Drawing.Point(450, 80);
             this.labelUzytkownik.Name = "labelUzytkownik";
             this.labelUzytkownik.Size = new System.Drawing.Size(164, 31);
             this.labelUzytkownik.TabIndex = 1;
@@ -311,6 +313,8 @@ namespace Widok
             // 
             // panelZakladka
             // 
+            this.panelZakladka.Controls.Add(this.labelBlokadaPowod);
+            this.panelZakladka.Controls.Add(this.labelBlokada);
             this.panelZakladka.Controls.Add(this.label1);
             this.panelZakladka.Controls.Add(this.labelUzytkownik);
             this.panelZakladka.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -324,12 +328,36 @@ namespace Widok
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(457, 30);
+            this.label1.Location = new System.Drawing.Point(450, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 36);
+            this.label1.Size = new System.Drawing.Size(105, 36);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Witaj";
+            this.label1.Text = "Witaj !";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelBlokada
+            // 
+            this.labelBlokada.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelBlokada.AutoSize = true;
+            this.labelBlokada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelBlokada.Location = new System.Drawing.Point(109, 136);
+            this.labelBlokada.Name = "labelBlokada";
+            this.labelBlokada.Size = new System.Drawing.Size(447, 25);
+            this.labelBlokada.TabIndex = 3;
+            this.labelBlokada.Text = "Twoje konto zostało zablokowane z powodu: ";
+            this.labelBlokada.Visible = false;
+            // 
+            // labelBlokadaPowod
+            // 
+            this.labelBlokadaPowod.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelBlokadaPowod.AutoSize = true;
+            this.labelBlokadaPowod.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelBlokadaPowod.Location = new System.Drawing.Point(591, 136);
+            this.labelBlokadaPowod.Name = "labelBlokadaPowod";
+            this.labelBlokadaPowod.Size = new System.Drawing.Size(77, 25);
+            this.labelBlokadaPowod.TabIndex = 4;
+            this.labelBlokadaPowod.Text = "Powód";
+            this.labelBlokadaPowod.Visible = false;
             // 
             // formMenuGlowne
             // 
@@ -377,6 +405,8 @@ namespace Widok
         private System.Windows.Forms.Label labelUzytkownik;
         private System.Windows.Forms.Panel panelZakladka;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelBlokadaPowod;
+        private System.Windows.Forms.Label labelBlokada;
     }
 }
 

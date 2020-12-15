@@ -37,6 +37,9 @@ namespace Widok
             this.label1 = new System.Windows.Forms.Label();
             this.btnSzukaj = new System.Windows.Forms.Button();
             this.panelPrzyciski = new System.Windows.Forms.Panel();
+            this.labelBlokada = new System.Windows.Forms.Label();
+            this.labelBladKsiazka = new System.Windows.Forms.Label();
+            this.labelBladUzytkownik = new System.Windows.Forms.Label();
             this.btnZwroc = new System.Windows.Forms.Button();
             this.sygnaturyTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,8 +48,7 @@ namespace Widok
             this.btnWypozycz = new System.Windows.Forms.Button();
             this.panelTabela = new System.Windows.Forms.Panel();
             this.tabelaWypozyczenia = new System.Windows.Forms.DataGridView();
-            this.labelBladUzytkownik = new System.Windows.Forms.Label();
-            this.labelBladKsiazka = new System.Windows.Forms.Label();
+            this.labelZajete = new System.Windows.Forms.Label();
             this.panelFiltry.SuspendLayout();
             this.panelPrzyciski.SuspendLayout();
             this.panelTabela.SuspendLayout();
@@ -121,6 +123,8 @@ namespace Widok
             // panelPrzyciski
             // 
             this.panelPrzyciski.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.panelPrzyciski.Controls.Add(this.labelZajete);
+            this.panelPrzyciski.Controls.Add(this.labelBlokada);
             this.panelPrzyciski.Controls.Add(this.labelBladKsiazka);
             this.panelPrzyciski.Controls.Add(this.labelBladUzytkownik);
             this.panelPrzyciski.Controls.Add(this.btnZwroc);
@@ -135,6 +139,42 @@ namespace Widok
             this.panelPrzyciski.Size = new System.Drawing.Size(776, 120);
             this.panelPrzyciski.TabIndex = 3;
             // 
+            // labelBlokada
+            // 
+            this.labelBlokada.AutoSize = true;
+            this.labelBlokada.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelBlokada.ForeColor = System.Drawing.Color.Red;
+            this.labelBlokada.Location = new System.Drawing.Point(365, 7);
+            this.labelBlokada.Name = "labelBlokada";
+            this.labelBlokada.Size = new System.Drawing.Size(131, 17);
+            this.labelBlokada.TabIndex = 11;
+            this.labelBlokada.Text = "Konto zablokowane";
+            this.labelBlokada.Visible = false;
+            // 
+            // labelBladKsiazka
+            // 
+            this.labelBladKsiazka.AutoSize = true;
+            this.labelBladKsiazka.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelBladKsiazka.ForeColor = System.Drawing.Color.Red;
+            this.labelBladKsiazka.Location = new System.Drawing.Point(165, 64);
+            this.labelBladKsiazka.Name = "labelBladKsiazka";
+            this.labelBladKsiazka.Size = new System.Drawing.Size(135, 17);
+            this.labelBladKsiazka.TabIndex = 10;
+            this.labelBladKsiazka.Text = "Nie ma takiej książki";
+            this.labelBladKsiazka.Visible = false;
+            // 
+            // labelBladUzytkownik
+            // 
+            this.labelBladUzytkownik.AutoSize = true;
+            this.labelBladUzytkownik.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelBladUzytkownik.ForeColor = System.Drawing.Color.Red;
+            this.labelBladUzytkownik.Location = new System.Drawing.Point(143, 7);
+            this.labelBladUzytkownik.Name = "labelBladUzytkownik";
+            this.labelBladUzytkownik.Size = new System.Drawing.Size(182, 17);
+            this.labelBladUzytkownik.TabIndex = 9;
+            this.labelBladUzytkownik.Text = "Nie ma takiego użytkownika";
+            this.labelBladUzytkownik.Visible = false;
+            // 
             // btnZwroc
             // 
             this.btnZwroc.Enabled = false;
@@ -143,7 +183,7 @@ namespace Widok
             this.btnZwroc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnZwroc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnZwroc.ForeColor = System.Drawing.Color.Black;
-            this.btnZwroc.Location = new System.Drawing.Point(550, 50);
+            this.btnZwroc.Location = new System.Drawing.Point(550, 55);
             this.btnZwroc.Name = "btnZwroc";
             this.btnZwroc.Size = new System.Drawing.Size(200, 43);
             this.btnZwroc.TabIndex = 6;
@@ -198,7 +238,7 @@ namespace Widok
             this.btnWypozycz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnWypozycz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.btnWypozycz.ForeColor = System.Drawing.Color.Black;
-            this.btnWypozycz.Location = new System.Drawing.Point(328, 50);
+            this.btnWypozycz.Location = new System.Drawing.Point(328, 55);
             this.btnWypozycz.Name = "btnWypozycz";
             this.btnWypozycz.Size = new System.Drawing.Size(200, 43);
             this.btnWypozycz.TabIndex = 5;
@@ -243,29 +283,17 @@ namespace Widok
             this.tabelaWypozyczenia.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.tabelaWypozyczenia_DataBindingComplete);
             this.tabelaWypozyczenia.SelectionChanged += new System.EventHandler(this.tabelaWypozyczenia_SelectionChanged);
             // 
-            // labelBladUzytkownik
+            // labelZajete
             // 
-            this.labelBladUzytkownik.AutoSize = true;
-            this.labelBladUzytkownik.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelBladUzytkownik.ForeColor = System.Drawing.Color.Red;
-            this.labelBladUzytkownik.Location = new System.Drawing.Point(143, 7);
-            this.labelBladUzytkownik.Name = "labelBladUzytkownik";
-            this.labelBladUzytkownik.Size = new System.Drawing.Size(182, 17);
-            this.labelBladUzytkownik.TabIndex = 9;
-            this.labelBladUzytkownik.Text = "Nie ma takiego użytkownika";
-            this.labelBladUzytkownik.Visible = false;
-            // 
-            // labelBladKsiazka
-            // 
-            this.labelBladKsiazka.AutoSize = true;
-            this.labelBladKsiazka.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelBladKsiazka.ForeColor = System.Drawing.Color.Red;
-            this.labelBladKsiazka.Location = new System.Drawing.Point(165, 64);
-            this.labelBladKsiazka.Name = "labelBladKsiazka";
-            this.labelBladKsiazka.Size = new System.Drawing.Size(135, 17);
-            this.labelBladKsiazka.TabIndex = 10;
-            this.labelBladKsiazka.Text = "Nie ma takiej książki";
-            this.labelBladKsiazka.Visible = false;
+            this.labelZajete.AutoSize = true;
+            this.labelZajete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelZajete.ForeColor = System.Drawing.Color.Red;
+            this.labelZajete.Location = new System.Drawing.Point(381, 30);
+            this.labelZajete.Name = "labelZajete";
+            this.labelZajete.Size = new System.Drawing.Size(94, 17);
+            this.labelZajete.TabIndex = 12;
+            this.labelZajete.Text = "Książki zajęte";
+            this.labelZajete.Visible = false;
             // 
             // FormWypozyczenia
             // 
@@ -306,5 +334,7 @@ namespace Widok
         private System.Windows.Forms.Button btnZwroc;
         private System.Windows.Forms.Label labelBladKsiazka;
         private System.Windows.Forms.Label labelBladUzytkownik;
+        private System.Windows.Forms.Label labelBlokada;
+        private System.Windows.Forms.Label labelZajete;
     }
 }

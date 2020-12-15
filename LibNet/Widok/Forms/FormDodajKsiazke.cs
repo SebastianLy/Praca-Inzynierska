@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using Kontroler;
 
 namespace Widok
@@ -47,7 +48,7 @@ namespace Widok
         private void btnDodaj_Click(object sender, EventArgs e)
         {
             bool ksiazka = true;
-            if (sygnaturaTextBox.TextLength < 1 || !KontrolerKsiazka.SygnaturaUnikatowa(sygnaturaTextBox.Text))
+            if (sygnaturaTextBox.TextLength < 1 || !KontrolerKsiazka.SygnaturaUnikatowa(sygnaturaTextBox.Text) || sygnaturaTextBox.Text.Any(c => c > 255))
             {
                 label1.ForeColor = Color.Red;
                 ksiazka = false;
@@ -107,7 +108,7 @@ namespace Widok
                 label6.ForeColor = Color.Gainsboro;
                 ksiazka = true;
             }
-            if (dataWydaniaTextBox.TextLength != 4)
+            if (!new Regex("[1-2][0-9]{3}").IsMatch(dataWydaniaTextBox.Text))
             {
                 label7.ForeColor = Color.Red;
                 ksiazka = false;
@@ -198,7 +199,7 @@ namespace Widok
                 label6.ForeColor = Color.Gainsboro;
                 ksiazka = true;
             }
-            if (dataWydaniaTextBox.TextLength != 4)
+            if (!new Regex("[1-2][0-9]{3}").IsMatch(dataWydaniaTextBox.Text))
             {
                 label7.ForeColor = Color.Red;
                 ksiazka = false;
@@ -220,9 +221,13 @@ namespace Widok
             }
             if (ksiazka)
             {
-                KontrolerKsiazka.EdytujKsiazke(sygnaturaTextBox.Text, tytulTextBox.Text, autorTextBox.Text, gatunekTextBox.Text, wydawcaTextBox.Text,
-                    miejsceWydaniaTextBox.Text, dataWydaniaTextBox.Text, Convert.ToDecimal(wartoscTextBox.Text));
-                Close();
+                try
+                {
+                    KontrolerKsiazka.EdytujKsiazke(sygnaturaTextBox.Text, tytulTextBox.Text, autorTextBox.Text, gatunekTextBox.Text, wydawcaTextBox.Text,
+                        miejsceWydaniaTextBox.Text, dataWydaniaTextBox.Text, Convert.ToDecimal(wartoscTextBox.Text));
+                    Close();
+                }
+                catch (FormatException) { }
             }
         }
 

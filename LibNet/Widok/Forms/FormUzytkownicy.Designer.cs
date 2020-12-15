@@ -33,6 +33,7 @@ namespace Widok
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabelaUzytkownicy = new System.Windows.Forms.DataGridView();
             this.panelFiltry = new System.Windows.Forms.Panel();
+            this.btnOdswiez = new System.Windows.Forms.Button();
             this.szukajTextBox = new System.Windows.Forms.TextBox();
             this.szukajComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,7 +44,6 @@ namespace Widok
             this.powodTextBox = new System.Windows.Forms.TextBox();
             this.btnUsun = new System.Windows.Forms.Button();
             this.btnBlokada = new System.Windows.Forms.Button();
-            this.btnOdswiez = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tabelaUzytkownicy)).BeginInit();
             this.panelFiltry.SuspendLayout();
             this.panelTabela.SuspendLayout();
@@ -91,6 +91,22 @@ namespace Widok
             this.panelFiltry.Name = "panelFiltry";
             this.panelFiltry.Size = new System.Drawing.Size(776, 65);
             this.panelFiltry.TabIndex = 1;
+            // 
+            // btnOdswiez
+            // 
+            this.btnOdswiez.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOdswiez.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnOdswiez.FlatAppearance.BorderSize = 2;
+            this.btnOdswiez.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOdswiez.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnOdswiez.ForeColor = System.Drawing.Color.Black;
+            this.btnOdswiez.Location = new System.Drawing.Point(664, 12);
+            this.btnOdswiez.Name = "btnOdswiez";
+            this.btnOdswiez.Size = new System.Drawing.Size(100, 43);
+            this.btnOdswiez.TabIndex = 3;
+            this.btnOdswiez.Text = "Odśwież";
+            this.btnOdswiez.UseVisualStyleBackColor = true;
+            this.btnOdswiez.Click += new System.EventHandler(this.btnOdswiez_Click);
             // 
             // szukajTextBox
             // 
@@ -223,23 +239,6 @@ namespace Widok
             this.btnBlokada.Text = "Zablokuj/Odblokuj";
             this.btnBlokada.UseVisualStyleBackColor = true;
             this.btnBlokada.Click += new System.EventHandler(this.btnBlokada_Click);
-            // 
-            // btnOdswiez
-            // 
-            this.btnOdswiez.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOdswiez.Enabled = false;
-            this.btnOdswiez.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnOdswiez.FlatAppearance.BorderSize = 2;
-            this.btnOdswiez.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOdswiez.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.btnOdswiez.ForeColor = System.Drawing.Color.Black;
-            this.btnOdswiez.Location = new System.Drawing.Point(664, 12);
-            this.btnOdswiez.Name = "btnOdswiez";
-            this.btnOdswiez.Size = new System.Drawing.Size(100, 43);
-            this.btnOdswiez.TabIndex = 3;
-            this.btnOdswiez.Text = "Odśwież";
-            this.btnOdswiez.UseVisualStyleBackColor = true;
-            this.btnOdswiez.Click += new System.EventHandler(this.btnOdswiez_Click);
             // 
             // FormUzytkownicy
             // 
