@@ -56,6 +56,7 @@ namespace Widok
             }
             else
             {
+                szukajComboBox.Items.RemoveAt(3);
                 tabela.Columns.Add("ID Wypożyczenia", typeof(int));
                 tabela.Columns.Add("Data Wypożyczenia", typeof(DateTime));
                 tabela.Columns.Add("Data Zwrotu", typeof(DateTime));
@@ -80,34 +81,35 @@ namespace Widok
         {
             try
             {
+                labelBladKsiazka.Visible = false;
+                labelBladUzytkownik.Visible = false;
+                labelBlokada.Visible = false;
+                labelZajete.Visible = false;
                 bool wypozycz = true;
                 List<string> sygnatury;
                 string s = sygnaturyTextBox.Text;
                 string[] s1 = s.Split(',');
                 sygnatury = s1.ToList();
-                if (KontrolerUzytkownik.CzyIstnieje(Convert.ToInt32(wypozyczajacyTextBox.Text)))
+                if (KontrolerUzytkownik.CzyIstnieje(Convert.ToInt32(wypozyczajacyTextBox.Text)) && wypozyczajacyTextBox.Text != "")
                     labelBladUzytkownik.Visible = false;
                 else
                 {
                     wypozycz = false;
                     labelBladUzytkownik.Visible = true;
                 }
-                if (KontrolerKsiazka.CzyIstnieje(sygnatury))
+                if (KontrolerKsiazka.CzyIstnieje(sygnatury) && sygnaturyTextBox.Text != "")
                     labelBladKsiazka.Visible = false;
                 else
                 {
                     wypozycz = false;
                     labelBladKsiazka.Visible = true;
                 }
-                if (IDUzytkownik != 0)
+                if (!KontrolerUzytkownik.CzyZablokowane(Convert.ToInt32(wypozyczajacyTextBox.Text)))
+                    labelBlokada.Visible = false;
+                else
                 {
-                    if (!KontrolerUzytkownik.CzyZablokowane(IDUzytkownik))
-                        labelBlokada.Visible = false;
-                    else
-                    {
-                        wypozycz = false;
-                        labelBlokada.Visible = true;
-                    }
+                    wypozycz = false;
+                    labelBlokada.Visible = true;
                 }
                 if (KontrolerKsiazka.CzyZajete(sygnatury))
                     labelZajete.Visible = false;

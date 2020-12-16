@@ -34,6 +34,7 @@ namespace Widok
         {
             try
             {
+                labelBlad.Visible = false;
                 if (KontrolerUzytkownik.CzyIstnieje(Convert.ToInt32(uzytkownikTextBox.Text)))
                 {
                     KontrolerUzytkownik.DodajPlatnosc(Convert.ToInt32(uzytkownikTextBox.Text), opisTextBox.Text, Convert.ToDecimal(kwotaTextBox.Text));
@@ -67,6 +68,7 @@ namespace Widok
             }
             else
             {
+                szukajComboBox.Items.RemoveAt(1);
                 tabela.Columns.Add("ID Płatności", typeof(int));
                 tabela.Columns.Add("Płacący", typeof(string));
                 tabela.Columns.Add("Data zapłaty", typeof(DateTime));

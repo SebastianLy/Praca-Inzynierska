@@ -56,34 +56,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\FormBiblioteka.cs">
+    <Compile Include="FormBiblioteka.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormBiblioteka.Designer.cs">
+    <Compile Include="FormBiblioteka.Designer.cs">
       <DependentUpon>FormBiblioteka.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormEdytujBiblioteka.cs">
+    <Compile Include="FormEdytujBiblioteka.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormEdytujBiblioteka.Designer.cs">
+    <Compile Include="FormEdytujBiblioteka.Designer.cs">
       <DependentUpon>FormEdytujBiblioteka.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormPlatnosci.cs">
+    <Compile Include="FormPlatnosci.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormPlatnosci.Designer.cs">
+    <Compile Include="FormPlatnosci.Designer.cs">
       <DependentUpon>FormPlatnosci.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormDodajKsiazke.cs">
+    <Compile Include="FormDodajKsiazke.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormDodajKsiazke.Designer.cs">
+    <Compile Include="FormDodajKsiazke.Designer.cs">
       <DependentUpon>FormDodajKsiazke.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormKsiazki.cs">
+    <Compile Include="FormKsiazki.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormKsiazki.Designer.cs">
+    <Compile Include="FormKsiazki.Designer.cs">
       <DependentUpon>FormKsiazki.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLogowanie.cs">
@@ -104,33 +104,33 @@
     <Compile Include="FormRejestracja.Designer.cs">
       <DependentUpon>FormRejestracja.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormUzytkownicy.cs">
+    <Compile Include="FormUzytkownicy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormUzytkownicy.Designer.cs">
+    <Compile Include="FormUzytkownicy.Designer.cs">
       <DependentUpon>FormUzytkownicy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormWypozyczenia.cs">
+    <Compile Include="FormWypozyczenia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormWypozyczenia.Designer.cs">
+    <Compile Include="FormWypozyczenia.Designer.cs">
       <DependentUpon>FormWypozyczenia.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\FormBiblioteka.resx">
+    <EmbeddedResource Include="FormBiblioteka.resx">
       <DependentUpon>FormBiblioteka.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormEdytujBiblioteka.resx">
+    <EmbeddedResource Include="FormEdytujBiblioteka.resx">
       <DependentUpon>FormEdytujBiblioteka.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormPlatnosci.resx">
+    <EmbeddedResource Include="FormPlatnosci.resx">
       <DependentUpon>FormPlatnosci.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormDodajKsiazke.resx">
+    <EmbeddedResource Include="FormDodajKsiazke.resx">
       <DependentUpon>FormDodajKsiazke.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormKsiazki.resx">
+    <EmbeddedResource Include="FormKsiazki.resx">
       <DependentUpon>FormKsiazki.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogowanie.resx">
@@ -142,10 +142,10 @@
     <EmbeddedResource Include="FormRejestracja.resx">
       <DependentUpon>FormRejestracja.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormUzytkownicy.resx">
+    <EmbeddedResource Include="FormUzytkownicy.resx">
       <DependentUpon>FormUzytkownicy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormWypozyczenia.resx">
+    <EmbeddedResource Include="FormWypozyczenia.resx">
       <DependentUpon>FormWypozyczenia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -172,9 +172,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Składniki\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Kontroler\Kontroler.csproj">
       <Project>{974d77b7-ce10-44bb-8d9e-2fd79af575fe}</Project>

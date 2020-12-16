@@ -30,6 +30,7 @@ namespace Widok
             InitializeComponent();
             timer1.Start();
             labelUzytkownik.Text = KontrolerUzytkownik.ZnajdzImie(login);
+            IDUzytkownik = KontrolerUzytkownik.IDRola(login);
             if (IDUzytkownik != 0)
             {
                 if (KontrolerUzytkownik.CzyZablokowane(IDUzytkownik))
@@ -39,7 +40,6 @@ namespace Widok
                     labelBlokadaPowod.Text = KontrolerUzytkownik.PowodBlokady(IDUzytkownik);
                 }
             }
-            IDUzytkownik = KontrolerUzytkownik.IDRola(login);
             if (IDUzytkownik != 0)
                 btnUzytkownicy.Visible = false;
         }

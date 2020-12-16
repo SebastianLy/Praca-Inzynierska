@@ -51,8 +51,11 @@ namespace Kontroler
                     var sygnatura = (from dbSygnatura in db.Sygnatury
                                      where dbSygnatura.ID_Sygnatura == item
                                      select dbSygnatura).FirstOrDefault();
-                    if (sygnatura.Czas_Rezerwacji != null || sygnatura.ID_Uzytkownika != null)
-                        return false;
+                    if (sygnatura != null)
+                    {
+                        if (sygnatura.Czas_Rezerwacji != null || sygnatura.ID_Uzytkownika != null)
+                            return false;
+                    }
                 }
             }
             return true;
