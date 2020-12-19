@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 using Model;
 
@@ -261,7 +257,6 @@ namespace Kontroler
         {
             string[] tekst = {nazwa, adres, telefon, email, poniedzialek, wtorek, sroda, czwartek, piatek, sobota, niedziela, rezerwacje.ToString(),
                 limit.ToString(), oplata.ToString()};
-            //File.WriteAllLines("Ustawienia.txt", tekst);
             File.WriteAllLines("Ustawienia1.txt", tekst);
             File.Replace("Ustawienia1.txt", "Ustawienia.txt", "Backup.txt");
             File.Delete("Backup.txt");

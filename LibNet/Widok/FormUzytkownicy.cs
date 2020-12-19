@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Kontroler;
 
@@ -14,6 +8,7 @@ namespace Widok
     public partial class FormUzytkownicy : Form
     {
         DataTable tabela = new DataTable("Użytkownicy");
+
         public FormUzytkownicy()
         {
             InitializeComponent();

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Kontroler;
@@ -46,6 +40,7 @@ namespace Widok
 
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         public static extern bool ReleaseCapture();
+
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
@@ -64,8 +59,7 @@ namespace Widok
                     aktywnyPrzycisk.BackColor = Color.FromArgb(70, 70, 90);
                     aktywnyPrzycisk.TextAlign = ContentAlignment.MiddleRight;
                     aktywnyPrzycisk.ImageAlign = ContentAlignment.MiddleRight;
-                    aktywnyPrzycisk.TextImageRelation = TextImageRelation.TextBeforeImage;
-                    
+                    aktywnyPrzycisk.TextImageRelation = TextImageRelation.TextBeforeImage;                    
                 }
             }
         }
@@ -88,26 +82,6 @@ namespace Widok
             }
         }
 
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == 0x84)
-            {  // Trap WM_NCHITTEST
-                Point pos = new Point(m.LParam.ToInt32());
-                pos = PointToClient(pos);
-                if (pos.Y < 32)
-                {
-                    m.Result = (IntPtr)2;  // HTCAPTION
-                    return;
-                }
-                if (pos.X >= ClientSize.Width - 16 && pos.Y >= ClientSize.Height - 16)
-                {
-                    m.Result = (IntPtr)17; // HTBOTTOMRIGHT
-                    return;
-                }
-            }
-            base.WndProc(ref m);
-        }
-
         private void OtworzForm(Form form, object btnSender, string tytul)
         {
             if (aktywnyForm != null)
@@ -116,7 +90,6 @@ namespace Widok
             aktywnyForm = form;
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
-            //form.BackColor = Color.FromArgb(123, 122, 145);
             form.Dock = DockStyle.Fill;
             panelZakladka.Controls.Add(form);
             panelZakladka.Tag = form;
@@ -154,7 +127,6 @@ namespace Widok
         {
             ReleaseCapture();
             SendMessage(Handle, 0x112, 0xf012, 0);
-            //SendMessage(Handle, 0xA1, 0x2, 0);
         }
 
         private void btnZamknij_Click(object sender, EventArgs e)

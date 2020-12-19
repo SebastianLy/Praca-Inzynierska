@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
@@ -21,28 +16,9 @@ namespace Widok
 
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         public static extern bool ReleaseCapture();
+
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == 0x84)
-            {  // Trap WM_NCHITTEST
-                Point pos = new Point(m.LParam.ToInt32());
-                pos = PointToClient(pos);
-                if (pos.Y < 32)
-                {
-                    m.Result = (IntPtr)2;  // HTCAPTION
-                    return;
-                }
-                if (pos.X >= ClientSize.Width - 16 && pos.Y >= ClientSize.Height - 16)
-                {
-                    m.Result = (IntPtr)17; // HTBOTTOMRIGHT
-                    return;
-                }
-            }
-            base.WndProc(ref m);
-        }
 
         private void btnZamknij_Click(object sender, EventArgs e)
         {

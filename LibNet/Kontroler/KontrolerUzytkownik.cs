@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 using Model;
 
@@ -270,7 +268,6 @@ namespace Kontroler
             }
         }
 
-
         public static void Usun(int id)
         {
             using (var db = new BibliotekaKontekst())
@@ -509,6 +506,7 @@ namespace Kontroler
                 }
             }
         }
+
         public static int IDRola(string login)
         {
             using (var db = new BibliotekaKontekst())

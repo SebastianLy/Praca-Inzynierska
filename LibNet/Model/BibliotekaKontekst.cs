@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 
 namespace Model
 {
     public class BibliotekaKontekst: DbContext
     {
-        public BibliotekaKontekst() : base("name=BibliotekaKontekst")
-        { }
+        public BibliotekaKontekst() : base("name=BibliotekaKontekst") { }
         public DbSet<Uzytkownik> Uzytkownicy { get; set; }
         public DbSet<Adres> Adresy { get; set; }
         public DbSet<Platnosc> Platnosci { get; set; }
