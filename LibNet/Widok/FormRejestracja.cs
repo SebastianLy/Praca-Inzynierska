@@ -63,7 +63,8 @@ namespace Widok
             }
             else
                 label2.ForeColor = Color.Gainsboro;
-            if (loginTextBox.Text.Length < 1 || loginTextBox.Text.Any(c => c > 255) || !Kontroler.KontrolerUzytkownik.LoginUnikatowy(loginTextBox.Text))
+            if (loginTextBox.Text.Length < 1 || loginTextBox.Text.Any(c => c > 255) || loginTextBox.Text.Contains("'") || loginTextBox.Text.Contains("/") || 
+                !Kontroler.KontrolerUzytkownik.LoginUnikatowy(loginTextBox.Text))
             {
                 rejestracja = false;
                 label3.ForeColor = Color.Red;
@@ -77,7 +78,7 @@ namespace Widok
             }
             else
                 label4.ForeColor = Color.Gainsboro;
-            if (hasloTextBox.Text.Length < 8)
+            if (hasloTextBox.Text.Length < 8 || hasloTextBox.Text.Contains("'") || hasloTextBox.Text.Contains("/"))
             {
                 rejestracja = false;
                 label5.ForeColor = Color.Red;
